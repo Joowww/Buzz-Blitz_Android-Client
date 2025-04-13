@@ -25,13 +25,13 @@ public class LoginBuzzBlitz extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         btnGoToRegister = findViewById(R.id.btnGoToRegister);
 
-        sharedPreferences = getSharedPreferences("Mypreferencies", MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userInput = etUserIdentifier.getText().toString();
-                String password = etPasswordLogin.getText().toString();
+                String userInput = etUserIdentifier.getText().toString().trim();
+                String password = etPasswordLogin.getText().toString().trim();
 
                 if(validarCredenciales(userInput, password)) {
                     startActivity(new Intent(LoginBuzzBlitz.this, MainActivity.class));
@@ -60,9 +60,14 @@ public class LoginBuzzBlitz extends AppCompatActivity {
         } else {
             email = sharedPreferences.getString(userInput + "_email", "");
             if(email.isEmpty()) {
-                Toast.makeText(this, "User ID not found", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "User not found", Toast.LENGTH_SHORT).show();
                 return false;
             }
+        }
+
+        if(!sharedPreferences.contains(email)) {
+            Toast.makeText(this, "Unregistered account", Toast.LENGTH_SHORT).show();
+            return false;
         }
 
         String savedPassword = sharedPreferences.getString(email, "");

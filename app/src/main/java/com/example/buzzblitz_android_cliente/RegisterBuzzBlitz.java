@@ -1,7 +1,6 @@
 package com.example.buzzblitz_android_cliente;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +24,7 @@ public class RegisterBuzzBlitz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        // Initialize UI components
         NameRegister = findViewById(R.id.NameRegister);
         SurnameRegister = findViewById(R.id.SurnameRegister);
         IdUserRegister = findViewById(R.id.IdUserRegister);
@@ -38,8 +38,10 @@ public class RegisterBuzzBlitz extends AppCompatActivity {
         btnRegister = findViewById(R.id.btnRegister);
         btnGoToLogin = findViewById(R.id.btnGoToLogin);
 
-        sharedPreferences = getSharedPreferences("MyPreferencies", MODE_PRIVATE);
+        // Set up SharedPreferences
+        sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
 
+        // Configure security questions spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.security_questions,
@@ -49,13 +51,15 @@ public class RegisterBuzzBlitz extends AppCompatActivity {
         spinnerPregunta1.setAdapter(adapter);
         spinnerPregunta2.setAdapter(adapter);
 
+        // Register button click handler
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                registrarUsuario();
+                registerUser();
             }
         });
 
+        // Login navigation button
         btnGoToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,54 +68,59 @@ public class RegisterBuzzBlitz extends AppCompatActivity {
         });
     }
 
-    private void registrarUsuario() {
-        String nombre = NameRegister.getText().toString();
-        String apellido = SurnameRegister.getText().toString();
-        String idUsuario = IdUserRegister.getText().toString();
-        String email = etEmailRegister.getText().toString();
-        String password = etPasswordRegister.getText().toString();
-        String confirmPassword = etRepeatPassword.getText().toString();
-        String pregunta1 = spinnerPregunta1.getSelectedItem().toString();
-        String respuesta1 = etRespuesta1.getText().toString();
-        String pregunta2 = spinnerPregunta2.getSelectedItem().toString();
-        String respuesta2 = etRespuesta2.getText().toString();
+    private void registerUser() {
+        String firstName = NameRegister.getText().toString().trim();
+        String lastName = SurnameRegister.getText().toString().trim();
+        String userId = IdUserRegister.getText().toString().trim();
+        String email = etEmailRegister.getText().toString().trim();
+        String password = etPasswordRegister.getText().toString().trim();
+        String confirmPassword = etRepeatPassword.getText().toString().trim();
+        String question1 = spinnerPregunta1.getSelectedItem().toString();
+        String answer1 = etRespuesta1.getText().toString().trim();
+        String question2 = spinnerPregunta2.getSelectedItem().toString();
+        String answer2 = etRespuesta2.getText().toString().trim();
 
-        if(nombre.isEmpty() || apellido.isEmpty() || idUsuario.isEmpty() ||
+        if (firstName.isEmpty() || lastName.isEmpty() || userId.isEmpty() ||
                 email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-            Toast.makeText(this, "Fill in all the required fields", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please fill all required fields", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if(!password.equals(confirmPassword)) {
+        if (!password.equals(confirmPassword)) {
             Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if(pregunta1.equals(pregunta2)) {
-            Toast.makeText(this, "Select different questions", Toast.LENGTH_SHORT).show();
+        if (question1.equals(question2)) {
+            Toast.makeText(this, "Please select different security questions", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if(respuesta1.isEmpty() || respuesta2.isEmpty()) {
-            Toast.makeText(this, "Answer both questions", Toast.LENGTH_SHORT).show();
+        if (answer1.isEmpty() || answer2.isEmpty()) {
+            Toast.makeText(this, "Please answer both security questions", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (sharedPreferences.contains(email)) {
+            Toast.makeText(this, "Email already registered", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (sharedPreferences.contains(userId + "_email")) {
+            Toast.makeText(this, "User ID already exists", Toast.LENGTH_SHORT).show();
             return;
         }
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        editor.putString("nombre", nombre);
-        editor.putString("apellido", apellido);
-        editor.putString("idUsuario", idUsuario);
         editor.putString(email, password);
+        editor.putString(userId + "_email", email);
 
-        editor.putString(email + "_pregunta1", pregunta1);
-        editor.putString(email + "_respuesta1", hash(respuesta1));
-        editor.putString(email + "_pregunta2", pregunta2);
-        editor.putString(email + "_respuesta2", hash(respuesta2));
+        editor.putString(email + "_q1", question1);
+        editor.putString(email + "_a1", hash(answer1));
+        editor.putString(email + "_q2", question2);
+        editor.putString(email + "_a2", hash(answer2));
 
-        editor.putString(idUsuario + "_email", email);
-
-        editor.apply();
+        editor.commit();
 
         Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT).show();
         finish();
@@ -120,17 +129,17 @@ public class RegisterBuzzBlitz extends AppCompatActivity {
     private String hash(String input) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hash = digest.digest(input.getBytes("UTF-8"));
+            byte[] hashBytes = digest.digest(input.getBytes("UTF-8"));
             StringBuilder hexString = new StringBuilder();
 
-            for (byte b : hash) {
+            for (byte b : hashBytes) {
                 String hex = Integer.toHexString(0xff & b);
-                if(hex.length() == 1) hexString.append('0');
+                if (hex.length() == 1) hexString.append('0');
                 hexString.append(hex);
             }
             return hexString.toString();
         } catch (Exception ex) {
-            throw new RuntimeException(ex);
+            throw new RuntimeException("Hashing failed", ex);
         }
     }
 }
