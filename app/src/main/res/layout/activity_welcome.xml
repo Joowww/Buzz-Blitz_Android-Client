@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_welcome"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_landscape">
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="-30dp"
+        android:layout_marginEnd="108dp"
+        app:layout_constraintBottom_toTopOf="@+id/startButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/honeyHive"
+        app:srcCompat="@drawable/bee2" />
+
+    <ImageView
+        android:id="@+id/spiderweb5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="332dp"
+        android:layout_marginBottom="64dp"
+        android:contentDescription="Telaraña 3"
+        android:src="@drawable/spiderweb3dmodel"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/spiderweb"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="144dp"
+        android:contentDescription="Telaraña 1"
+        android:src="@drawable/spiderweb3dmodel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/spiderweb4" />
+
+    <ImageView
+        android:id="@+id/honeyHive"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="584dp"
+        android:alpha="1"
+        android:contentDescription="Colmena"
+        android:src="@drawable/beehive3dmodel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionText"
+        app:layout_constraintVertical_bias="0.511" />
+
+    <ImageView
+        android:id="@+id/beeColmena1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="Abeja de la colmena"
+        android:src="@drawable/bee2"
+        app:layout_constraintBottom_toBottomOf="@id/honeyHive"
+        app:layout_constraintEnd_toStartOf="@id/honeyHive"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¡Welcome to Buzz Blitz!"
+        android:textSize="32sp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:id="@+id/descriptionText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Una abeja se ha separado de su colmena y para sobrevivir y reunirse, debe volar a través de un entorno lleno de peligros, recogiendo flores para crear frascos de miel."
+        android:textSize="14sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/titleText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+
+
+    <ImageView
+        android:id="@+id/flower1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="53dp"
+        android:contentDescription="Flor 1"
+        android:src="@drawable/flower"
+        app:layout_constraintBottom_toTopOf="@+id/spiderweb4"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/spiderweb2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="56dp"
+        android:contentDescription="Telaraña 1"
+        android:src="@drawable/spiderweb3dmodel"
+        app:layout_constraintEnd_toStartOf="@id/flower1"
+        app:layout_constraintTop_toTopOf="@id/flower1" />
+
+    <ImageView
+        android:id="@+id/spiderweb3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="144dp"
+        android:contentDescription="Telaraña 2"
+        android:src="@drawable/spiderweb3dmodel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/spiderweb" />
+
+    <ImageView
+        android:id="@+id/spiderweb4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="144dp"
+        android:contentDescription="Telaraña 3"
+        android:src="@drawable/spiderweb3dmodel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/spider"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="496dp"
+        android:layout_marginEnd="136dp"
+        android:contentDescription="Araña enemiga"
+        android:src="@drawable/spider3dmodel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="472dp"
+        android:background="@drawable/btn_bee_selector"
+        android:elevation="16dp"
+        android:fontFamily="@font/pixel_font"
+        android:text="¡Start adventure!"
+        android:textColor="#FFD700"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:iconPadding="8dp"
+        app:iconTint="#FFD700"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="49dp"
+        app:layout_constraintBottom_toTopOf="@+id/spiderweb3"
+        app:layout_constraintEnd_toStartOf="@+id/spider"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/spiderweb5"
+        app:srcCompat="@drawable/flower1" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="161dp"
+        android:layout_height="164dp"
+        android:layout_marginStart="-20dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/bee" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="60dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="-80dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="152dp"
+        app:layout_constraintBottom_toTopOf="@+id/startButton"
+        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/beeColmena1"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/bee2" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/beeColmena1"
+        app:layout_constraintEnd_toStartOf="@+id/honeyHive"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionText"
+        app:srcCompat="@drawable/bee2" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="113dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionText"
+        app:srcCompat="@drawable/bee2" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="97dp"
+        app:layout_constraintBottom_toTopOf="@+id/startButton"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionText"
+        app:srcCompat="@drawable/bee2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

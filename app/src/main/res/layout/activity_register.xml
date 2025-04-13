@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,6 +17,34 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:gravity="center">
 
+        <!-- Campos existentes -->
+        <EditText
+            android:id="@+id/NameRegister"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:textColor="@color/texto_negro"
+            android:inputType="textPersonName"
+            android:layout_marginVertical="8dp"/>
+
+        <EditText
+            android:id="@+id/SurnameRegister"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="Surname"
+            android:textColor="@color/texto_negro"
+            android:inputType="textPersonName"
+            android:layout_marginVertical="8dp"/>
+
+        <EditText
+            android:id="@+id/IdUserRegister"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="ID User"
+            android:textColor="@color/texto_negro"
+            android:inputType="textPersonName"
+            android:layout_marginVertical="8dp"/>
+
         <EditText
             android:id="@+id/etEmailRegister"
             android:layout_width="300dp"
@@ -29,7 +58,7 @@
             android:id="@+id/etPasswordRegister"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="Contraseña"
+            android:hint="Password"
             android:textColor="@color/texto_negro"
             android:inputType="textPassword"
             android:layout_marginVertical="8dp"/>
@@ -38,9 +67,37 @@
             android:id="@+id/etRepeatPassword"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="Repetir Contraseña"
+            android:hint="Repeat Password"
             android:textColor="@color/texto_negro"
             android:inputType="textPassword"
+            android:layout_marginVertical="8dp"/>
+
+        <Spinner
+            android:id="@+id/spinnerPregunta1"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"/>
+
+        <EditText
+            android:id="@+id/etRespuesta1"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="Respuesta 1"
+            android:textColor="@color/texto_negro"
+            android:layout_marginVertical="8dp"/>
+
+        <Spinner
+            android:id="@+id/spinnerPregunta2"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"/>
+
+        <EditText
+            android:id="@+id/etRespuesta2"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="Respuesta 2"
+            android:textColor="@color/texto_negro"
             android:layout_marginVertical="8dp"/>
 
         <Button
@@ -64,5 +121,4 @@
             app:cornerRadius="8dp"/>
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
