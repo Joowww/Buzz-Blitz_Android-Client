@@ -3,13 +3,13 @@ package com.example.buzzblitz_android_cliente;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import com.airbnb.lottie.LottieAnimationView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,18 +24,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Configurar botones principales
-        setupMainButtons();
-
-        // Configurar elementos del menú
-        sideMenuCard = findViewById(R.id.sideMenuCard);
-        menuContent = findViewById(R.id.menuContent);
-        ivArrow = findViewById(R.id.ivArrow);
-
-        setupMenuToggle();
-        setupLottieAnimations();
-    }
-
-    private void setupMainButtons() {
         AppCompatButton btnExit = findViewById(R.id.btnExit);
         btnExit.setOnClickListener(v -> {
             startActivity(new Intent(this, LoginBuzzBlitz.class));
@@ -50,6 +38,14 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.btnCredits).setOnClickListener(v ->
                 startActivity(new Intent(this, CreditsActivity.class)));
+
+        // Configurar menú desplegable
+        sideMenuCard = findViewById(R.id.sideMenuCard);
+        menuContent = findViewById(R.id.menuContent);
+        ivArrow = findViewById(R.id.ivArrow);
+
+        setupMenuToggle();
+        setupLottieAnimations();
     }
 
     private void setupMenuToggle() {
@@ -59,62 +55,52 @@ public class MainActivity extends AppCompatActivity {
 
     private void toggleMenu() {
         if (isMenuOpen) {
-            // Animación de cierre
-            menuContent.animate()
-                    .alpha(0f)
-                    .setDuration(200)
-                    .withEndAction(() -> menuContent.setVisibility(View.GONE));
-
-            ivArrow.animate()
-                    .rotationBy(180f)
-                    .setDuration(300);
-
+            // Cerrar menú
+            menuContent.setVisibility(View.GONE);
             ivArrow.setVisibility(View.VISIBLE);
+            ivArrow.setImageResource(R.drawable.ic_arrow_left);
+            sideMenuCard.getLayoutParams().width = getResources().getDimensionPixelSize(R.dimen.card_collapsed_width);
         } else {
-            // Animación de apertura
-            menuContent.setAlpha(0f);
+            // Abrir menú
             menuContent.setVisibility(View.VISIBLE);
-            menuContent.animate()
-                    .alpha(1f)
-                    .setDuration(300);
-
-            ivArrow.animate()
-                    .rotationBy(-180f)
-                    .setDuration(300)
-                    .withEndAction(() -> ivArrow.setVisibility(View.GONE));
+            ivArrow.setVisibility(View.GONE);
+            sideMenuCard.getLayoutParams().width = getResources().getDimensionPixelSize(R.dimen.card_expanded_width);
         }
-
-        // Actualizar dimensiones
-        ViewGroup.LayoutParams params = sideMenuCard.getLayoutParams();
-        params.width = getResources().getDimensionPixelSize(
-                isMenuOpen ? R.dimen.card_collapsed_width : R.dimen.card_expanded_width
-        );
-        sideMenuCard.setLayoutParams(params);
-
         isMenuOpen = !isMenuOpen;
+        sideMenuCard.requestLayout();
     }
 
     private void setupLottieAnimations() {
-        Object[][] configs = {
-                {R.id.lottieShop, R.raw.tienda, ShopActivity.class},
-                {R.id.lottieUser, R.raw.user, UserProfileActivity.class},
-                {R.id.lottieSettings, R.raw.settings, SettingsActivity.class},
-                {R.id.lottieTrophy, R.raw.trophy, TrophyActivity.class}
+        int[] animationIds = {
+                R.id.lottieShop,
+                R.id.lottieUser,
+                R.id.lottieSettings,
+                R.id.lottieTrophy
         };
 
-        for (Object[] config : configs) {
-            LottieAnimationView animView = findViewById((Integer) config[0]);
-            animView.setAnimation((Integer) config[1]);
-            animView.setScaleType(LottieAnimationView.ScaleType.CENTER_INSIDE);
-            animView.setPadding(16, 16, 16, 16);
+        int[] rawFiles = {
+                R.raw.tienda,
+                R.raw.user,
+                R.raw.settings,
+                R.raw.trophy
+        };
 
-            final Class<?> targetActivity = (Class<?>) config[2];
+        Class<?>[] targetActivities = {
+                ShopActivity.class,
+                UserProfileActivity.class,
+                SettingsActivity.class,
+                TrophyActivity.class
+        };
+
+        for (int i = 0; i < animationIds.length; i++) {
+            LottieAnimationView animView = findViewById(animationIds[i]);
+            animView.setAnimation(rawFiles[i]);
+            animView.setProgress(0f);
+            final Class<?> activity = targetActivities[i];
+
             animView.setOnClickListener(v -> {
                 animView.playAnimation();
-                v.postDelayed(() ->
-                                startActivity(new Intent(MainActivity.this, targetActivity)),
-                        500
-                );
+                startActivity(new Intent(MainActivity.this, activity));
             });
         }
     }

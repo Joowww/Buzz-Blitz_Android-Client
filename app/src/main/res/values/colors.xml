@@ -6,4 +6,5 @@
     <color name="fondo_amarillo_claro">#FFFDE7</color>
     <color name="texto_negro">#FF000000</color>
     <color name="bee_yellow">#FFD700</color>
+    <color name="primaryDark">#212121</color>
 </resources>
