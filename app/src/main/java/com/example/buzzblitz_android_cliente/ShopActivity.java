@@ -1,11 +1,10 @@
 package com.example.buzzblitz_android_cliente;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.widget.VideoView;
-
 import androidx.appcompat.app.AppCompatActivity;
+import com.airbnb.lottie.LottieAnimationView;
+import android.animation.Animator;
 
 public class ShopActivity extends AppCompatActivity {
 
@@ -14,31 +13,44 @@ public class ShopActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
 
-        VideoView videoMoney = findViewById(R.id.videoMoneyExchange);
-        Uri moneyUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.moneyexchange);
-        videoMoney.setVideoURI(moneyUri);
-        videoMoney.seekTo(1);
-
-        videoMoney.setOnClickListener(v -> {
-            videoMoney.start();
-            videoMoney.setOnCompletionListener(mp -> {
-                Intent intent = new Intent(ShopActivity.this, MoneyExchangeActivity.class);
-                startActivity(intent);
+        LottieAnimationView moneyAnim = findViewById(R.id.lottieExchange);
+        moneyAnim.setAnimation(R.raw.exchange);
+        moneyAnim.setProgress(0f);
+        moneyAnim.setOnClickListener(v -> {
+            moneyAnim.playAnimation();
+            moneyAnim.addAnimatorListener(new Animator.AnimatorListener() {
+                @Override
+                public void onAnimationStart(Animator animation) { }
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    startActivity(new Intent(ShopActivity.this, MoneyExchangeActivity.class));
+                    moneyAnim.removeAllAnimatorListeners();
+                }
+                @Override
+                public void onAnimationCancel(Animator animation) { }
+                @Override
+                public void onAnimationRepeat(Animator animation) { }
             });
         });
 
-        VideoView videoComprar = findViewById(R.id.videoComprar);
-        Uri comprarUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.comprar);
-        videoComprar.setVideoURI(comprarUri);
-        videoComprar.seekTo(1);
-
-        videoComprar.setOnClickListener(v -> {
-            videoComprar.start();
-            videoComprar.setOnCompletionListener(mp -> {
-                Intent intent = new Intent(ShopActivity.this, ComprarActivity.class);
-                startActivity(intent);
+        LottieAnimationView comprarAnim = findViewById(R.id.lottieCompra);
+        comprarAnim.setAnimation(R.raw.compra);
+        comprarAnim.setProgress(0f);
+        comprarAnim.setOnClickListener(v -> {
+            comprarAnim.playAnimation();
+            comprarAnim.addAnimatorListener(new Animator.AnimatorListener() {
+                @Override
+                public void onAnimationStart(Animator animation) { }
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    startActivity(new Intent(ShopActivity.this, ComprarActivity.class));
+                    comprarAnim.removeAllAnimatorListeners();
+                }
+                @Override
+                public void onAnimationCancel(Animator animation) { }
+                @Override
+                public void onAnimationRepeat(Animator animation) { }
             });
         });
     }
 }
-

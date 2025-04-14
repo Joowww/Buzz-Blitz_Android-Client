@@ -1,45 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@drawable/img">
 
-    <!-- CHAT -->
-    <VideoView
-        android:id="@+id/videoChat"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="16dp" />
-
-    <!-- PLAY -->
-    <VideoView
-        android:id="@+id/videoPlay"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp" />
-
-    <!-- SETTINGS -->
-    <VideoView
-        android:id="@+id/videoSettings"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="16dp" />
-
-    <!-- SHOP -->
-    <VideoView
-        android:id="@+id/videoShop"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+    <!-- Botones principales -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnPlay"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/btn_selector"
+            android:padding="12dp"
+            android:text="JUGAR"
+            android:textColor="#000000" />
+
+        <!-- Repetir mismo estilo para otros 3 botones -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnOptions"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/btn_selector"
+            android:padding="12dp"
+            android:text="OPCIONES"
+            android:textColor="#000000" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnCredits"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/btn_selector"
+            android:padding="12dp"
+            android:text="CRÉDITOS"
+            android:textColor="#000000" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnExit"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:background="@drawable/btn_selector"
+            android:padding="12dp"
+            android:text="CERRAR SESIÓN"
+            android:textColor="#000000" />
+
+    </LinearLayout>
+
+    <!-- CardView desplegable -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/sideMenuCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="@color/fondo_amarillo_claro"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <!-- Flecha inicial -->
+            <ImageView
+                android:id="@+id/ivArrow"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_margin="12dp"
+                android:src="@drawable/ic_arrow_left"
+                android:visibility="visible" />
+
+            <!-- Contenido desplegable -->
+            <LinearLayout
+                android:id="@+id/menuContent"
+                android:layout_width="150dp"
+                android:layout_height="400dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:visibility="gone">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lottieShop"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="20dp"
+                    app:lottie_autoPlay="false"
+                    app:lottie_colorFilter="@color/black"
+                    app:lottie_loop="false"
+                    app:lottie_speed="1.5" />
+
+                <!-- Repetir para otras 3 animaciones -->
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lottieUser"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="20dp"
+                    app:lottie_autoPlay="false"
+                    app:lottie_colorFilter="@color/black"
+                    app:lottie_loop="false"
+                    app:lottie_speed="1.5" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lottieSettings"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="20dp"
+                    app:lottie_autoPlay="false"
+                    app:lottie_colorFilter="@color/black"
+                    app:lottie_loop="false"
+                    app:lottie_speed="1.5" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lottieTrophy"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="20dp"
+                    app:lottie_autoPlay="false"
+                    app:lottie_colorFilter="@color/black"
+                    app:lottie_loop="false"
+                    app:lottie_speed="1.5" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
