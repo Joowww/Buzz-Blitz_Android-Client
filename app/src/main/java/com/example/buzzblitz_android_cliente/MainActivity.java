@@ -2,11 +2,11 @@ package com.example.buzzblitz_android_cliente;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import com.airbnb.lottie.LottieAnimationView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,12 +17,23 @@ public class MainActivity extends AppCompatActivity {
     private CardView sideMenuCard;
     private LinearLayout menuContent;
     private ImageView ivArrow;
+    private LottieAnimationView bees1, bees2, bees3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Inicializar abejas
+        bees1 = findViewById(R.id.lottieBees1);
+        bees2 = findViewById(R.id.lottieBees2);
+        bees3 = findViewById(R.id.lottieBees3);
+
+        // Secuencia de aparición
+        new Handler().postDelayed(() -> bees2.setVisibility(View.VISIBLE), 1000);
+        new Handler().postDelayed(() -> bees3.setVisibility(View.VISIBLE), 2000);
+
+        // Botones y menú (mantén tu código existente)
         AppCompatButton btnExit = findViewById(R.id.btnExit);
         btnExit.setOnClickListener(v -> {
             startActivity(new Intent(this, LoginBuzzBlitz.class));
@@ -67,31 +78,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupLottieAnimations() {
-        int[] animationIds = {
-                R.id.lottieShop,
-                R.id.lottieUser,
-                R.id.lottieSettings,
-                R.id.lottieTrophy
-        };
-
-        int[] rawFiles = {
-                R.raw.tienda,
-                R.raw.user,
-                R.raw.settings,
-                R.raw.trophy
-        };
-
-        Class<?>[] targetActivities = {
-                ShopActivity.class,
-                UserProfileActivity.class,
-                SettingsActivity.class,
-                TrophyActivity.class
-        };
+        int[] animationIds = {R.id.lottieShop, R.id.lottieUser, R.id.lottieSettings, R.id.lottieTrophy};
+        int[] rawFiles = {R.raw.tienda, R.raw.user, R.raw.settings, R.raw.trophy};
+        Class<?>[] targetActivities = {ShopActivity.class, UserProfileActivity.class, SettingsActivity.class, TrophyActivity.class};
 
         for (int i = 0; i < animationIds.length; i++) {
             LottieAnimationView animView = findViewById(animationIds[i]);
             animView.setAnimation(rawFiles[i]);
-            animView.setProgress(0f);
             final Class<?> activity = targetActivities[i];
 
             animView.setOnClickListener(v -> {
