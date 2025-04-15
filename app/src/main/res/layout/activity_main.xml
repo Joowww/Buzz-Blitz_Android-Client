@@ -7,7 +7,33 @@
     android:layout_height="match_parent"
     android:background="@drawable/img_1">
 
-    <!-- ANIMACIONES DE FONDO -->
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieSpider2"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginEnd="248dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.602"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/spiderwithweb" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottiemushroom"
+        android:layout_width="174dp"
+        android:layout_height="108dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="672dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/mushroommain" />
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieBees1"
         android:layout_width="250dp"
@@ -58,22 +84,33 @@
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/abejitas" />
 
-    <!-- Animación de araña -->
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieSpider"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginEnd="248dp"
+        android:layout_marginEnd="264dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.602"
+        app:layout_constraintVertical_bias="0.732"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/spiderwithweb" />
 
-    <!-- Botones principales -->
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottiemushroom3"
+        android:layout_width="174dp"
+        android:layout_height="108dp"
+        android:layout_marginStart="256dp"
+        android:layout_marginTop="604dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/mushroommain" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -126,7 +163,6 @@
 
     </LinearLayout>
 
-    <!-- Menú desplegable con 5 animaciones -->
     <androidx.cardview.widget.CardView
         android:id="@+id/sideMenuCard"
         android:layout_width="wrap_content"
@@ -198,7 +234,6 @@
                     app:lottie_colorFilter="@color/black"
                     app:lottie_loop="false" />
 
-                <!-- Nueva animación XAT -->
                 <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/lottieXat"
                     android:layout_width="50dp"

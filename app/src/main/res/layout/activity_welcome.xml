@@ -5,154 +5,75 @@
     android:id="@+id/activity_welcome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_landscape">
+    android:background="@drawable/img">
 
-    <ImageView
-        android:id="@+id/imageView21"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="78dp"
-        android:layout_marginEnd="86dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView20"
-        app:layout_constraintTop_toBottomOf="@+id/imageView12"
-        app:srcCompat="@drawable/grass" />
 
-    <ImageView
-        android:id="@+id/imageView22"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="23dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/spiderweb5"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/grass" />
-
-    <ImageView
-        android:id="@+id/imageView23"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView15"
-        app:layout_constraintTop_toBottomOf="@+id/startButton"
-        app:srcCompat="@drawable/grass" />
-
-    <ImageView
-        android:id="@+id/imageView19"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="14dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spiderweb5"
-        app:srcCompat="@drawable/grass" />
-
-    <ImageView
-        android:id="@+id/imageView20"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="98dp"
-        android:layout_marginTop="78dp"
-        app:layout_constraintBottom_toTopOf="@+id/spiderweb3"
-        app:layout_constraintStart_toEndOf="@+id/imageView19"
-        app:layout_constraintTop_toBottomOf="@+id/imageView11"
-        app:srcCompat="@drawable/grass" />
-
-    <ImageView
-        android:id="@+id/imageView13"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="94dp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView8"
-        app:layout_constraintTop_toBottomOf="@+id/startButton"
-        app:srcCompat="@drawable/spiderweb3dmodel" />
-
-    <ImageView
-        android:id="@+id/imageView14"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="3dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView10"
-        app:layout_constraintTop_toBottomOf="@+id/startButton"
-        app:srcCompat="@drawable/spiderweb3dmodel" />
-
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginEnd="23dp"
-        android:layout_marginBottom="39dp"
-        app:layout_constraintBottom_toTopOf="@+id/flower1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/spider"
-        app:srcCompat="@drawable/hurricane3dmodel" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="50dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="-30dp"
-        android:layout_marginEnd="108dp"
-        app:layout_constraintBottom_toTopOf="@+id/startButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/honeyHive"
-        app:srcCompat="@drawable/bee2" />
-
-    <ImageView
-        android:id="@+id/spiderweb5"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="332dp"
-        android:layout_marginBottom="64dp"
-        android:contentDescription="Telaraña 3"
-        android:src="@drawable/spiderweb3dmodel"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <ImageView
-        android:id="@+id/spiderweb"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginBottom="144dp"
-        android:contentDescription="Telaraña 1"
-        android:src="@drawable/spiderweb3dmodel"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieSpider3"
+        android:layout_width="82dp"
+        android:layout_height="93dp"
+        android:layout_marginEnd="128dp"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/spiderweb4" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/spiderwithweb" />
 
-    <ImageView
-        android:id="@+id/honeyHive"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="584dp"
-        android:alpha="1"
-        android:contentDescription="Colmena"
-        android:src="@drawable/beehive3dmodel"
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottiespider"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="204dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/sipdertres" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieSpider2"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="764dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/spiderdos" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottiespider1"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="44dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/spideruno" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieSpider"
+        android:layout_width="131dp"
+        android:layout_height="149dp"
+        android:layout_marginEnd="4dp"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionText"
-        app:layout_constraintVertical_bias="0.511" />
-
-    <ImageView
-        android:id="@+id/beeColmena1"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginEnd="8dp"
-        android:contentDescription="Abeja de la colmena"
-        android:src="@drawable/bee2"
-        app:layout_constraintBottom_toBottomOf="@id/honeyHive"
-        app:layout_constraintEnd_toStartOf="@id/honeyHive"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.651"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/spiderwithweb" />
 
     <TextView
         android:id="@+id/titleText"
@@ -183,61 +104,6 @@
         app:layout_constraintTop_toBottomOf="@id/titleText" />
 
 
-    <ImageView
-        android:id="@+id/flower1"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="23dp"
-        android:layout_marginBottom="53dp"
-        android:contentDescription="Flor 1"
-        android:src="@drawable/flower"
-        app:layout_constraintBottom_toTopOf="@+id/spiderweb4"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <ImageView
-        android:id="@+id/spiderweb2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="56dp"
-        android:contentDescription="Telaraña 1"
-        android:src="@drawable/spiderweb3dmodel"
-        app:layout_constraintEnd_toStartOf="@id/flower1"
-        app:layout_constraintTop_toTopOf="@id/flower1" />
-
-    <ImageView
-        android:id="@+id/spiderweb3"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="144dp"
-        android:contentDescription="Telaraña 2"
-        android:src="@drawable/spiderweb3dmodel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/spiderweb" />
-
-    <ImageView
-        android:id="@+id/spiderweb4"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="144dp"
-        android:contentDescription="Telaraña 3"
-        android:src="@drawable/spiderweb3dmodel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <ImageView
-        android:id="@+id/spider"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="496dp"
-        android:layout_marginEnd="116dp"
-        android:contentDescription="Araña enemiga"
-        android:src="@drawable/spider3dmodel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/startButton"
         android:layout_width="0dp"
@@ -260,169 +126,14 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="49dp"
-        app:layout_constraintBottom_toTopOf="@+id/spiderweb3"
-        app:layout_constraintEnd_toStartOf="@+id/spider"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/spiderweb5"
-        app:srcCompat="@drawable/flower1" />
-
-    <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="161dp"
-        android:layout_height="164dp"
-        android:layout_marginStart="-20dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="127dp"
+        android:layout_height="122dp"
+        android:layout_marginStart="216dp"
+        android:layout_marginBottom="172dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/bee" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="60dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="90dp"
-        android:layout_marginTop="-80dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="152dp"
-        app:layout_constraintBottom_toTopOf="@+id/startButton"
-        app:layout_constraintEnd_toStartOf="@+id/imageView4"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/beeColmena1"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/bee2" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="50dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/beeColmena1"
-        app:layout_constraintEnd_toStartOf="@+id/honeyHive"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionText"
-        app:srcCompat="@drawable/bee2" />
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="50dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="113dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="22dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
-        app:layout_constraintEnd_toStartOf="@+id/imageView4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionText"
-        app:srcCompat="@drawable/bee2" />
-
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="50dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="97dp"
-        app:layout_constraintBottom_toTopOf="@+id/startButton"
-        app:layout_constraintEnd_toStartOf="@+id/imageView3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionText"
-        app:srcCompat="@drawable/bee2" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="23dp"
-        android:layout_marginBottom="26dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spiderweb4"
-        app:srcCompat="@drawable/grass" />
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="116dp"
-        android:layout_marginBottom="52dp"
-        app:layout_constraintBottom_toTopOf="@+id/spiderweb5"
-        app:layout_constraintEnd_toStartOf="@+id/spider"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/hurricane3dmodel" />
-
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="94dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView8"
-        app:layout_constraintTop_toBottomOf="@+id/imageView13"
-        app:srcCompat="@drawable/spiderweb3dmodel" />
-
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="3dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView10"
-        app:layout_constraintTop_toBottomOf="@+id/imageView14"
-        app:srcCompat="@drawable/spiderweb3dmodel" />
-
-    <ImageView
-        android:id="@+id/imageView15"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="66dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView8"
-        app:layout_constraintTop_toBottomOf="@+id/startButton"
-        app:srcCompat="@drawable/flower3" />
-
-    <ImageView
-        android:id="@+id/imageView16"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="101dp"
-        android:layout_marginEnd="62dp"
-        android:layout_marginBottom="26dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView5"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:srcCompat="@drawable/grass" />
-
-    <ImageView
-        android:id="@+id/imageView17"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="83dp"
-        android:layout_marginEnd="86dp"
-        android:layout_marginBottom="81dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView21"
-        app:srcCompat="@drawable/grass" />
-
-    <ImageView
-        android:id="@+id/imageView18"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="33dp"
-        android:layout_marginBottom="81dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/spiderweb3"
-        app:srcCompat="@drawable/grass" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

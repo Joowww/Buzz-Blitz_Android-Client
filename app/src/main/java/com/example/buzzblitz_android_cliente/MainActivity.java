@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Configurar botones principales
         AppCompatButton btnExit = findViewById(R.id.btnExit);
         btnExit.setOnClickListener(v -> {
             startActivity(new Intent(this, LoginBuzzBlitz.class));
@@ -39,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnCredits).setOnClickListener(v ->
                 startActivity(new Intent(this, CreditsActivity.class)));
 
-        // Configurar menú desplegable
         sideMenuCard = findViewById(R.id.sideMenuCard);
         menuContent = findViewById(R.id.menuContent);
         ivArrow = findViewById(R.id.ivArrow);
@@ -55,13 +53,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void toggleMenu() {
         if (isMenuOpen) {
-            // Cerrar menú
             menuContent.setVisibility(View.GONE);
             ivArrow.setVisibility(View.VISIBLE);
             ivArrow.setImageResource(R.drawable.ic_arrow_left);
             sideMenuCard.getLayoutParams().width = getResources().getDimensionPixelSize(R.dimen.card_collapsed_width);
         } else {
-            // Abrir menú
             menuContent.setVisibility(View.VISIBLE);
             ivArrow.setVisibility(View.GONE);
             sideMenuCard.getLayoutParams().width = getResources().getDimensionPixelSize(R.dimen.card_expanded_width);

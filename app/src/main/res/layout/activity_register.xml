@@ -2,10 +2,22 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fondo_amarillo_claro"
     android:padding="16dp">
+
+    <ImageView
+        android:layout_width="695dp"
+        android:layout_height="866dp"
+        android:layout_marginTop="-200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fondowww"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -17,24 +29,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:gravity="center">
 
-        <!-- Campos existentes -->
         <EditText
-            android:id="@+id/NameRegister"
+            android:id="@+id/FullName"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="Name"
+            android:hint="Full name"
             android:textColor="@color/texto_negro"
             android:inputType="textPersonName"
             android:layout_marginVertical="8dp"/>
 
-        <EditText
-            android:id="@+id/SurnameRegister"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:hint="Surname"
-            android:textColor="@color/texto_negro"
-            android:inputType="textPersonName"
-            android:layout_marginVertical="8dp"/>
 
         <EditText
             android:id="@+id/IdUserRegister"
@@ -86,39 +89,26 @@
             android:textColor="@color/texto_negro"
             android:layout_marginVertical="8dp"/>
 
-        <Spinner
-            android:id="@+id/spinnerPregunta2"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="8dp"/>
-
-        <EditText
-            android:id="@+id/etRespuesta2"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:hint="Respuesta 2"
-            android:textColor="@color/texto_negro"
-            android:layout_marginVertical="8dp"/>
-
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Registrarse"
-            android:backgroundTint="@color/colorPrimary"
-            android:textColor="@color/texto_negro"
-            android:layout_marginVertical="8dp"
-            app:cornerRadius="8dp"/>
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/btn_selector"
+            android:padding="12dp"
+            android:text= "Registrarse"
+            android:textColor= "@color/texto_negro" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnGoToLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ya tengo cuenta"
-            android:backgroundTint="@color/colorPrimary"
-            android:textColor="@color/texto_negro"
-            android:layout_marginVertical="8dp"
-            app:cornerRadius="8dp"/>
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/btn_selector"
+            android:padding="12dp"
+            android:text= "Ya tengo una cuenta"
+            android:textColor= "@color/texto_negro" />
+
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

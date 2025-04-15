@@ -2,58 +2,70 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/fondo_amarillo_claro"
     android:padding="16dp">
+
+    <ImageView
+        android:layout_width="641dp"
+        android:layout_height="906dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fondowww"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:gravity="center">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <EditText
             android:id="@+id/etUserIdentifier"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
             android:hint="Email o ID de usuario"
-            android:textColor="@color/texto_negro"
             android:inputType="text"
-            android:layout_marginVertical="8dp"/>
+            android:textColor="@color/texto_negro" />
 
         <EditText
             android:id="@+id/etPasswordLogin"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
             android:hint="Contraseña"
-            android:textColor="@color/texto_negro"
             android:inputType="textPassword"
-            android:layout_marginVertical="8dp"/>
+            android:textColor="@color/texto_negro" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Iniciar Sesión"
-            android:backgroundTint="@color/colorPrimary"
-            android:textColor="@color/texto_negro"
-            android:layout_marginVertical="8dp"
-            app:cornerRadius="8dp"/>
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/btn_selector"
+            android:padding="12dp"
+            android:text= "Iniciar Sesión"
+            android:textColor= "@color/texto_negro" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnGoToRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Crear cuenta nueva"
-            android:backgroundTint="@color/colorPrimary"
-            android:textColor="@color/texto_negro"
-            android:layout_marginVertical="8dp"
-            app:cornerRadius="8dp"/>
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/btn_selector"
+            android:padding="12dp"
+            android:text= "Ya tengo una cuenta"
+            android:textColor= "@color/texto_negro" />
+
+
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

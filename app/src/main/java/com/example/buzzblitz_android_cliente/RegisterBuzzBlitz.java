@@ -14,8 +14,8 @@ import java.security.MessageDigest;
 public class RegisterBuzzBlitz extends AppCompatActivity {
 
     private EditText etEmailRegister, etPasswordRegister, etRepeatPassword;
-    private EditText etRespuesta1, etRespuesta2, NameRegister, SurnameRegister, IdUserRegister;
-    private Spinner spinnerPregunta1, spinnerPregunta2;
+    private EditText etRespuesta1, FullNameRegister, IdUserRegister;
+    private Spinner spinnerPregunta1;
     private Button btnRegister, btnGoToLogin;
     private SharedPreferences sharedPreferences;
 
@@ -24,24 +24,18 @@ public class RegisterBuzzBlitz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        // Initialize UI components
-        NameRegister = findViewById(R.id.NameRegister);
-        SurnameRegister = findViewById(R.id.SurnameRegister);
+        FullNameRegister = findViewById(R.id.FullName);
         IdUserRegister = findViewById(R.id.IdUserRegister);
         etEmailRegister = findViewById(R.id.etEmailRegister);
         etPasswordRegister = findViewById(R.id.etPasswordRegister);
         etRepeatPassword = findViewById(R.id.etRepeatPassword);
         spinnerPregunta1 = findViewById(R.id.spinnerPregunta1);
-        spinnerPregunta2 = findViewById(R.id.spinnerPregunta2);
         etRespuesta1 = findViewById(R.id.etRespuesta1);
-        etRespuesta2 = findViewById(R.id.etRespuesta2);
         btnRegister = findViewById(R.id.btnRegister);
         btnGoToLogin = findViewById(R.id.btnGoToLogin);
 
-        // Set up SharedPreferences
         sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
 
-        // Configure security questions spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.security_questions,
@@ -49,9 +43,7 @@ public class RegisterBuzzBlitz extends AppCompatActivity {
         );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerPregunta1.setAdapter(adapter);
-        spinnerPregunta2.setAdapter(adapter);
 
-        // Register button click handler
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,7 +51,6 @@ public class RegisterBuzzBlitz extends AppCompatActivity {
             }
         });
 
-        // Login navigation button
         btnGoToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,19 +60,15 @@ public class RegisterBuzzBlitz extends AppCompatActivity {
     }
 
     private void registerUser() {
-        String firstName = NameRegister.getText().toString().trim();
-        String lastName = SurnameRegister.getText().toString().trim();
+        String firstName = FullNameRegister.getText().toString().trim();
         String userId = IdUserRegister.getText().toString().trim();
         String email = etEmailRegister.getText().toString().trim();
         String password = etPasswordRegister.getText().toString().trim();
         String confirmPassword = etRepeatPassword.getText().toString().trim();
         String question1 = spinnerPregunta1.getSelectedItem().toString();
         String answer1 = etRespuesta1.getText().toString().trim();
-        String question2 = spinnerPregunta2.getSelectedItem().toString();
-        String answer2 = etRespuesta2.getText().toString().trim();
 
-        if (firstName.isEmpty() || lastName.isEmpty() || userId.isEmpty() ||
-                email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+        if (firstName.isEmpty()  || userId.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             Toast.makeText(this, "Please fill all required fields", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -91,12 +78,8 @@ public class RegisterBuzzBlitz extends AppCompatActivity {
             return;
         }
 
-        if (question1.equals(question2)) {
-            Toast.makeText(this, "Please select different security questions", Toast.LENGTH_SHORT).show();
-            return;
-        }
 
-        if (answer1.isEmpty() || answer2.isEmpty()) {
+        if (answer1.isEmpty()) {
             Toast.makeText(this, "Please answer both security questions", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -117,8 +100,6 @@ public class RegisterBuzzBlitz extends AppCompatActivity {
 
         editor.putString(email + "_q1", question1);
         editor.putString(email + "_a1", hash(answer1));
-        editor.putString(email + "_q2", question2);
-        editor.putString(email + "_a2", hash(answer2));
 
         editor.commit();
 
