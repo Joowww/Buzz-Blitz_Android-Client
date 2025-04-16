@@ -62,7 +62,7 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/btn_selector"
             android:padding="12dp"
-            android:text= "Ya tengo una cuenta"
+            android:text= "Crear una cuenta"
             android:textColor= "@color/texto_negro" />
 
 
