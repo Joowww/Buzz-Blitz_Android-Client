@@ -38,6 +38,10 @@
             android:name=".ShopActivity"
             android:exported="false"/>
 
+        <activity
+            android:name=".CreditsActivity"
+            android:exported="false"/>
+
     </application>
 
 </manifest>
