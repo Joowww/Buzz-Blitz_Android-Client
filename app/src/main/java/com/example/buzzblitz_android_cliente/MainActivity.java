@@ -37,9 +37,6 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnOptions).setOnClickListener(v ->
                 startActivity(new Intent(this, OpcionesActivity.class)));
 
-        findViewById(R.id.btnCredits).setOnClickListener(v ->
-                startActivity(new Intent(this, CreditsActivity.class)));
-
         findViewById(R.id.btnExit).setOnClickListener(v ->
                 startActivity(new Intent(MainActivity.this, CerrarSesionActivity.class))
         );

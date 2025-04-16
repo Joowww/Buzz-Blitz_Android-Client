@@ -66,6 +66,18 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"/>
+
+        <activity
+            android:name=".PoliticaPrivacidadActivity"
+            android:exported="false"/>
+
+        <activity
+            android:name=".TerminosActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
