@@ -15,10 +15,16 @@ public class CargarJuegoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cargarjuego);
 
         try {
-            LottieAnimationView animationView = findViewById(R.id.animationView);
-            animationView.setAnimation(R.raw.abejavolando);
-            animationView.loop(false);
-            animationView.playAnimation();
+            LottieAnimationView animationBee = findViewById(R.id.animationView);
+            animationBee.setAnimation(R.raw.abejavolando);
+            animationBee.loop(false);
+            animationBee.playAnimation();
+
+            LottieAnimationView animationMushroom = findViewById(R.id.mushroomView);
+            animationMushroom.setAnimation(R.raw.mushroom);
+            animationMushroom.setSpeed(2.5f);
+            animationMushroom.loop(true);
+            animationMushroom.playAnimation();
 
             new Handler().postDelayed(() -> {
                 startActivity(new Intent(CargarJuegoActivity.this, LoginBuzzBlitz.class));
