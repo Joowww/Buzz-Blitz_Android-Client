@@ -31,12 +31,11 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(() -> bees2.setVisibility(View.VISIBLE), 1000);
         new Handler().postDelayed(() -> bees3.setVisibility(View.VISIBLE), 2000);
 
-        // Botones principales
         findViewById(R.id.btnPlay).setOnClickListener(v ->
                 startActivity(new Intent(this, PlayActivity.class)));
 
         findViewById(R.id.btnOptions).setOnClickListener(v ->
-                startActivity(new Intent(this, OpcionesActivity.class))); // Nombre corregido
+                startActivity(new Intent(this, OpcionesActivity.class)));
 
         findViewById(R.id.btnCredits).setOnClickListener(v ->
                 startActivity(new Intent(this, CreditsActivity.class)));
@@ -45,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, CerrarSesionActivity.class))
         );
 
-        // Configuración del menú lateral
         sideMenuCard = findViewById(R.id.sideMenuCard);
         menuContent = findViewById(R.id.menuContent);
         ivArrow = findViewById(R.id.ivArrow);

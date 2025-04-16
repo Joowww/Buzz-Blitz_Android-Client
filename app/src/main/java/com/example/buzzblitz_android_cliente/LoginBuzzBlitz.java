@@ -27,54 +27,52 @@ public class LoginBuzzBlitz extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String userInput = etUserIdentifier.getText().toString().trim();
-                String password = etPasswordLogin.getText().toString().trim();
+        btnLogin.setOnClickListener(v -> {
+            String userInput = etUserIdentifier.getText().toString().trim();
+            String password = etPasswordLogin.getText().toString().trim();
 
-                if(validarCredenciales(userInput, password)) {
-                    startActivity(new Intent(LoginBuzzBlitz.this, MainActivity.class));
-                    finish();
-                }
+            if (validarCredenciales(userInput, password)) {
+                startActivity(new Intent(LoginBuzzBlitz.this, MainActivity.class));
+                finish();
             }
         });
 
-        btnGoToRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginBuzzBlitz.this, RegisterBuzzBlitz.class));
-            }
-        });
+        btnGoToRegister.setOnClickListener(v ->
+                startActivity(new Intent(LoginBuzzBlitz.this, RegisterBuzzBlitz.class))
+        );
     }
 
     private boolean validarCredenciales(String userInput, String password) {
-        if(userInput.isEmpty() || password.isEmpty()) {
+        if (userInput.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Empty fields", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         String email;
-        if(userInput.contains("@")) {
+        if (userInput.contains("@")) {
             email = userInput;
         } else {
             email = sharedPreferences.getString(userInput + "_email", "");
-            if(email.isEmpty()) {
+            if (email.isEmpty()) {
                 Toast.makeText(this, "User not found", Toast.LENGTH_SHORT).show();
                 return false;
             }
         }
 
-        if(!sharedPreferences.contains(email)) {
+        if (!sharedPreferences.contains(email)) {
             Toast.makeText(this, "Unregistered account", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         String savedPassword = sharedPreferences.getString(email, "");
-        if(!password.equals(savedPassword)) {
+        if (!password.equals(savedPassword)) {
             Toast.makeText(this, "Incorrect credentials", Toast.LENGTH_SHORT).show();
             return false;
         }
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("currentUser", email);
+        editor.apply();
 
         return true;
     }

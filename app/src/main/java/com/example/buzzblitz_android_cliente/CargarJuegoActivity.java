@@ -15,13 +15,11 @@ public class CargarJuegoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cargarjuego);
 
         try {
-            // Configurar animación (versión Lottie 5.2.0)
             LottieAnimationView animationView = findViewById(R.id.animationView);
-            animationView.setAnimation(R.raw.abejavolando); // Usar recurso RAW
-            animationView.loop(false); // Reproducir solo una vez
+            animationView.setAnimation(R.raw.abejavolando);
+            animationView.loop(false);
             animationView.playAnimation();
 
-            // Redirigir al login después de 3 segundos
             new Handler().postDelayed(() -> {
                 startActivity(new Intent(CargarJuegoActivity.this, LoginBuzzBlitz.class));
                 finish();
@@ -29,7 +27,7 @@ public class CargarJuegoActivity extends AppCompatActivity {
 
         } catch (Exception e) {
             Log.e("CargarJuegoError", "Error: " + e.getMessage());
-            startActivity(new Intent(this, LoginBuzzBlitz.class)); // Redirigir si falla
+            startActivity(new Intent(this, LoginBuzzBlitz.class));
             finish();
         }
     }
