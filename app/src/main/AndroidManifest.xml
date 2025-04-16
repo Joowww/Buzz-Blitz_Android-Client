@@ -23,6 +23,10 @@
         </activity>
 
         <activity
+            android:name=".CargarJuegoActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+
+        <activity
             android:name=".LoginBuzzBlitz"
             android:exported="false"/>
 
@@ -44,6 +48,16 @@
 
         <activity
             android:name=".CerrarSesionActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
+        <activity
+            android:name=".OpcionesActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
+        <activity
+            android:name=".TutorialActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
