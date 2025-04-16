@@ -24,16 +24,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Inicializar abejas
         bees1 = findViewById(R.id.lottieBees1);
         bees2 = findViewById(R.id.lottieBees2);
         bees3 = findViewById(R.id.lottieBees3);
 
-        // Secuencia de aparición
+
         new Handler().postDelayed(() -> bees2.setVisibility(View.VISIBLE), 1000);
         new Handler().postDelayed(() -> bees3.setVisibility(View.VISIBLE), 2000);
 
-        // Botones y menú (mantén tu código existente)
+
         AppCompatButton btnExit = findViewById(R.id.btnExit);
         btnExit.setOnClickListener(v -> {
             startActivity(new Intent(this, LoginBuzzBlitz.class));
@@ -48,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.btnCredits).setOnClickListener(v ->
                 startActivity(new Intent(this, CreditsActivity.class)));
+
+        findViewById(R.id.btnExit).setOnClickListener(v ->
+                startActivity(new Intent(MainActivity.this, CerrarSesionActivity.class))
+        );
 
         sideMenuCard = findViewById(R.id.sideMenuCard);
         menuContent = findViewById(R.id.menuContent);

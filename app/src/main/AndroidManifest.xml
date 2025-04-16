@@ -42,6 +42,11 @@
             android:name=".CreditsActivity"
             android:exported="false"/>
 
+        <activity
+            android:name=".CerrarSesionActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
     </application>
 
 </manifest>
