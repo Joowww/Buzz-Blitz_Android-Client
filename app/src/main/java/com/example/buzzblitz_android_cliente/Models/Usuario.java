@@ -30,8 +30,7 @@ public class Usuario {
         this.mejorPuntuacion = 0;
         this.numPartidas = 0;
         this.floreGold = 0;
-        this.armas = new HashMap<>();
-        this.skins = new HashMap<>();
+
     }
     public void UpdateArmas(Objeto objeto){
         armas.put(objeto.getId(), objeto);
@@ -112,20 +111,5 @@ public class Usuario {
         this.floreGold = floreGold;
     }
 
-    public Map<String, Objeto> getArmas() {
-        return armas;
-    }
-
-    public void setArmas(Map<String, Objeto> armas) {
-        this.armas = armas;
-    }
-
-    public Map<String, Objeto> getSkins() {
-        return skins;
-    }
-
-    public void setSkins(Map<String, Objeto> skins) {
-        this.skins = skins;
-    }
 }
 

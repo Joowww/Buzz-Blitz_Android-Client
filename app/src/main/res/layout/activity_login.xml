@@ -51,9 +51,10 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:background="@drawable/btn_selector"
+            android:onClick="enviarLogin"
             android:padding="12dp"
-            android:text= "Iniciar Sesión"
-            android:textColor= "@color/texto_negro" />
+            android:text="Iniciar Sesión"
+            android:textColor="@color/texto_negro" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnGoToRegister"

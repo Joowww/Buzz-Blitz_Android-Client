@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ public class LoginBuzzBlitz extends AppCompatActivity {
     private EditText etUserIdentifier, etPasswordLogin;
     private Button btnLogin, btnGoToRegister;
     private SharedPreferences sharedPreferences;
+    int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,71 +40,69 @@ public class LoginBuzzBlitz extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
 
-        btnLogin.setOnClickListener(v -> {
-            String userInput = etUserIdentifier.getText().toString().trim();
-            String password = etPasswordLogin.getText().toString().trim();
-
-            if (userInput.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Empty fields", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            // Crear objeto de login
-            Usulogin peticion = new Usulogin();
-            peticion.setIdoname(userInput);
-            peticion.setPswd(password);
-
-            // Configurar Retrofit
-            BuzzBlitzService api = RetrofitClient.getClient("http://10.0.2.2:8080/")
-                    .create(BuzzBlitzService.class);
-
-            // Hacer la llamada a la API
-            Call<Usuario> call = api.loginUsuario(peticion);
-            // De forma asíncrona esperando la respuesta del servidor
-            call.enqueue(new Callback<Usuario>() {
-                @Override
-                public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                    // Log del código de respuesta HTTP
-                    Log.d("LOGIN_DEBUG", "Código HTTP: " + response.code());
-
-                    if (response.isSuccessful() && response.body() != null) {
-                        // === LÍNEAS AÑADIDAS ===
-                        Usuario usuario = response.body();
-                        Log.d("LOGIN_DEBUG", "Login exitoso. Usuario: " + usuario.getMail());
-
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("currentUser", usuario.getMail());
-                        editor.apply();
-
-                        startActivity(new Intent(LoginBuzzBlitz.this, MainActivity.class));
-                        finish();
-                        // ========================
-                    }
-                    else {
-                        if (response.errorBody() != null) {
-                            try {
-                                String errorBody = response.errorBody().string();
-                                Log.e("LOGIN_DEBUG", "Error del servidor: " + errorBody);
-                            }
-                            catch (IOException e) {
-                                Log.e("LOGIN_DEBUG", "Error al leer el cuerpo del error", e);
-                            }
-                        }
-                        Log.e("LOGIN_DEBUG", "Respuesta no exitosa o cuerpo vacío");
-                        Toast.makeText(LoginBuzzBlitz.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<Usuario> call, Throwable t) {
-                    Log.e("LOGIN_DEBUG", "Error de red: ", t);
-                    Toast.makeText(LoginBuzzBlitz.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
-        });
-
+        // Configurar listeners dentro de onCreate
+        btnLogin.setOnClickListener(this::enviarLogin); // Usar método como referencia
         btnGoToRegister.setOnClickListener(v ->
                 startActivity(new Intent(LoginBuzzBlitz.this, RegisterBuzzBlitz.class))
         );
+    }
+
+    public void enviarLogin(View view) { // Asegurar que es público y recibe View
+        String userInput = etUserIdentifier.getText().toString().trim();
+        String password = etPasswordLogin.getText().toString().trim();
+
+        if (userInput.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Empty fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Crear objeto de login
+        Usulogin peticion = new Usulogin();
+        peticion.setIdoname(userInput);
+        peticion.setPswd(password);
+
+        // Configurar Retrofit con URL correcta (incluir dsaApp/)
+        BuzzBlitzService api = RetrofitClient.getClient("http://10.0.2.2:8080/dsaApp/")
+                .create(BuzzBlitzService.class);
+
+        // Hacer la llamada a la API
+        Call<Usuario> call = api.loginUsuario(peticion);
+        call.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                Log.d("LOGIN_DEBUG", "Código HTTP: " + response.code());
+                i=1;
+                if (response.isSuccessful() && response.body() != null) {
+                    Usuario usuario = response.body();
+                    Log.d("LOGIN_DEBUG", "Login exitoso. Usuario: " + usuario.getMail());
+
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("currentUser", usuario.getMail());
+                    editor.apply();
+
+                    startActivity(new Intent(LoginBuzzBlitz.this, MainActivity.class));
+                    i=2;
+                    finish();
+                } else {
+                    i=3;
+                    if (response.errorBody() != null) {
+                        try {
+                            String errorBody = response.errorBody().string();
+                            Log.e("LOGIN_DEBUG", "Error del servidor: " + errorBody);
+                        } catch (IOException e) {
+                            Log.e("LOGIN_DEBUG", "Error al leer el cuerpo del error", e);
+                        }
+                    }
+                    Toast.makeText(LoginBuzzBlitz.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                i=4;
+                Log.e("LOGIN_DEBUG", "Error de red: ", t);
+                Toast.makeText(LoginBuzzBlitz.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }); // Cierre correcto del callback
     }
 }
