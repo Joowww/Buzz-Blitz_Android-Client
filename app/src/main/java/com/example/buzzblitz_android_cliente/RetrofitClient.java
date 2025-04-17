@@ -1,4 +1,4 @@
-package com.example.buzzblitz_android_cliente.Services;
+package com.example.buzzblitz_android_cliente;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

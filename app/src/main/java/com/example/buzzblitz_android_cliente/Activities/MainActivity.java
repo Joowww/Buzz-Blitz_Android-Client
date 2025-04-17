@@ -1,13 +1,14 @@
-package com.example.buzzblitz_android_cliente;
+package com.example.buzzblitz_android_cliente.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
 import com.airbnb.lottie.LottieAnimationView;
+import com.example.buzzblitz_android_cliente.R;
+
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 

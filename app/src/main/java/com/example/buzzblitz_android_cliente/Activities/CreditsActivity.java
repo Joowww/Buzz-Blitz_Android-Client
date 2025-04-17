@@ -1,4 +1,4 @@
-package com.example.buzzblitz_android_cliente;
+package com.example.buzzblitz_android_cliente.Activities;
 
 import android.animation.Animator;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.airbnb.lottie.LottieAnimationView;
+import com.example.buzzblitz_android_cliente.R;
 
 public class CreditsActivity extends AppCompatActivity {
     private int clickCount = 0;

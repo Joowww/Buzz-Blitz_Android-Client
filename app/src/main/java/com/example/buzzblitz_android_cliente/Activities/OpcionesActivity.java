@@ -1,9 +1,11 @@
-package com.example.buzzblitz_android_cliente;
+package com.example.buzzblitz_android_cliente.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.buzzblitz_android_cliente.R;
 
 public class OpcionesActivity extends AppCompatActivity {
     @Override

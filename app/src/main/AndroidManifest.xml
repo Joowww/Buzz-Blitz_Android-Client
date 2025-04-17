@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -11,10 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BuzzBlitz_Android_Cliente"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        android:usesCleartextTraffic="true">
 
         <activity
-            android:name=".WelcomeActivity"
+            android:name=".Activities.WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +25,7 @@
         </activity>
 
         <activity
-            android:name=".CargarJuegoActivity"
+            android:name=".Activities.CargarJuegoActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"/>
 
         <activity
@@ -35,47 +37,47 @@
             android:exported="false"/>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:exported="false"/>
 
         <activity
-            android:name=".ShopActivity"
+            android:name=".Activities.ShopActivity"
             android:exported="false"/>
 
         <activity
-            android:name=".CreditsActivity"
+            android:name=".Activities.CreditsActivity"
             android:exported="false"/>
 
         <activity
-            android:name=".CerrarSesionActivity"
+            android:name=".Activities.CerrarSesionActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
         <activity
-            android:name=".OpcionesActivity"
+            android:name=".Activities.OpcionesActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
         <activity
-            android:name=".TutorialActivity"
+            android:name=".Activities.TutorialActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
         <activity
-            android:name=".BorrarUsuarioActivity"
+            android:name=".Activities.BorrarUsuarioActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
         <activity
-            android:name=".SettingsActivity"
+            android:name=".Activities.SettingsActivity"
             android:exported="false"/>
 
         <activity
-            android:name=".PoliticaPrivacidadActivity"
+            android:name=".Activities.PoliticaPrivacidadActivity"
             android:exported="false"/>
 
         <activity
-            android:name=".TerminosActivity"
+            android:name=".Activities.TerminosActivity"
             android:exported="false" />
 
     </application>

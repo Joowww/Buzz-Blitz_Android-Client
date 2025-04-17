@@ -1,10 +1,14 @@
-package com.example.buzzblitz_android_cliente;
+package com.example.buzzblitz_android_cliente.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.buzzblitz_android_cliente.LoginBuzzBlitz;
+import com.example.buzzblitz_android_cliente.R;
+
 import java.util.Map;
 
 public class BorrarUsuarioActivity extends AppCompatActivity {

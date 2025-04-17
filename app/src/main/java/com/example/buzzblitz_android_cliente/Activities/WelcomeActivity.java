@@ -1,9 +1,11 @@
-package com.example.buzzblitz_android_cliente;
+package com.example.buzzblitz_android_cliente.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+
+import com.example.buzzblitz_android_cliente.R;
 
 public class WelcomeActivity extends AppCompatActivity {
 

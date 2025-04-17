@@ -1,9 +1,11 @@
-package com.example.buzzblitz_android_cliente;
+package com.example.buzzblitz_android_cliente.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import com.airbnb.lottie.LottieAnimationView;
+import com.example.buzzblitz_android_cliente.R;
+
 import android.animation.Animator;
 
 public class ShopActivity extends AppCompatActivity {
