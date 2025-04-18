@@ -1,4 +1,4 @@
-package com.example.buzzblitz_android_cliente;
+package com.example.buzzblitz_android_cliente.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.SharedPreferences;
@@ -11,6 +11,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.buzzblitz_android_cliente.Models.Usuario;
+import com.example.buzzblitz_android_cliente.R;
+import com.example.buzzblitz_android_cliente.RetrofitClient;
 import com.example.buzzblitz_android_cliente.Services.BuzzBlitzService;
 
 import java.security.MessageDigest;
@@ -19,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-    public class RegisterBuzzBlitz extends AppCompatActivity {
+    public class RegisterActivity extends AppCompatActivity {
 
         private EditText etEmailRegister, etPasswordRegister, etRepeatPassword;
         private EditText etRespuesta1, FullNameRegister, IdUserRegister;

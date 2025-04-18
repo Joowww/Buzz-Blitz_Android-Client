@@ -1,4 +1,4 @@
-package com.example.buzzblitz_android_cliente;
+package com.example.buzzblitz_android_cliente.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -10,9 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.buzzblitz_android_cliente.Activities.MainActivity;
 import com.example.buzzblitz_android_cliente.Models.Usulogin;
 import com.example.buzzblitz_android_cliente.Models.Usuario;
+import com.example.buzzblitz_android_cliente.R;
+import com.example.buzzblitz_android_cliente.RetrofitClient;
 import com.example.buzzblitz_android_cliente.Services.BuzzBlitzService;
 
 import java.io.IOException;
@@ -21,7 +22,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginBuzzBlitz extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText etUserIdentifier, etPasswordLogin;
     private Button btnLogin, btnGoToRegister;
@@ -43,7 +44,7 @@ public class LoginBuzzBlitz extends AppCompatActivity {
         // Configurar listeners dentro de onCreate
         btnLogin.setOnClickListener(this::enviarLogin); // Usar método como referencia
         btnGoToRegister.setOnClickListener(v ->
-                startActivity(new Intent(LoginBuzzBlitz.this, RegisterBuzzBlitz.class))
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class))
         );
     }
 
@@ -80,7 +81,7 @@ public class LoginBuzzBlitz extends AppCompatActivity {
                     editor.putString("currentUser", usuario.getMail());
                     editor.apply();
 
-                    startActivity(new Intent(LoginBuzzBlitz.this, MainActivity.class));
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     i=2;
                     finish();
                 } else {
@@ -93,7 +94,7 @@ public class LoginBuzzBlitz extends AppCompatActivity {
                             Log.e("LOGIN_DEBUG", "Error al leer el cuerpo del error", e);
                         }
                     }
-                    Toast.makeText(LoginBuzzBlitz.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -101,7 +102,7 @@ public class LoginBuzzBlitz extends AppCompatActivity {
             public void onFailure(Call<Usuario> call, Throwable t) {
                 i=4;
                 Log.e("LOGIN_DEBUG", "Error de red: ", t);
-                Toast.makeText(LoginBuzzBlitz.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }); // Cierre correcto del callback
     }

@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import com.airbnb.lottie.LottieAnimationView;
-import com.example.buzzblitz_android_cliente.LoginBuzzBlitz;
 import com.example.buzzblitz_android_cliente.R;
 
 public class CargarJuegoActivity extends AppCompatActivity {
@@ -29,13 +28,13 @@ public class CargarJuegoActivity extends AppCompatActivity {
             animationMushroom.playAnimation();
 
             new Handler().postDelayed(() -> {
-                startActivity(new Intent(CargarJuegoActivity.this, LoginBuzzBlitz.class));
+                startActivity(new Intent(CargarJuegoActivity.this, LoginActivity.class));
                 finish();
             }, 3000);
 
         } catch (Exception e) {
             Log.e("CargarJuegoError", "Error: " + e.getMessage());
-            startActivity(new Intent(this, LoginBuzzBlitz.class));
+            startActivity(new Intent(this, LoginActivity.class));
             finish();
         }
     }

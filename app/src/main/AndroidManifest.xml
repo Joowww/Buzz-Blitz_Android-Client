@@ -29,11 +29,11 @@
             android:theme="@style/Theme.AppCompat.NoActionBar"/>
 
         <activity
-            android:name=".LoginBuzzBlitz"
+            android:name=".Activities.LoginActivity"
             android:exported="false"/>
 
         <activity
-            android:name=".RegisterBuzzBlitz"
+            android:name=".Activities.RegisterActivity"
             android:exported="false"/>
 
         <activity

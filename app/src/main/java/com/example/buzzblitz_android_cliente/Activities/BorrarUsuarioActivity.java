@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.buzzblitz_android_cliente.LoginBuzzBlitz;
 import com.example.buzzblitz_android_cliente.R;
 
 import java.util.Map;
@@ -38,7 +37,7 @@ public class BorrarUsuarioActivity extends AppCompatActivity {
                 editor.apply();
             }
 
-            Intent intent = new Intent(this, LoginBuzzBlitz.class);
+            Intent intent = new Intent(this, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             finishAffinity();
