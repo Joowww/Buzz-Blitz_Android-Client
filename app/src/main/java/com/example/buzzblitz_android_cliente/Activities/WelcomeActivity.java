@@ -16,7 +16,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         Button startButton = findViewById(R.id.startButton);
         startButton.setOnClickListener(v -> {
-            startActivity(new Intent(this, CargarJuegoActivity.class));
+            startActivity(new Intent(this, TiendaPruebaActivity.class));
             finish();
         });
     }

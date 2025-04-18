@@ -35,6 +35,7 @@ dependencies {
     implementation libs.activity
     implementation libs.constraintlayout
     implementation libs.retrofit
+    implementation libs.recyclerview
     implementation libs.converter.gson
     implementation libs.lottie
     implementation libs.cardview
