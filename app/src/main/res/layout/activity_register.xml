@@ -12,6 +12,7 @@
         android:layout_width="695dp"
         android:layout_height="866dp"
         android:layout_marginTop="-200dp"
+        android:onClick="registerUser"
         android:scaleType="centerCrop"
         android:src="@drawable/fondowww"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -95,9 +96,10 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:background="@drawable/btn_selector"
+            android:onClick="registerUser"
             android:padding="12dp"
-            android:text= "Registrarse"
-            android:textColor= "@color/texto_negro" />
+            android:text="Registrarse"
+            android:textColor="@color/texto_negro" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnGoToLogin"
