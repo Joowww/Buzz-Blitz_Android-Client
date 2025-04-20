@@ -21,10 +21,10 @@ import retrofit2.http.Path;
 
 
 public interface BuzzBlitzService {
-    @POST("usuarios/register") // ✔️ Ruta relativa
+    @POST("usuarios/register")
     Call<Usuario> registerUsuario(@Body Usuario usuario);
 
-    @POST("usuarios/login") // ✔️ Ruta relativa
+    @POST("usuarios/login")
     Call<Usuario> loginUsuario(@Body Usulogin usuario);
 
     @PUT("usuarios/comprar")
@@ -33,6 +33,9 @@ public interface BuzzBlitzService {
     @GET("usuarios/tienda/armas")
     Call<List<Objeto>> getArmas();
 
-    @GET("usuarios/tienda/skins") // ❗ Cambiar de POST a GET
+    @GET("usuarios/tienda/skins")
     Call<List<Objeto>> getSkin();
+
+//    @POST("usuarios/intercambiar")
+//    Call<RespuestaIntercambio> intercambiarFlores(@Body IntercambioRequest request);
 }

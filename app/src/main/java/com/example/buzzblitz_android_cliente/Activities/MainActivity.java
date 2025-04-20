@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.buzzblitz_android_cliente.R;
-
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -25,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Inicializar animaciones de abejas
         bees1 = findViewById(R.id.lottieBees1);
         bees2 = findViewById(R.id.lottieBees2);
         bees3 = findViewById(R.id.lottieBees3);
@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(() -> bees2.setVisibility(View.VISIBLE), 1000);
         new Handler().postDelayed(() -> bees3.setVisibility(View.VISIBLE), 2000);
 
+        // Listeners de botones principales
         findViewById(R.id.btnPlay).setOnClickListener(v ->
                 startActivity(new Intent(this, PlayActivity.class)));
 
@@ -39,9 +40,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, OpcionesActivity.class)));
 
         findViewById(R.id.btnExit).setOnClickListener(v ->
-                startActivity(new Intent(MainActivity.this, CerrarSesionActivity.class))
-        );
+                startActivity(new Intent(this, CerrarSesionActivity.class)));
 
+        // Configurar menú lateral
         sideMenuCard = findViewById(R.id.sideMenuCard);
         menuContent = findViewById(R.id.menuContent);
         ivArrow = findViewById(R.id.ivArrow);
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
             animView.setOnClickListener(v -> {
                 animView.playAnimation();
-                startActivity(new Intent(MainActivity.this, activity));
+                startActivity(new Intent(MainActivity.this, activity)); // Navegación a ShopActivity
             });
         }
     }

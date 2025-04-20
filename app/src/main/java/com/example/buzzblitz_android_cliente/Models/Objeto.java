@@ -1,22 +1,46 @@
 package com.example.buzzblitz_android_cliente.Models;
 
+import android.content.Context;
+
 public class Objeto {
     private String id;
     private String nombre;
     private Integer precio;
-
-    private int imagenResId;
-    private int tipo; // "arma" o "skin"
+    private int tipo;
+    private String descripcion;
+    private String imagenResId;// "arma" o "skin"
 
     public Objeto() {}
 
-    public Objeto(String id, String nombre, int precio ,int tipo, int imagenResId) {
+    public Objeto(String id, String nombre, int precio , int tipo, String descripcion ,String imagenResId) {
         this.id = id;
         this.nombre = nombre;
         this.tipo = tipo;
         this.precio = precio;
+        this.descripcion = descripcion;
         this.imagenResId = imagenResId;
     }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public String getImagenResId() {
+        return imagenResId;
+    }
+
+    public void setPrecio(Integer precio) {
+        this.precio = precio;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public void setImagenResId(String imagenResId) {
+        this.imagenResId = imagenResId;
+    }
+
     public int getPrecio() {
         return this.precio;
     }
@@ -33,10 +57,6 @@ public class Objeto {
 
         this.id = id;
     }
-    public int getImagenResId() {
-        return imagenResId;
-    }
-
 
     public String getNombre() {
         return nombre;
@@ -55,6 +75,9 @@ public class Objeto {
 
         this.tipo = tipo;
     }
+    public void setNombreImagen(String nombreImagen) { this.imagenResId = nombreImagen; }
+    public int getImagenResId(Context context) {
+        return context.getResources()
+                .getIdentifier(imagenResId, "drawable", context.getPackageName());
+    }
 }
-
-

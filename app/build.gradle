@@ -38,6 +38,9 @@ dependencies {
     implementation libs.recyclerview
     implementation libs.converter.gson
     implementation libs.lottie
+    implementation libs.okhttp
+    implementation libs.okhttp.logging
+    implementation libs.glide
     implementation libs.cardview
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit

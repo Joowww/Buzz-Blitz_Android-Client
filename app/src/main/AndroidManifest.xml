@@ -16,81 +16,77 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name=".Activities.TiendaPruebaActivity"
-            android:exported="true"> <!-- ¡Añade exported="true"! -->
+            android:name=".Activities.WelcomeActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-<!--        <activity-->
-<!--            android:name=".Activities.WelcomeActivity"-->
-<!--            android:exported="true">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
+        <activity
+            android:name=".Activities.CargarJuegoActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
 
-<!--        <activity-->
-<!--            android:name=".Activities.TiendaPruebaActivity"/>-->
+        <activity
+            android:name=".Activities.LoginActivity"
+            android:exported="false"/>
 
-<!--        <activity-->
-<!--            android:name=".Activities.CargarJuegoActivity"-->
-<!--            android:theme="@style/Theme.AppCompat.NoActionBar"/>-->
+        <activity
+            android:name=".Activities.RegisterActivity"
+            android:exported="false"/>
 
-<!--        <activity-->
-<!--            android:name=".Activities.LoginActivity"-->
-<!--            android:exported="false"/>-->
+        <activity
+            android:name=".Activities.MainActivity"
+            android:exported="false"/>
 
-<!--        <activity-->
-<!--            android:name=".Activities.RegisterActivity"-->
-<!--            android:exported="false"/>-->
+        <activity
+            android:name=".Activities.ShopActivity"
+            android:exported="false"/>
 
-<!--        <activity-->
-<!--            android:name=".Activities.MainActivity"-->
-<!--            android:exported="false"/>-->
+        <activity
+            android:name=".Activities.CreditsActivity"
+            android:exported="false"/>
 
-<!--        <activity-->
-<!--            android:name=".Activities.ShopActivity"-->
-<!--            android:exported="false"/>-->
+        <activity
+            android:name=".Activities.CerrarSesionActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
-<!--        <activity-->
-<!--            android:name=".Activities.CreditsActivity"-->
-<!--            android:exported="false"/>-->
+        <activity
+            android:name=".Activities.OpcionesActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
-<!--        <activity-->
-<!--            android:name=".Activities.CerrarSesionActivity"-->
-<!--            android:exported="false"-->
-<!--            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>-->
+        <activity
+            android:name=".Activities.TutorialActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
-<!--        <activity-->
-<!--            android:name=".Activities.OpcionesActivity"-->
-<!--            android:exported="false"-->
-<!--            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>-->
+        <activity
+            android:name=".Activities.BorrarUsuarioActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
-<!--        <activity-->
-<!--            android:name=".Activities.TutorialActivity"-->
-<!--            android:exported="false"-->
-<!--            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>-->
+        <activity
+            android:name=".Activities.SettingsActivity"
+            android:exported="false"/>
 
-<!--        <activity-->
-<!--            android:name=".Activities.BorrarUsuarioActivity"-->
-<!--            android:exported="false"-->
-<!--            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>-->
+        <activity
+            android:name=".Activities.PoliticaPrivacidadActivity"
+            android:exported="false"/>
 
-<!--        <activity-->
-<!--            android:name=".Activities.SettingsActivity"-->
-<!--            android:exported="false"/>-->
+        <activity
+            android:name=".Activities.TerminosActivity"
+            android:exported="false" />
 
-<!--        <activity-->
-<!--            android:name=".Activities.PoliticaPrivacidadActivity"-->
-<!--            android:exported="false"/>-->
+        <activity
+            android:name=".Activities.TiendaPruebaActivity"
+            android:exported="false"/>
 
-<!--        <activity-->
-<!--            android:name=".Activities.TerminosActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".Activities.IntercambioActivity"
+            android:exported="false"/>
 
     </application>
 

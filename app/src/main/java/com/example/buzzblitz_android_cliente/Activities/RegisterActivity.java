@@ -86,7 +86,8 @@ import retrofit2.Response;
             }
 
             Usuario newUser = new Usuario(userId, firstName, password, email);
-            BuzzBlitzService api = RetrofitClient.getClient("http://10.0.2.2:8080/dsaApp/").create(BuzzBlitzService.class);
+            //BuzzBlitzService api = RetrofitClient.getClient("http://10.0.2.2:8080/dsaApp/").create(BuzzBlitzService.class);
+            BuzzBlitzService api = RetrofitClient.getApiService();
 
             Call<Usuario> call = api.registerUsuario(newUser);
             call.enqueue(new Callback<Usuario>() {

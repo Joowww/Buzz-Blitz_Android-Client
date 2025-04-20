@@ -63,8 +63,10 @@ public class LoginActivity extends AppCompatActivity {
         peticion.setPswd(password);
 
         // Configurar Retrofit con URL correcta (incluir dsaApp/)
-        BuzzBlitzService api = RetrofitClient.getClient("http://10.0.2.2:8080/dsaApp/")
-                .create(BuzzBlitzService.class);
+//        BuzzBlitzService api = RetrofitClient.getClient("http://10.0.2.2:8080/dsaApp/")
+//                .create(BuzzBlitzService.class);
+
+        BuzzBlitzService api = RetrofitClient.getApiService();
 
         // Hacer la llamada a la API
         Call<Usuario> call = api.loginUsuario(peticion);

@@ -48,4 +48,14 @@
         app:layout_constraintTop_toBottomOf="@id/tvPrecio"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <TextView
+        android:id="@+id/tvDescripcion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Descripción: Este es un objeto de ejemplo"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/tvNombre"
+        app:layout_constraintTop_toBottomOf="@id/tvTipo"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
