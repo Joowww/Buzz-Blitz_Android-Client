@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     private void setupLottieAnimations() {
         int[] animationIds = {R.id.lottieShop, R.id.lottieUser, R.id.lottieSettings, R.id.lottieTrophy};
         int[] rawFiles = {R.raw.tienda, R.raw.user, R.raw.settings, R.raw.trophy};
-        Class<?>[] targetActivities = {ShopActivity.class, UserProfileActivity.class, SettingsActivity.class, TrophyActivity.class};
+        Class<?>[] targetActivities = {BeforeTiendaActivity.class, UserProfileActivity.class, SettingsActivity.class, RankingActivity.class};
 
         for (int i = 0; i < animationIds.length; i++) {
             LottieAnimationView animView = findViewById(animationIds[i]);

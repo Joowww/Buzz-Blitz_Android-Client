@@ -41,7 +41,7 @@
             android:exported="false"/>
 
         <activity
-            android:name=".Activities.ShopActivity"
+            android:name=".Activities.BeforeTiendaActivity"
             android:exported="false"/>
 
         <activity
@@ -81,12 +81,17 @@
             android:exported="false" />
 
         <activity
-            android:name=".Activities.TiendaPruebaActivity"
+            android:name=".Activities.TiendaActivity"
             android:exported="false"/>
 
         <activity
             android:name=".Activities.IntercambioActivity"
             android:exported="false"/>
+
+        <activity
+            android:name=".Activities.RankingActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
     </application>
 

@@ -3,10 +3,10 @@ package com.example.buzzblitz_android_cliente.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import com.airbnb.lottie.LottieAnimationView;
+
 import com.example.buzzblitz_android_cliente.R;
 
-public class ShopActivity extends AppCompatActivity {
+public class BeforeTiendaActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +19,7 @@ public class ShopActivity extends AppCompatActivity {
 
         // Botón COMPRAR -> TiendaPruebaActivity
         findViewById(R.id.btnComprarTienda).setOnClickListener(v ->
-                startActivity(new Intent(this, TiendaPruebaActivity.class)));
+                startActivity(new Intent(this, TiendaActivity.class)));
 
         // Botón INTERCAMBIAR -> IntercambioActivity
         findViewById(R.id.btnIntercambiarTienda).setOnClickListener(v ->

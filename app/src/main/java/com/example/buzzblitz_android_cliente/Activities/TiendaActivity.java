@@ -11,13 +11,14 @@ import com.example.buzzblitz_android_cliente.Models.ConsultaTienda;
 import com.example.buzzblitz_android_cliente.R;
 import com.example.buzzblitz_android_cliente.Services.BuzzBlitzService;
 import com.example.buzzblitz_android_cliente.RetrofitClient;
+import android.content.Intent;
 import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TiendaPruebaActivity extends AppCompatActivity {
+public class TiendaActivity extends AppCompatActivity {
     private RecyclerView rv;
     private MyAdapter adapter;
     private final List<Objeto> objetosTienda = new ArrayList<>();
@@ -26,6 +27,12 @@ public class TiendaPruebaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tienda);
+
+        // Botón BACK -> BeforeTiendaActivity
+        findViewById(R.id.btnBack).setOnClickListener(v -> {
+            startActivity(new Intent(this, BeforeTiendaActivity.class));
+            finish(); // Opcional: cierra esta actividad
+        });
 
         // Configurar RecyclerView
         rv = findViewById(R.id.rvObjetos);

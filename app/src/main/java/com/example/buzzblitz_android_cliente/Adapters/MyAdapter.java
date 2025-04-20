@@ -35,7 +35,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // Textos
         holder.tvNombre.setText(objeto.getNombre());
         holder.tvPrecio.setText("Precio: " + objeto.getPrecio());
-        //holder.tvTipo.setText("Tipo: " + objeto.getTipo());
         holder.tvTipo.setText("Tipo: " + (objeto.getTipo() == 1 ? "Arma" : "Skin"));
         holder.tvDescripcion.setText("Descripción: " + objeto.getDescripcion());
 
