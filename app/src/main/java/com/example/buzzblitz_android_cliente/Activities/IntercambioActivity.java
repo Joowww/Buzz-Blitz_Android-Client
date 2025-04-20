@@ -2,6 +2,7 @@ package com.example.buzzblitz_android_cliente.Activities;
 
 import android.os.Bundle;
 import android.widget.Toast;
+import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.buzzblitz_android_cliente.R;
@@ -26,6 +27,11 @@ public class IntercambioActivity extends AppCompatActivity {
 
         // Botón BACK
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
+
+        // Botón HELP -> HelpActivity
+        findViewById(R.id.btnHelp).setOnClickListener(v -> {
+            startActivity(new Intent(this, HelpActivity.class));
+        });
     }
 
     private void iniciarIntercambio() {
