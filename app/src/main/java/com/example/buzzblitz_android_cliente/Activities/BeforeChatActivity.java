@@ -5,16 +5,26 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.buzzblitz_android_cliente.R;
 
-public class UserProfileActivity extends AppCompatActivity {
+public class BeforeChatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profileuser);
+        setContentView(R.layout.activity_beforechat);
 
         // Botón BACK -> MainActivity
         findViewById(R.id.btnBack).setOnClickListener(v -> {
             startActivity(new Intent(this, MainActivity.class));
-            finish(); // Opcional: cierra esta actividad
+            finish();
         });
+
+        // Botón CHAT -> ChatActivity
+        findViewById(R.id.btnChat).setOnClickListener(v ->
+                startActivity(new Intent(this, ChatActivity.class))
+        );
+
+        // Botón FORUM -> ForumActivity
+        findViewById(R.id.btnForum).setOnClickListener(v ->
+                startActivity(new Intent(this, ForumActivity.class))
+        );
     }
 }
