@@ -35,7 +35,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // Textos
         holder.tvNombre.setText(objeto.getNombre());
         holder.tvPrecio.setText("Precio: " + objeto.getPrecio());
-        holder.tvTipo.setText("Tipo: " + objeto.getTipo());
+        //holder.tvTipo.setText("Tipo: " + objeto.getTipo());
+        holder.tvTipo.setText("Tipo: " + (objeto.getTipo() == 1 ? "Arma" : "Skin"));
+        holder.tvDescripcion.setText("Descripción: " + objeto.getDescripcion());
 
         // Imagen desde recursos locales
         int resId = objeto.getImagenResId(context);
@@ -49,7 +51,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgObjeto;
-        TextView tvNombre, tvPrecio, tvTipo;
+        TextView tvNombre, tvPrecio, tvTipo, tvDescripcion;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -57,6 +59,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             tvNombre = itemView.findViewById(R.id.tvNombre);
             tvPrecio = itemView.findViewById(R.id.tvPrecio);
             tvTipo = itemView.findViewById(R.id.tvTipo);
+            tvDescripcion = itemView.findViewById(R.id.tvDescripcion);
         }
     }
 }

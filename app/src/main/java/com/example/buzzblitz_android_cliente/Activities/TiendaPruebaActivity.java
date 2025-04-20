@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.buzzblitz_android_cliente.Adapters.MyAdapter;
 import com.example.buzzblitz_android_cliente.Models.Objeto;
+import com.example.buzzblitz_android_cliente.Models.ConsultaTienda;
 import com.example.buzzblitz_android_cliente.R;
 import com.example.buzzblitz_android_cliente.Services.BuzzBlitzService;
 import com.example.buzzblitz_android_cliente.RetrofitClient;
@@ -40,39 +41,41 @@ public class TiendaPruebaActivity extends AppCompatActivity {
         BuzzBlitzService apiService = RetrofitClient.getApiService();
 
         // Llamada para armas
-        apiService.getArmas().enqueue(new Callback<List<Objeto>>() {
+        apiService.getArmas().enqueue(new Callback<ConsultaTienda>() {
             @Override
-            public void onResponse(Call<List<Objeto>> call, Response<List<Objeto>> response) {
+            public void onResponse(Call<ConsultaTienda> call, Response<ConsultaTienda> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    objetosTienda.addAll(response.body());
+                    List<Objeto> armas = response.body().getConsulta();
+                    objetosTienda.addAll(armas);
                     adapter.notifyDataSetChanged();
-                    Log.d("API_TIENDA", "Armas cargadas: " + response.body().size());
+                    Log.d("API_TIENDA", "Armas cargadas: " + armas.size());
                 } else {
                     Log.e("API_ERROR", "Error armas: " + response.code());
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Objeto>> call, Throwable t) {
+            public void onFailure(Call<ConsultaTienda> call, Throwable t) {
                 Log.e("API_FAILURE", "Error armas: " + t.getMessage());
             }
         });
 
         // Llamada para skins
-        apiService.getSkin().enqueue(new Callback<List<Objeto>>() {
+        apiService.getSkin().enqueue(new Callback<ConsultaTienda>() {
             @Override
-            public void onResponse(Call<List<Objeto>> call, Response<List<Objeto>> response) {
+            public void onResponse(Call<ConsultaTienda> call, Response<ConsultaTienda> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    objetosTienda.addAll(response.body());
+                    List<Objeto> skins = response.body().getConsulta();
+                    objetosTienda.addAll(skins);
                     adapter.notifyDataSetChanged();
-                    Log.d("API_TIENDA", "Skins cargadas: " + response.body().size());
+                    Log.d("API_TIENDA", "Skins cargadas: " + skins.size());
                 } else {
                     Log.e("API_ERROR", "Error skins: " + response.code());
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Objeto>> call, Throwable t) {
+            public void onFailure(Call<ConsultaTienda> call, Throwable t) {
                 Log.e("API_FAILURE", "Error skins: " + t.getMessage());
             }
         });
