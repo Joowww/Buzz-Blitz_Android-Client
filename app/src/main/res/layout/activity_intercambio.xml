@@ -24,7 +24,7 @@
         android:id="@+id/textView4"
         android:layout_width="170dp"
         android:layout_height="54dp"
-        android:layout_marginBottom="156dp"
+        android:layout_marginBottom="157dp"
         android:text="Dos flores blancas equivalen a un tarro de miel"
         android:textAlignment="center"
         android:textColor="@color/black"
