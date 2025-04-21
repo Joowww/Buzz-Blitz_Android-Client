@@ -20,7 +20,7 @@ public class IntercambioActivity extends AppCompatActivity {
         // Configurar animación Lottie
         exchangeAnim = findViewById(R.id.lottieExchange);
         exchangeAnim.setAnimation(R.raw.exchange);
-        exchangeAnim.setRepeatCount(0); // Solo se reproduce una vez
+        exchangeAnim.setRepeatCount(0); // Reproducción única
 
         // Listener para la animación
         exchangeAnim.setOnClickListener(v -> iniciarIntercambio());
@@ -35,35 +35,19 @@ public class IntercambioActivity extends AppCompatActivity {
     }
 
     private void iniciarIntercambio() {
+        exchangeAnim.setProgress(0); // Reinicia la animación
         exchangeAnim.playAnimation();
+
         exchangeAnim.addAnimatorUpdateListener(animation -> {
-            if (animation.getAnimatedFraction() == 1f) { // Cuando la animación termina
+            if (animation.getAnimatedFraction() == 1f) { // Al finalizar
                 realizarIntercambioConBackend();
+                exchangeAnim.removeAllUpdateListeners(); // Limpiar listener
             }
         });
     }
 
     private void realizarIntercambioConBackend() {
-        BuzzBlitzService api = RetrofitClient.getApiService();
-        // Ejemplo: Llamada a tu endpoint de intercambio (¡implementa tu lógica!)
-        /* Call<RespuestaIntercambio> call = api.intercambiarFlores();
-        call.enqueue(new Callback<RespuestaIntercambio>() {
-            @Override
-            public void onResponse(Call<RespuestaIntercambio> call, Response<RespuestaIntercambio> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(this, "¡Intercambio exitoso!", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(this, "Error en el intercambio", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<RespuestaIntercambio> call, Throwable t) {
-                Toast.makeText(this, "Error de red", Toast.LENGTH_SHORT).show();
-            }
-        });*/
-
-        // Mock temporal (elimina esto cuando implementes la API)
+        // Mock temporal
         Toast.makeText(this, "Intercambio realizado: 2 flores → 1 tarro de miel", Toast.LENGTH_SHORT).show();
     }
 }

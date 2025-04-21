@@ -18,6 +18,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.DELETE;
 import retrofit2.http.Path;
 
 
@@ -36,6 +37,9 @@ public interface BuzzBlitzService {
 
     @GET("usuarios/tienda/skins")
     Call<ConsultaTienda> getSkin();
+
+    @DELETE("usuarios/{id}")
+    Call<Void> deleteUsuario(@Path("id") String id);
 
 
 //    @POST("usuarios/intercambiar")

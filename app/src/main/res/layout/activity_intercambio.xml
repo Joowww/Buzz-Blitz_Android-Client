@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="700dp"
@@ -17,27 +16,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.507" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieExchange"
         android:layout_width="177dp"
         android:layout_height="91dp"
-        android:layout_marginTop="288dp"
+        android:layout_marginTop="424dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/exchange" />
+        app:lottie_rawRes="@raw/exchange" /> <!-- AutoPlay y Loop eliminados -->
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnBack"
         android:layout_width="90dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="170dp"
+        android:layout_marginBottom="280dp"
         android:background="@drawable/btn_selector"
         android:text="BACK"
         android:textColor="#000000"
@@ -50,7 +45,7 @@
         android:id="@+id/btnHelp"
         android:layout_width="90dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="224dp"
+        android:layout_marginBottom="348dp"
         android:background="@drawable/btn_selector"
         android:text="HELP"
         android:textColor="#000000"
@@ -69,7 +64,16 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/lottieExchange"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.429"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="340dp"
+        android:text="Por acabar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
