@@ -31,11 +31,6 @@ public class TiendaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tienda);
 
-        // Obtener y mostrar ID
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
-        TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
-        tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
-
         // Botón BACK -> BeforeTiendaActivity
         findViewById(R.id.btnBack).setOnClickListener(v -> {
             startActivity(new Intent(this, BeforeTiendaActivity.class));

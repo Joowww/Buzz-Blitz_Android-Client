@@ -1,6 +1,7 @@
 package com.example.buzzblitz_android_cliente.Models;
 
 import android.content.Context;
+import com.example.buzzblitz_android_cliente.R;
 
 public class Objeto {
     private String id;
@@ -76,8 +77,10 @@ public class Objeto {
         this.tipo = tipo;
     }
     public void setNombreImagen(String nombreImagen) { this.imagenResId = nombreImagen; }
+    // En Objeto.java
     public int getImagenResId(Context context) {
-        return context.getResources()
+        int resId = context.getResources()
                 .getIdentifier(imagenResId, "drawable", context.getPackageName());
+        return resId != 0 ? resId : R.drawable.bee; // Fallback explícito
     }
 }
