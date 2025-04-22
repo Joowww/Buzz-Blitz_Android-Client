@@ -1,6 +1,7 @@
 package com.example.buzzblitz_android_cliente.Activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -10,6 +11,7 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.example.buzzblitz_android_cliente.R;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,11 +20,36 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout menuContent;
     private ImageView ivArrow;
     private LottieAnimationView bees1, bees2, bees3;
+    private TextView tvWelcomeMessage;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        tvWelcomeMessage = findViewById(R.id.tvWelcomeMessage);
+        sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+
+        // Mostrar mensaje de bienvenida
+        if (sharedPreferences.getBoolean("showWelcome", false)) {
+            String userId = sharedPreferences.getString("currentUserId", "");
+            tvWelcomeMessage.setText("Welcome, " + userId);
+            tvWelcomeMessage.setVisibility(View.VISIBLE);
+
+            // Ocultar después de 3 segundos
+            new Handler().postDelayed(() -> {
+                tvWelcomeMessage.setVisibility(View.GONE);
+                // Marcar como mostrado
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("showWelcome", false);
+                editor.apply();
+            }, 3000);
+        }
+
+        // Obtener y mostrar ID
+        TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
+        tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
 
         // Inicializar animaciones de abejas
         bees1 = findViewById(R.id.lottieBees1);

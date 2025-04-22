@@ -1,6 +1,8 @@
 package com.example.buzzblitz_android_cliente.Activities;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +18,11 @@ public class IntercambioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intercambio);
+
+        // Obtener y mostrar ID
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+        TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
+        tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
 
         // Configurar animación Lottie
         exchangeAnim = findViewById(R.id.lottieExchange);

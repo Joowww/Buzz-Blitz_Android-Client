@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,9 +23,13 @@ public class BorrarUsuarioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_borrarusuario);
 
+        // Obtener y mostrar ID
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+        TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
+        tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
+
         Button btnSi = findViewById(R.id.btnCerrarSesion);
         Button btnNo = findViewById(R.id.btnBack);
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
         BuzzBlitzService apiService = RetrofitClient.getApiService();
 
         btnSi.setOnClickListener(v -> {

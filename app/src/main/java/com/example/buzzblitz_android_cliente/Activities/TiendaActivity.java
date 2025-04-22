@@ -1,5 +1,6 @@
 package com.example.buzzblitz_android_cliente.Activities;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,8 @@ import com.example.buzzblitz_android_cliente.R;
 import com.example.buzzblitz_android_cliente.Services.BuzzBlitzService;
 import com.example.buzzblitz_android_cliente.RetrofitClient;
 import android.content.Intent;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
@@ -27,6 +30,11 @@ public class TiendaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tienda);
+
+        // Obtener y mostrar ID
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+        TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
+        tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
 
         // Botón BACK -> BeforeTiendaActivity
         findViewById(R.id.btnBack).setOnClickListener(v -> {

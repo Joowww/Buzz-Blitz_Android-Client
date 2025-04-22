@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.buzzblitz_android_cliente.R;
@@ -14,11 +16,15 @@ public class CerrarSesionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cerrarsesion);
 
+        // Obtener y mostrar ID
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+        TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
+        tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
+
         Button btnSi = findViewById(R.id.btnCerrarSesion);
         Button btnNo = findViewById(R.id.btnBack);
 
         btnSi.setOnClickListener(v -> {
-            SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.remove("currentUser");
             editor.apply();
