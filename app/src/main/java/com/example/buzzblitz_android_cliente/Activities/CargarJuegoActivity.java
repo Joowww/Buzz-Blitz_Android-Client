@@ -33,7 +33,7 @@ public class CargarJuegoActivity extends AppCompatActivity {
             }, 3000);
 
         } catch (Exception e) {
-            Log.e("CargarJuegoError", "Error: " + e.getMessage());
+            Log.e("ErrorLoadingGame", "Error: " + e.getMessage());
             startActivity(new Intent(this, LoginActivity.class));
             finish();
         }

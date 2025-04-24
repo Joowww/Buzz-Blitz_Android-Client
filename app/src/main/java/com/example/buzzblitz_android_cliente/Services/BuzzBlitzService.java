@@ -35,7 +35,4 @@ public interface BuzzBlitzService {
     @DELETE("usuarios/{id}")
     Call<Void> deleteUsuario(@Path("id") String id);
 
-
-//    @POST("usuarios/intercambiar")
-//    Call<RespuestaIntercambio> intercambiarFlores(@Body IntercambioRequest request);
 }

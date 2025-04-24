@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="90dp"
-                android:text="Desarrolladores"
+                android:text="Developers"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Joel Moreno de Toro\nDavid Sánchez Company\nEloi Zamora"
+                android:text="Joel Moreno de Toro\nDavid Sánchez Company\nEloi"
                 android:textAlignment="center"
                 android:textColor="@color/black"/>
 
@@ -62,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Herramientas Usadas"
+                android:text="Tools used"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
@@ -113,7 +113,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Y recuerda, a veces perderse es el primer paso \n No abanones tus metas, sigue a tu colmena \n y no te desenfoques."
+                android:text="Remember, sometimes getting lost is the first step\n Don't abandon your goals, follow your hive\n and stay focused."
                 android:textAlignment="center"
                 android:textColor="@color/black"/>
 
@@ -121,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:text="¡Comparte el juego y ayudanos a crecer!"
+                android:text="¡Shre the game and help us grow!"
                 android:textAlignment="center"
                 android:textColor="@color/black"/>
 

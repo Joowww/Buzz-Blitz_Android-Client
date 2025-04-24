@@ -68,12 +68,12 @@ public class RegisterActivity extends AppCompatActivity {
         String answer1 = etRespuesta1.getText().toString().trim();
 
         if (firstName.isEmpty() || userId.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-            showToast("Rellena todos los campos obligatorios");
+            showToast("Fill in all required fields");
             return;
         }
 
         if (!password.equals(confirmPassword)) {
-            showToast("Las contraseñas no coinciden");
+            showToast("The passwords do not match");
             return;
         }
 
@@ -86,16 +86,16 @@ public class RegisterActivity extends AppCompatActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
                     guardarDatosLocales(email, question1, answer1);
-                    showToast("Registro exitoso!");
+                    showToast("Registration successful!");
                     finish();
                 } else {
-                    showToast("Error en registro: " + response.message());
+                    showToast("Registration error: " + response.message());
                 }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                showToast("Error de red: " + t.getMessage());
+                showToast("Network error: " + t.getMessage());
             }
         });
     }
@@ -120,7 +120,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
             return hexString.toString();
         } catch (Exception ex) {
-            throw new RuntimeException("Error en hash", ex);
+            throw new RuntimeException("Hash error", ex);
         }
     }
 

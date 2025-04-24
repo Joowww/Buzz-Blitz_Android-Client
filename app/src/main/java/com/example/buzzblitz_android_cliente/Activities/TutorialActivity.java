@@ -15,7 +15,6 @@ public class TutorialActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial);
 
-        // Obtener y mostrar ID
         SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
         TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
         tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));

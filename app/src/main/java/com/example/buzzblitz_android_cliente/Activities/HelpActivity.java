@@ -14,15 +14,10 @@ public class HelpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
 
-        // Obtener y mostrar ID
         SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
         TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
         tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
 
-        // Botón BACK -> IntercambioActivity
-        findViewById(R.id.btnBack).setOnClickListener(v -> {
-            startActivity(new Intent(this, IntercambioActivity.class));
-            finish(); // Opcional: cierra esta actividad
-        });
+        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
     }
 }

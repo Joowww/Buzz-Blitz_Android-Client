@@ -14,23 +14,19 @@ public class BeforeChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beforechat);
 
-        // Obtener y mostrar ID
         SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
         TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
         tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
 
-        // Botón BACK -> MainActivity
         findViewById(R.id.btnBack).setOnClickListener(v -> {
             startActivity(new Intent(this, MainActivity.class));
             finish();
         });
 
-        // Botón CHAT -> ChatActivity
         findViewById(R.id.btnChat).setOnClickListener(v ->
                 startActivity(new Intent(this, ChatActivity.class))
         );
 
-        // Botón FORUM -> ForumActivity
         findViewById(R.id.btnForum).setOnClickListener(v ->
                 startActivity(new Intent(this, ForumActivity.class))
         );

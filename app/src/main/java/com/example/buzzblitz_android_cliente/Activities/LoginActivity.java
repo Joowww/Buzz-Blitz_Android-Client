@@ -41,14 +41,13 @@ public class LoginActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
 
-        // Configurar listeners dentro de onCreate
-        btnLogin.setOnClickListener(this::enviarLogin); // Usar método como referencia
+        btnLogin.setOnClickListener(this::enviarLogin);
         btnGoToRegister.setOnClickListener(v ->
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class))
         );
     }
 
-    public void enviarLogin(View view) { // Asegurar que es público y recibe View
+    public void enviarLogin(View view) {
         String userInput = etUserIdentifier.getText().toString().trim();
         String password = etPasswordLogin.getText().toString().trim();
 
@@ -73,11 +72,11 @@ public class LoginActivity extends AppCompatActivity {
         call.enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                Log.d("LOGIN_DEBUG", "Código HTTP: " + response.code());
+                Log.d("LOGIN_DEBUG", "Code HTTP: " + response.code());
                 i=1;
                 if (response.isSuccessful() && response.body() != null) {
                     Usuario usuario = response.body();
-                    Log.d("LOGIN_DEBUG", "Login exitoso. Usuario: " + usuario.getMail());
+                    Log.d("LOGIN_DEBUG", "Login realized. User: " + usuario.getMail());
 
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("currentUser", usuario.getMail());
@@ -94,9 +93,9 @@ public class LoginActivity extends AppCompatActivity {
                     if (response.errorBody() != null) {
                         try {
                             String errorBody = response.errorBody().string();
-                            Log.e("LOGIN_DEBUG", "Error del servidor: " + errorBody);
+                            Log.e("LOGIN_DEBUG", "Server error: " + errorBody);
                         } catch (IOException e) {
-                            Log.e("LOGIN_DEBUG", "Error al leer el cuerpo del error", e);
+                            Log.e("LOGIN_DEBUG", "Error reading the body error", e);
                         }
                     }
                     Toast.makeText(LoginActivity.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
@@ -106,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Usuario> call, Throwable t) {
                 i=4;
-                Log.e("LOGIN_DEBUG", "Error de red: ", t);
+                Log.e("LOGIN_DEBUG", "Network error: ", t);
                 Toast.makeText(LoginActivity.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }); // Cierre correcto del callback

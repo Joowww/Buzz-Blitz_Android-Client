@@ -15,15 +15,13 @@ public class RankingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ranking);
 
-        // Obtener y mostrar ID
         SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
         TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
         tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
 
-        // Configurar botón BACK
         findViewById(R.id.btnBack).setOnClickListener(v -> {
             startActivity(new Intent(this, MainActivity.class));
-            finish(); // Opcional: cierra esta actividad
+            finish();
         });
     }
 }

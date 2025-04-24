@@ -64,7 +64,7 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/btn_selector"
             android:padding="12dp"
-            android:text="CRÉDITOS"
+            android:text="CREDITS"
             android:textColor="#000000" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -73,7 +73,7 @@
             android:layout_height="60dp"
             android:layout_margin="8dp"
             android:background="@drawable/btn_selector"
-            android:text="POLITICA DE PRIVACIDAD"
+            android:text="PRIVACY POLICY"
             android:textColor="#000000" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -82,7 +82,7 @@
             android:layout_height="60dp"
             android:layout_margin="8dp"
             android:background="@drawable/btn_selector"
-            android:text="TÉRMINOS Y CONDICIONES"
+            android:text="TERMS AND CONDITIONS"
             android:textColor="#000000" />
 
 

@@ -22,6 +22,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TiendaActivity extends AppCompatActivity {
+
+    // Utilitza un RecyclerView per mostrar armes i skins que es descarreguen de l'API.
+    // Es fan dues crides: una per armes i una altra per skins.
+    // Quan arriben les dades, s'afegeixen a la llista i es notifica l'adaptador perquè es vegi tot.
+    // Si l'API falla, es veurà als logs
     private RecyclerView rv;
     private MyAdapter adapter;
     private final List<Objeto> objetosTienda = new ArrayList<>();
@@ -31,26 +36,25 @@ public class TiendaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tienda);
 
-        // Botón BACK -> BeforeTiendaActivity
         findViewById(R.id.btnBack).setOnClickListener(v -> {
             startActivity(new Intent(this, BeforeTiendaActivity.class));
-            finish(); // Opcional: cierra esta actividad
+            finish();
         });
 
-        // Configurar RecyclerView
+        // Configuro el RecyclerView
         rv = findViewById(R.id.rvObjetos);
         rv.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MyAdapter(objetosTienda);
         rv.setAdapter(adapter);
 
-        // Cargar datos de la API
+        // Carrego dades de la API
         cargarArmasYSkins();
     }
 
     private void cargarArmasYSkins() {
         BuzzBlitzService apiService = RetrofitClient.getApiService();
 
-        // Llamada para armas
+        // Crido a les armes
         apiService.getArmas().enqueue(new Callback<ConsultaTienda>() {
             @Override
             public void onResponse(Call<ConsultaTienda> call, Response<ConsultaTienda> response) {
@@ -58,19 +62,19 @@ public class TiendaActivity extends AppCompatActivity {
                     List<Objeto> armas = response.body().getConsulta();
                     objetosTienda.addAll(armas);
                     adapter.notifyDataSetChanged();
-                    Log.d("API_TIENDA", "Armas cargadas: " + armas.size());
+                    Log.d("API_TIENDA", "Armes loaded: " + armas.size());
                 } else {
-                    Log.e("API_ERROR", "Error armas: " + response.code());
+                    Log.e("API_ERROR", "Error weapons: " + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<ConsultaTienda> call, Throwable t) {
-                Log.e("API_FAILURE", "Error armas: " + t.getMessage());
+                Log.e("API_FAILURE", "Error weapons: " + t.getMessage());
             }
         });
 
-        // Llamada para skins
+        // Crido a les skins
         apiService.getSkin().enqueue(new Callback<ConsultaTienda>() {
             @Override
             public void onResponse(Call<ConsultaTienda> call, Response<ConsultaTienda> response) {
@@ -78,7 +82,7 @@ public class TiendaActivity extends AppCompatActivity {
                     List<Objeto> skins = response.body().getConsulta();
                     objetosTienda.addAll(skins);
                     adapter.notifyDataSetChanged();
-                    Log.d("API_TIENDA", "Skins cargadas: " + skins.size());
+                    Log.d("API_TIENDA", "Skins loaded: " + skins.size());
                 } else {
                     Log.e("API_ERROR", "Error skins: " + response.code());
                 }

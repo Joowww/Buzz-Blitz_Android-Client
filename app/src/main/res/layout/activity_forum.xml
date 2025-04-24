@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/fondo_amarillo_claro">
 
-    <!-- Botón BACK -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnBack"
         android:layout_width="90dp"

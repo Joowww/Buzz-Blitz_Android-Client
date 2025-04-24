@@ -85,11 +85,11 @@ public class CreditsActivity extends AppCompatActivity {
         try {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
-            String shareMessage = "¡Descubre BuzzBlitz!\nUn juego adictivo de estrategia y acción.\nDescárgalo aquí: [ENLACE]";
+            String shareMessage = "Discover BuzzBlitz!\n**An addictive strategy and action game**.\n**Download it here: [LINK]**";
             shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
-            startActivity(Intent.createChooser(shareIntent, "Compartir via"));
+            startActivity(Intent.createChooser(shareIntent, "Share via"));
         } catch (Exception e) {
-            Toast.makeText(this, "Error al compartir", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error sharing", Toast.LENGTH_SHORT).show();
         }
     }
 }

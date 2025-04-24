@@ -13,11 +13,16 @@ import com.example.buzzblitz_android_cliente.R;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+
+    // Aquest adaptador és per omplir el RecyclerView amb les dades dels objectes (armes/skins).
+    // Agafa una llista d'Objeto i els mostra en tarjetes.
+
     private final List<Objeto> objetos;
 
     public MyAdapter(List<Objeto> objetos) {
         this.objetos = objetos;
     }
+
 
     @NonNull
     @Override
@@ -26,6 +31,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 .inflate(R.layout.activity_objeto, parent, false);
         return new ViewHolder(view);
     }
+
+    // El onBindViewHolder s'encarrega de posar les dades a les vistes: nom, preu, tipus (1=Arma, altre=Skin) i descripció.
+    // La imatge la treu dels recursos locals amb getImagenResId(), i si no en troba, posa una abella per defecte (la "bee").
+    // El ViewHolder és com la plantilla que enllaça els elements del XML amb el codi.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {

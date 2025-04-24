@@ -17,7 +17,6 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"/>
 
-    <!-- Añade esto en tu ConstraintLayout principal -->
     <TextView
         android:id="@+id/tvWelcomeMessage"
         android:layout_width="wrap_content"
@@ -142,7 +141,7 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/btn_selector"
             android:padding="12dp"
-            android:text="JUGAR"
+            android:text="PLAY"
             android:textColor="#000000" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -152,7 +151,7 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/btn_selector"
             android:padding="12dp"
-            android:text="OPCIONES"
+            android:text="OPTIONS"
             android:textColor="#000000" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -161,7 +160,7 @@
             android:layout_height="60dp"
             android:background="@drawable/btn_selector"
             android:padding="12dp"
-            android:text="CERRAR SESIÓN"
+            android:text="LOG OUT"
             android:textColor="#000000" />
 
     </LinearLayout>

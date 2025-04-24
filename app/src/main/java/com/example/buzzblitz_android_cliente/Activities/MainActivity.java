@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
             animView.setOnClickListener(v -> {
                 animView.playAnimation();
-                startActivity(new Intent(MainActivity.this, activity)); // Navegación a ShopActivity
+                startActivity(new Intent(MainActivity.this, activity));
             });
         }
     }

@@ -35,7 +35,7 @@
         android:layout_width="287dp"
         android:layout_height="86dp"
         android:layout_marginTop="-50dp"
-        android:text="¿QUIERES COMPRAR ALGO O PREFIERES HACER UN INTERCAMBIO DE FLORES?"
+        android:text="DO YOU WANT TO BUY SOMETHING OR WOULD YOU PREFER TO TRADE FLOWERS?"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -44,7 +44,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <!-- Botón COMPRAR -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnComprarTienda"
         android:layout_width="110dp"
@@ -52,14 +51,13 @@
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="-100dp"
         android:background="@drawable/btn_selector"
-        android:text="COMPRAR"
+        android:text="BUY"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.508"/>
 
-    <!-- Botón INTERCAMBIAR -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnIntercambiarTienda"
         android:layout_width="110dp"
@@ -67,14 +65,13 @@
         android:layout_marginEnd="220dp"
         android:layout_marginBottom="-100dp"
         android:background="@drawable/btn_selector"
-        android:text="INTERCAMBIAR"
+        android:text="EXCHANGE"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.508"/>
 
-    <!-- Botón BACK -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnBack"
         android:layout_width="90dp"

@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="300dp"
-        android:text="MENÚ DE OPCIONES"
+        android:text="OPTIONS MENU"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -72,7 +72,7 @@
             android:layout_height="60dp"
             android:layout_margin="8dp"
             android:background="@drawable/btn_selector"
-            android:text="REINICIAR DATOS"
+            android:text="RESET DATA"
             android:textColor="#000000" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -81,7 +81,7 @@
             android:layout_height="60dp"
             android:layout_margin="8dp"
             android:background="@drawable/btn_selector"
-            android:text="BORRAR USUARIO"
+            android:text="DELETE USER"
             android:textColor="#000000" />
 
     </LinearLayout>

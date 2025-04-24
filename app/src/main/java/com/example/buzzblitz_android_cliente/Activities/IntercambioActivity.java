@@ -19,42 +19,37 @@ public class IntercambioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intercambio);
 
-        // Obtener y mostrar ID
         SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
         TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
         tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
 
-        // Configurar animación Lottie
+        // Configurar animació Lottie
         exchangeAnim = findViewById(R.id.lottieExchange);
         exchangeAnim.setAnimation(R.raw.exchange);
-        exchangeAnim.setRepeatCount(0); // Reproducción única
-
-        // Listener para la animación
+        exchangeAnim.setRepeatCount(0); // Reproducció única
         exchangeAnim.setOnClickListener(v -> iniciarIntercambio());
 
-        // Botón BACK
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
 
-        // Botón HELP -> HelpActivity
         findViewById(R.id.btnHelp).setOnClickListener(v -> {
             startActivity(new Intent(this, HelpActivity.class));
         });
     }
 
     private void iniciarIntercambio() {
-        exchangeAnim.setProgress(0); // Reinicia la animación
+        exchangeAnim.setProgress(0); // Reinicia l'animació
         exchangeAnim.playAnimation();
 
         exchangeAnim.addAnimatorUpdateListener(animation -> {
-            if (animation.getAnimatedFraction() == 1f) { // Al finalizar
+            if (animation.getAnimatedFraction() == 1f) { // Al finalizar l'animació
                 realizarIntercambioConBackend();
-                exchangeAnim.removeAllUpdateListeners(); // Limpiar listener
+                exchangeAnim.removeAllUpdateListeners(); // Neteja listener
             }
         });
     }
 
     private void realizarIntercambioConBackend() {
         // Mock temporal
-        Toast.makeText(this, "Intercambio realizado: 2 flores → 1 tarro de miel", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Exchange realized: 2 flowers → 1 honey jar", Toast.LENGTH_SHORT).show();
     }
 }
