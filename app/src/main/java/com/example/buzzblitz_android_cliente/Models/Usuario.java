@@ -8,6 +8,7 @@ public class Usuario {
     private String name;
     private String pswd;
     private String mail;
+    private String apellidos;
 
     private int tarrosMiel;
     private int flor;
@@ -15,12 +16,15 @@ public class Usuario {
     private int numPartidas;
     private int floreGold;
 
+    private String pregunta;
+    private String respuesta;
+
     private Map<String, Objeto> armas;
     private Map<String, Objeto> skins;
 
     public Usuario() {}
 
-    public Usuario(String id, String name, String pswd, String mail) { // Primera vez que entras
+    public Usuario(String id, String name, String apellidos, String pswd, String mail, String q, String a) { // Primera vez que entras
         this.id = id;
         this.name = name;
         this.pswd = pswd;
@@ -30,6 +34,11 @@ public class Usuario {
         this.mejorPuntuacion = 0;
         this.numPartidas = 0;
         this.floreGold = 0;
+        this.apellidos = apellidos;
+        this.pregunta = q;
+        this.respuesta = a;
+        this.armas = new HashMap<>();
+        this.skins = new HashMap<>();
 
     }
     public void UpdateArmas(Objeto objeto){
@@ -55,6 +64,12 @@ public class Usuario {
         this.name = name;
     }
 
+    public String getApellidos() {
+        return apellidos;
+    }
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
     public String getPswd() {
         return pswd;
     }
@@ -109,6 +124,38 @@ public class Usuario {
 
     public void setFloreGold(int floreGold) {
         this.floreGold = floreGold;
+    }
+
+    public Map<String, Objeto> getArmas() {
+        return armas;
+    }
+
+    public void setArmas(Map<String, Objeto> armas) {
+        this.armas = armas;
+    }
+
+    public Map<String, Objeto> getSkins() {
+        return skins;
+    }
+
+    public void setSkins(Map<String, Objeto> skins) {
+        this.skins = skins;
+    }
+
+    public String getRespuesta() {
+        return respuesta;
+    }
+
+    public String getPregunta() {
+        return pregunta;
+    }
+
+    public void setPregunta(String pregunta) {
+        this.pregunta = pregunta;
+    }
+
+    public void setRespuesta(String respuesta) {
+        this.respuesta = respuesta;
     }
 
 }

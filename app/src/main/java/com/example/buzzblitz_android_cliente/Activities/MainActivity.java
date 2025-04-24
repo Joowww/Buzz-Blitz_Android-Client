@@ -28,30 +28,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Configura el missatge de benvinguda (visible 3 segons)
         tvWelcomeMessage = findViewById(R.id.tvWelcomeMessage);
         sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
 
-        // Mostrar mensaje de bienvenida
+        // Mostrar missatge de benvinguda
         if (sharedPreferences.getBoolean("showWelcome", false)) {
             String userId = sharedPreferences.getString("currentUserId", "");
             tvWelcomeMessage.setText("Welcome, " + userId);
             tvWelcomeMessage.setVisibility(View.VISIBLE);
 
-            // Ocultar después de 3 segundos
+            // Ocultar després de 3 segons
             new Handler().postDelayed(() -> {
                 tvWelcomeMessage.setVisibility(View.GONE);
-                // Marcar como mostrado
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean("showWelcome", false);
                 editor.apply();
             }, 3000);
         }
 
-        // Obtener y mostrar ID
         TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
         tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
 
-        // Inicializar animaciones de abejas
+        // Inicialitzar animacions d'abelles
         bees1 = findViewById(R.id.lottieBees1);
         bees2 = findViewById(R.id.lottieBees2);
         bees3 = findViewById(R.id.lottieBees3);
@@ -59,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(() -> bees2.setVisibility(View.VISIBLE), 1000);
         new Handler().postDelayed(() -> bees3.setVisibility(View.VISIBLE), 2000);
 
-        // Listeners de botones principales
+        // Listeners de botons principals
         findViewById(R.id.btnPlay).setOnClickListener(v ->
                 startActivity(new Intent(this, PlayActivity.class)));
 
