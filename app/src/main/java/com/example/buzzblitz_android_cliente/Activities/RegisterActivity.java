@@ -69,7 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
         String answer1 = etRespuesta1.getText().toString().trim();
 
         // Validar nombre y apellido
-        String[] nameParts = fullName.split("\\s+", 2); // Divide en 2 partes máximo
+        String[] nameParts = fullName.split("\\s+", 2);
         if (nameParts.length != 2) {
             showToast("Enter name and surname separated by a space");
             return;
