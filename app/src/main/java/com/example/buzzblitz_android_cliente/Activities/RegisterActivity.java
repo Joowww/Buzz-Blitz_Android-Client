@@ -46,6 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
 
+        // Configura el Spinner de preguntes de seguretat
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.security_questions,
@@ -59,7 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void registerUser(View view) {
-        String firstName = FullNameRegister.getText().toString().trim();
+        String fullName = FullNameRegister.getText().toString().trim();
         String userId = IdUserRegister.getText().toString().trim();
         String email = etEmailRegister.getText().toString().trim();
         String password = etPasswordRegister.getText().toString().trim();
@@ -67,7 +68,16 @@ public class RegisterActivity extends AppCompatActivity {
         String question1 = spinnerPregunta1.getSelectedItem().toString();
         String answer1 = etRespuesta1.getText().toString().trim();
 
-        if (firstName.isEmpty() || userId.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+        // Validar nombre y apellido
+        String[] nameParts = fullName.split("\\s+", 2); // Divide en 2 partes máximo
+        if (nameParts.length != 2) {
+            showToast("Enter name and surname separated by a space");
+            return;
+        }
+        String firstName = nameParts[0];
+        String lastName = nameParts[1];
+
+        if (userId.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             showToast("Fill in all required fields");
             return;
         }
@@ -77,9 +87,11 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        UsuReg newUser = new UsuReg(userId, firstName, password, email, question1, answer1);
+        // Crea l'objecte amb les dades del usuari
+        UsuReg newUser = new UsuReg(userId, firstName, lastName, password, email, question1, answer1);
         BuzzBlitzService api = RetrofitClient.getApiService();
 
+        // Envia la petició POST a l'API
         Call<Void> call = api.registerUsuario(newUser);
         call.enqueue(new Callback<Void>() {
             @Override
