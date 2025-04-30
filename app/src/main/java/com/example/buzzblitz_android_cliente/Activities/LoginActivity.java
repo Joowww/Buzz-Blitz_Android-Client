@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.buzzblitz_android_cliente.Models.Usulogin;
 import com.example.buzzblitz_android_cliente.Models.Usuario;
+import com.example.buzzblitz_android_cliente.Models.AuthUtil;
 import com.example.buzzblitz_android_cliente.R;
 import com.example.buzzblitz_android_cliente.RetrofitClient;
 import com.example.buzzblitz_android_cliente.Services.BuzzBlitzService;
@@ -68,12 +69,10 @@ public class LoginActivity extends AppCompatActivity {
         call.enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                Log.d("LOGIN_DEBUG", "Code HTTP: " + response.code());
-                i=1;
                 if (response.isSuccessful() && response.body() != null) {
                     Usuario usuario = response.body();
-                    Log.d("LOGIN_DEBUG", "Login realized. User: " + usuario.getMail());
 
+                    // Guardar datos del usuario
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("currentUser", usuario.getMail());
                     editor.putString("currentUserId", usuario.getId());
@@ -81,8 +80,10 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putBoolean("showWelcome", true);
                     editor.apply();
 
+                    // Marcar como logueado
+                    AuthUtil.setUserLoggedIn(LoginActivity.this, true);
+
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    i=2;
                     finish();
                 } else {
                     i=3;

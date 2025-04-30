@@ -7,6 +7,7 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.buzzblitz_android_cliente.R;
+import com.example.buzzblitz_android_cliente.Models.AuthUtil;
 
 public class CargarJuegoActivity extends AppCompatActivity {
 
@@ -28,7 +29,11 @@ public class CargarJuegoActivity extends AppCompatActivity {
             animationMushroom.playAnimation();
 
             new Handler().postDelayed(() -> {
-                startActivity(new Intent(CargarJuegoActivity.this, LoginActivity.class));
+                if (AuthUtil.isUserLoggedIn(CargarJuegoActivity.this)) {
+                    startActivity(new Intent(CargarJuegoActivity.this, MainActivity.class));
+                } else {
+                    startActivity(new Intent(CargarJuegoActivity.this, LoginActivity.class));
+                }
                 finish();
             }, 3000);
 

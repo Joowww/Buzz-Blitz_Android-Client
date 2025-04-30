@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.buzzblitz_android_cliente.R;
+import com.example.buzzblitz_android_cliente.Models.AuthUtil;
 
 public class CerrarSesionActivity extends AppCompatActivity {
     @Override
@@ -24,10 +25,18 @@ public class CerrarSesionActivity extends AppCompatActivity {
         Button btnNo = findViewById(R.id.btnBack);
 
         btnSi.setOnClickListener(v -> {
+            // Limpiar preferencias de usuario
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.remove("currentUser");
+            editor.remove("currentUserId");
+            editor.remove("currentUserName");
+            editor.remove("showWelcome");
             editor.apply();
 
+            // Actualizar estado de sesión
+            AuthUtil.setUserLoggedIn(CerrarSesionActivity.this, false);
+
+            // Redirigir al login y limpiar pila de actividades
             Intent intent = new Intent(this, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
