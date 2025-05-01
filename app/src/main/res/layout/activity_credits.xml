@@ -37,7 +37,7 @@
                 android:id="@+id/ivLogo"
                 android:layout_width="180dp"
                 android:layout_height="130dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="40dp"
                 android:contentDescription="Logo"
                 android:src="@drawable/img_7" />
 
@@ -120,8 +120,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:text="¡Shre the game and help us grow!"
+                android:layout_marginTop="5dp"
+                android:text="Share the game and help us grow!"
                 android:textAlignment="center"
                 android:textColor="@color/black"/>
 
@@ -131,7 +131,7 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/btn_selector"
-                android:text="COMPARTIR"
+                android:text="SHARE"
                 android:textColor="#000000"/>
 
 <!--            <androidx.appcompat.widget.AppCompatButton-->
