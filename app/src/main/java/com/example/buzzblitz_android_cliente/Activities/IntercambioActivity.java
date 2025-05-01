@@ -11,7 +11,7 @@ import com.example.buzzblitz_android_cliente.R;
 import com.example.buzzblitz_android_cliente.Services.BuzzBlitzService;
 import com.example.buzzblitz_android_cliente.RetrofitClient;
 
-public class IntercambioActivity extends AppCompatActivity {
+public class IntercambioActivity extends BaseActivity {
     private LottieAnimationView exchangeAnim;
 
     @Override
@@ -28,8 +28,6 @@ public class IntercambioActivity extends AppCompatActivity {
         exchangeAnim.setAnimation(R.raw.exchange);
         exchangeAnim.setRepeatCount(0); // Reproducció única
         exchangeAnim.setOnClickListener(v -> iniciarIntercambio());
-
-        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
 
         findViewById(R.id.btnHelp).setOnClickListener(v -> {
             startActivity(new Intent(this, HelpActivity.class));

@@ -134,14 +134,14 @@
                 android:text="COMPARTIR"
                 android:textColor="#000000"/>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnBack"
-                android:layout_width="70dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/btn_selector"
-                android:text="BACK"
-                android:textColor="#000000"/>
+<!--            <androidx.appcompat.widget.AppCompatButton-->
+<!--                android:id="@+id/btnBack"-->
+<!--                android:layout_width="70dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:layout_marginTop="15dp"-->
+<!--                android:background="@drawable/btn_selector"-->
+<!--                android:text="BACK"-->
+<!--                android:textColor="#000000"/>-->
 
         </LinearLayout>
     </ScrollView>

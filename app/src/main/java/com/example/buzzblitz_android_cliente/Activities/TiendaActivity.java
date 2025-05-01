@@ -21,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TiendaActivity extends AppCompatActivity {
+public class TiendaActivity extends BaseActivity {
 
     // Utilitza un RecyclerView per mostrar armes i skins que es descarreguen de l'API.
     // Es fan dues crides: una per armes i una altra per skins.
@@ -35,11 +35,6 @@ public class TiendaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tienda);
-
-        findViewById(R.id.btnBack).setOnClickListener(v -> {
-            startActivity(new Intent(this, BeforeTiendaActivity.class));
-            finish();
-        });
 
         // Configuro el RecyclerView
         rv = findViewById(R.id.rvObjetos);

@@ -9,7 +9,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.buzzblitz_android_cliente.R;
 
-public class TerminosActivity extends AppCompatActivity {
+public class TerminosActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,8 +18,5 @@ public class TerminosActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
         TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
         tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
-
-        AppCompatButton btnBack = findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(v -> finish());
     }
 }

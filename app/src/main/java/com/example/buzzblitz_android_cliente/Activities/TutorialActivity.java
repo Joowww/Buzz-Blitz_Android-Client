@@ -9,17 +9,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.buzzblitz_android_cliente.R;
 
-public class TutorialActivity extends AppCompatActivity {
+public class TutorialActivity extends BaseActivity { // Cambiar herencia
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial);
 
+        // Eliminar referencia a btnBack
         SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
         TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
         tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
-
-        Button btnBack = findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(v -> finish());
     }
 }

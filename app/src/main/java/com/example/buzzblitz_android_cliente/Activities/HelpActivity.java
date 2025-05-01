@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.buzzblitz_android_cliente.R;
 
-public class HelpActivity extends AppCompatActivity {
+public class HelpActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +18,5 @@ public class HelpActivity extends AppCompatActivity {
         TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
         tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
 
-        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
     }
 }

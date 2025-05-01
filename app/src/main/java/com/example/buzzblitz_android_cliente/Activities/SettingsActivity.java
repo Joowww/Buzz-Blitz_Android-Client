@@ -10,7 +10,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.buzzblitz_android_cliente.R;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +35,5 @@ public class SettingsActivity extends AppCompatActivity {
         btnTerminos.setOnClickListener(v -> {
             startActivity(new Intent(SettingsActivity.this, TerminosActivity.class));
         });
-
-        AppCompatButton btnBack = findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(v -> finish());
     }
 }

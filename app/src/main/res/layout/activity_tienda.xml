@@ -16,17 +16,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnBack"
-        android:layout_width="90dp"
-        android:layout_height="40dp"
-        android:background="@drawable/btn_selector"
-        android:text="BACK"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="@+id/rvObjetos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.82" />
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/btnBack"-->
+<!--        android:layout_width="90dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:background="@drawable/btn_selector"-->
+<!--        android:text="BACK"-->
+<!--        android:textColor="#000000"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/rvObjetos"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.82" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

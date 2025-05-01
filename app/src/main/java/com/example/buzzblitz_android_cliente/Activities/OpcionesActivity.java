@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.buzzblitz_android_cliente.R;
 
-public class OpcionesActivity extends AppCompatActivity {
+public class OpcionesActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +22,6 @@ public class OpcionesActivity extends AppCompatActivity {
 
         Button btnTutorial = findViewById(R.id.btnTutorial);
         Button btnBorrarUsuario = findViewById(R.id.btnBorrarUsuario);
-        Button btnBack = findViewById(R.id.btnBack);
 
         btnTutorial.setOnClickListener(v ->
                 startActivity(new Intent(OpcionesActivity.this, TutorialActivity.class))
@@ -31,7 +30,5 @@ public class OpcionesActivity extends AppCompatActivity {
         btnBorrarUsuario.setOnClickListener(v ->
                 startActivity(new Intent(OpcionesActivity.this, BorrarUsuarioActivity.class))
         );
-
-        btnBack.setOnClickListener(v -> finish());
     }
 }

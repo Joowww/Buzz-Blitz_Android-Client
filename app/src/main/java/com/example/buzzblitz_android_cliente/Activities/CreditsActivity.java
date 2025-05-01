@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.buzzblitz_android_cliente.R;
 
-public class CreditsActivity extends AppCompatActivity {
+public class CreditsActivity extends BaseActivity {
     private int clickCount = 0;
     private long lastClickTime = 0;
     private static final int CLICK_THRESHOLD = 3;
@@ -39,7 +39,6 @@ public class CreditsActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.btnShare).setOnClickListener(v -> shareGame());
-        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
     }
 
     private void handleLogoClick(LottieAnimationView animation) {
