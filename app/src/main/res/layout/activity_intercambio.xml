@@ -33,43 +33,29 @@
         android:id="@+id/lottieExchange"
         android:layout_width="177dp"
         android:layout_height="91dp"
-        android:layout_marginTop="424dp"
+        android:layout_marginTop="492dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_rawRes="@raw/exchange" />
 
-<!--    <androidx.appcompat.widget.AppCompatButton-->
-<!--        android:id="@+id/btnBack"-->
-<!--        android:layout_width="90dp"-->
-<!--        android:layout_height="40dp"-->
-<!--        android:layout_marginBottom="280dp"-->
-<!--        android:background="@drawable/btn_selector"-->
-<!--        android:text="BACK"-->
-<!--        android:textColor="#000000"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.495"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnHelp"
-        android:layout_width="156dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="280dp"
+        android:layout_width="105dp"
+        android:layout_height="37dp"
+        android:layout_marginBottom="216dp"
         android:background="@drawable/btn_selector"
         android:text="HELP"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
+        android:layout_width="171dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="24dp"
         android:text="To exchange, click the bill"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -78,11 +64,38 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:id="@+id/textView4"
+        android:layout_width="288dp"
+        android:layout_height="37dp"
+        android:layout_marginBottom="192dp"
+        android:text="Please, introduce the type and the number of flowers that you want to exchange "
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/lottieExchange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="340dp"
-        android:text="Por acabar el layout"
+        android:layout_marginTop="372dp"
+        android:hint="Number of flowers"
+        android:inputType="text"
+        android:textColor="@color/texto_negro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="312dp"
+        android:hint="Type of flower"
+        android:inputType="text"
+        android:textColor="@color/texto_negro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

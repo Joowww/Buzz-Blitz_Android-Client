@@ -1,19 +1,16 @@
 package com.example.buzzblitz_android_cliente.Activities;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.buzzblitz_android_cliente.Adapters.MyAdapter;
+import com.example.buzzblitz_android_cliente.Adapters.MyShopAdapter;
 import com.example.buzzblitz_android_cliente.Models.Objeto;
 import com.example.buzzblitz_android_cliente.Models.ConsultaTienda;
 import com.example.buzzblitz_android_cliente.R;
 import com.example.buzzblitz_android_cliente.Services.BuzzBlitzService;
 import com.example.buzzblitz_android_cliente.RetrofitClient;
-import android.content.Intent;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +25,7 @@ public class TiendaActivity extends BaseActivity {
     // Quan arriben les dades, s'afegeixen a la llista i es notifica l'adaptador perquè es vegi tot.
     // Si l'API falla, es veurà als logs
     private RecyclerView rv;
-    private MyAdapter adapter;
+    private MyShopAdapter adapter;
     private final List<Objeto> objetosTienda = new ArrayList<>();
 
     @Override
@@ -39,7 +36,7 @@ public class TiendaActivity extends BaseActivity {
         // Configuro el RecyclerView
         rv = findViewById(R.id.rvObjetos);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new MyAdapter(objetosTienda);
+        adapter = new MyShopAdapter(objetosTienda);
         rv.setAdapter(adapter);
 
         // Carrego dades de la API

@@ -12,14 +12,14 @@ import com.example.buzzblitz_android_cliente.Models.Objeto;
 import com.example.buzzblitz_android_cliente.R;
 import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+public class MyShopAdapter extends RecyclerView.Adapter<MyShopAdapter.ViewHolder> {
 
     // Aquest adaptador és per omplir el RecyclerView amb les dades dels objectes (armes/skins).
     // Agafa una llista d'Objeto i els mostra en tarjetes.
 
     private final List<Objeto> objetos;
 
-    public MyAdapter(List<Objeto> objetos) {
+    public MyShopAdapter(List<Objeto> objetos) {
         this.objetos = objetos;
     }
 

@@ -6,6 +6,10 @@ import com.example.buzzblitz_android_cliente.Models.Usuario;
 import com.example.buzzblitz_android_cliente.Models.Usulogin;
 import com.example.buzzblitz_android_cliente.Models.Compra;
 import com.example.buzzblitz_android_cliente.Models.ConsultaTienda;
+import com.example.buzzblitz_android_cliente.Models.ForumPost;
+import com.example.buzzblitz_android_cliente.Models.ChatMessage;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -34,5 +38,18 @@ public interface BuzzBlitzService {
 
     @DELETE("usuarios/{id}")
     Call<Void> deleteUsuario(@Path("id") String id);
+
+    // En BuzzBlitzService.java
+    @GET("forum/posts")
+    Call<List<ForumPost>> getForumPosts();
+
+    @POST("forum/posts")
+    Call<Void> createForumPost(@Body ForumPost post);
+
+    @GET("chat/messages")
+    Call<List<ChatMessage>> getChatMessages();
+
+    @POST("chat/messages")
+    Call<Void> sendMessage(@Body ChatMessage message);
 
 }

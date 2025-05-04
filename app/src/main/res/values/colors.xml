@@ -7,4 +7,8 @@
     <color name="texto_negro">#FF000000</color>
     <color name="bee_yellow">#FFD700</color>
     <color name="primaryDark">#212121</color>
+    <color name="gold">#FFD700</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="bronze">#CD7F32</color>
+    <color name="gray">#808080</color>
 </resources>
