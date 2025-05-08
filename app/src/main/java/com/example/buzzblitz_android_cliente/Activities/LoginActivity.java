@@ -57,14 +57,12 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        // Crear objecte de login
         Usulogin peticion = new Usulogin();
         peticion.setIdoname(userInput);
         peticion.setPswd(password);
 
         BuzzBlitzService api = RetrofitClient.getApiService();
 
-        // Truca a la API
         Call<Usuario> call = api.loginUsuario(peticion);
         call.enqueue(new Callback<Usuario>() {
             @Override
@@ -72,7 +70,6 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     Usuario usuario = response.body();
 
-                    // Guardar datos del usuario
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("currentUser", usuario.getMail());
                     editor.putString("currentUserId", usuario.getId());
@@ -80,7 +77,6 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putBoolean("showWelcome", true);
                     editor.apply();
 
-                    // Marcar como logueado
                     AuthUtil.setUserLoggedIn(LoginActivity.this, true);
 
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
@@ -105,6 +101,6 @@ public class LoginActivity extends AppCompatActivity {
                 Log.e("LOGIN_DEBUG", "Network error: ", t);
                 Toast.makeText(LoginActivity.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        }); // Cierre correcto del callback
+        });
     }
 }

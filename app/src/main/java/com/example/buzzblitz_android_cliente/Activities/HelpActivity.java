@@ -26,7 +26,7 @@ public class HelpActivity extends BaseActivity {
         tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
 
         final LottieAnimationView explosionAnimation = findViewById(R.id.animationView);
-        ImageView honeyJarImage = findViewById(R.id.imageView6); // ImageView del tarro de miel
+        ImageView honeyJarImage = findViewById(R.id.imageView6);
 
         honeyJarImage.setOnClickListener(v -> handleHoneyJarClick(explosionAnimation));
 

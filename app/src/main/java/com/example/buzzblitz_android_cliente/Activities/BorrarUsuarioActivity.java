@@ -34,21 +34,18 @@ public class BorrarUsuarioActivity extends BaseActivity {
 
         btnSi.setOnClickListener(v -> {
             String currentUserEmail = sharedPreferences.getString("currentUser", "");
-            String userId = sharedPreferences.getString("currentUserId", ""); // Necesitamos almacenar el ID durante el login
+            String userId = sharedPreferences.getString("currentUserId", "");
 
             if (!userId.isEmpty()) {
-                // Llamada a la API para borrar el usuario
                 Call<Void> call = apiService.deleteUsuario(userId);
                 call.enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if (response.isSuccessful()) {
-                            // Borrar datos locales
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.clear();
                             editor.apply();
 
-                            // Redirigir al login
                             Intent intent = new Intent(BorrarUsuarioActivity.this, LoginActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);

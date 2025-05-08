@@ -14,7 +14,6 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_base);
 
-        // Configurar listeners de la barra
         findViewById(R.id.nav_logout).setOnClickListener(v -> {
             startActivity(new Intent(this, CerrarSesionActivity.class));
             finishAffinity();

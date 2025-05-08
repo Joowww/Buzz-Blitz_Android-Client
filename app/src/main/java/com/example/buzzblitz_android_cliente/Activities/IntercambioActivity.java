@@ -39,7 +39,6 @@ public class IntercambioActivity extends BaseActivity {
 
         exchangeAnim.addAnimatorUpdateListener(animation -> {
             if (animation.getAnimatedFraction() == 1f) {
-                // Iniciar actividad de carga
                 startActivityForResult(
                         new Intent(this, CargaIntercambio.class),
                         INTERCAMBIO_REQUEST_CODE
@@ -54,7 +53,6 @@ public class IntercambioActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == INTERCAMBIO_REQUEST_CODE && resultCode == RESULT_OK) {
-            // Mostrar Toast al regresar
             Toast.makeText(this, "Exchange realized: 2 flowers → 1 honey jar", Toast.LENGTH_SHORT).show();
         }
     }

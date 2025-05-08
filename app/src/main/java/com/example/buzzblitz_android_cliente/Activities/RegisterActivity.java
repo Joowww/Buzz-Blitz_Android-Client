@@ -68,7 +68,6 @@ public class RegisterActivity extends AppCompatActivity {
         String question1 = spinnerPregunta1.getSelectedItem().toString();
         String answer1 = etRespuesta1.getText().toString().trim();
 
-        // Validar nombre y apellido
         String[] nameParts = fullName.split("\\s+", 2); // Divide en 2 partes máximo
         if (nameParts.length != 2) {
             showToast("Enter name and surname separated by a space");
@@ -87,11 +86,9 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        // Crea l'objecte amb les dades del usuari
         UsuReg newUser = new UsuReg(userId, firstName, lastName, password, email, question1, answer1);
         BuzzBlitzService api = RetrofitClient.getApiService();
 
-        // Envia la petició POST a l'API
         Call<Void> call = api.registerUsuario(newUser);
         call.enqueue(new Callback<Void>() {
             @Override

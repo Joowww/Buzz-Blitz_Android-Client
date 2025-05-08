@@ -26,7 +26,6 @@ public class CerrarSesionActivity extends AppCompatActivity {
         ImageButton btnNo = findViewById(R.id.boton_imagenno);
 
         btnSi.setOnClickListener(v -> {
-            // Limpiar preferencias de usuario
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.remove("currentUser");
             editor.remove("currentUserId");
@@ -34,10 +33,8 @@ public class CerrarSesionActivity extends AppCompatActivity {
             editor.remove("showWelcome");
             editor.apply();
 
-            // Actualizar estado de sesión
             AuthUtil.setUserLoggedIn(CerrarSesionActivity.this, false);
 
-            // Redirigir al login y limpiar pila de actividades
             Intent intent = new Intent(this, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);

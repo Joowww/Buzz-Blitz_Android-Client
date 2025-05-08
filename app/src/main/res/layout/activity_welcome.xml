@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/img">
 
-
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieSpider3"
         android:layout_width="82dp"

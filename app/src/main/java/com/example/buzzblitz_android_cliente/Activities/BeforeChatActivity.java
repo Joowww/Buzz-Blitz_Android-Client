@@ -42,18 +42,16 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.buzzblitz_android_cliente.R;
 
-public class BeforeChatActivity extends BaseActivity { // Cambia AppCompatActivity por BaseActivity
+public class BeforeChatActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_beforechat); // Carga tu layout dentro del FrameLayout
+        setContentView(R.layout.activity_beforechat);
 
         SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
         TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
         tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
 
-        // Elimina el botón BACK del layout (ya no es necesario)
-        // findViewById(R.id.btnBack).setOnClickListener(...);
 
         findViewById(R.id.boton_imagenchat).setOnClickListener(v ->
                 startActivity(new Intent(this, ChatActivity.class))

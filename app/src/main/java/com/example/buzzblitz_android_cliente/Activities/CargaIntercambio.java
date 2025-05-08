@@ -29,7 +29,6 @@ public class CargaIntercambio extends AppCompatActivity {
             animationCarga2.playAnimation();
 
             new Handler().postDelayed(() -> {
-                // Devolver resultado OK
                 setResult(RESULT_OK);
                 finish();
             }, 3000);

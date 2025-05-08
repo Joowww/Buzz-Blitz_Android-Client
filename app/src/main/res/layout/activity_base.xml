@@ -5,14 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Contenedor principal -->
     <FrameLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottom_navigation"/>
 
-    <!-- Barra inferior personalizada -->
     <LinearLayout
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
@@ -22,7 +20,6 @@
         android:background="@color/beige_warm"
         android:elevation="8dp">
 
-        <!-- Botón Logout -->
         <Button
             android:id="@+id/nav_logout"
             android:layout_width="0dp"
@@ -32,13 +29,11 @@
             android:textColor="@color/texto_negro"
             android:background="?attr/selectableItemBackground"/>
 
-        <!-- Línea divisoria -->
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:background="#CCCCCC"/>
 
-        <!-- Botón Back -->
         <Button
             android:id="@+id/nav_back"
             android:layout_width="15dp"
@@ -48,13 +43,11 @@
             android:textColor="@color/texto_negro"
             android:background="?attr/selectableItemBackground"/>
 
-        <!-- Línea divisoria -->
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:background="#CCCCCC"/>
 
-        <!-- Botón Home -->
         <Button
             android:id="@+id/nav_home"
             android:layout_width="0dp"

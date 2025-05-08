@@ -19,11 +19,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TiendaActivity extends BaseActivity {
-
-    // Utilitza un RecyclerView per mostrar armes i skins que es descarreguen de l'API.
-    // Es fan dues crides: una per armes i una altra per skins.
-    // Quan arriben les dades, s'afegeixen a la llista i es notifica l'adaptador perquè es vegi tot.
-    // Si l'API falla, es veurà als logs
     private RecyclerView rv;
     private MyShopAdapter adapter;
     private final List<Objeto> objetosTienda = new ArrayList<>();
@@ -33,20 +28,17 @@ public class TiendaActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tienda);
 
-        // Configuro el RecyclerView
         rv = findViewById(R.id.rvObjetos);
         rv.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MyShopAdapter(objetosTienda);
         rv.setAdapter(adapter);
 
-        // Carrego dades de la API
         cargarArmasYSkins();
     }
 
     private void cargarArmasYSkins() {
         BuzzBlitzService apiService = RetrofitClient.getApiService();
 
-        // Crido a les armes
         apiService.getArmas().enqueue(new Callback<ConsultaTienda>() {
             @Override
             public void onResponse(Call<ConsultaTienda> call, Response<ConsultaTienda> response) {
@@ -66,7 +58,6 @@ public class TiendaActivity extends BaseActivity {
             }
         });
 
-        // Crido a les skins
         apiService.getSkin().enqueue(new Callback<ConsultaTienda>() {
             @Override
             public void onResponse(Call<ConsultaTienda> call, Response<ConsultaTienda> response) {

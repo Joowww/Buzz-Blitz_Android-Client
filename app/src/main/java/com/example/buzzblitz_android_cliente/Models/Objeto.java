@@ -9,7 +9,7 @@ public class Objeto {
     private Integer precio;
     private int tipo;
     private String descripcion;
-    private String imagenResId;// "arma" o "skin"
+    private String imagenResId;
 
     public Objeto() {}
 
@@ -72,10 +72,10 @@ public class Objeto {
         this.tipo = tipo;
     }
     public void setNombreImagen(String nombreImagen) { this.imagenResId = nombreImagen; }
-    // En Objeto.java
+
     public int getImagenResId(Context context) {
         int resId = context.getResources()
                 .getIdentifier(imagenResId, "drawable", context.getPackageName());
-        return resId != 0 ? resId : R.drawable.bee; // Fallback explícito
+        return resId != 0 ? resId : R.drawable.bee;
     }
 }

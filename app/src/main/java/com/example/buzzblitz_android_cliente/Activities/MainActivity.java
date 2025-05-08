@@ -28,17 +28,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Configura el missatge de benvinguda (visible 3 segons)
         tvWelcomeMessage = findViewById(R.id.tvWelcomeMessage);
         sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
 
-        // Mostrar missatge de benvinguda
         if (sharedPreferences.getBoolean("showWelcome", false)) {
             String userId = sharedPreferences.getString("currentUserId", "");
             tvWelcomeMessage.setText("Welcome, " + userId);
             tvWelcomeMessage.setVisibility(View.VISIBLE);
 
-            // Ocultar després de 3 segons
             new Handler().postDelayed(() -> {
                 tvWelcomeMessage.setVisibility(View.GONE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -50,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
         tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
 
-        // Inicialitzar animacions d'abelles
         bees1 = findViewById(R.id.lottieBees1);
         bees2 = findViewById(R.id.lottieBees2);
         bees3 = findViewById(R.id.lottieBees3);
@@ -58,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(() -> bees2.setVisibility(View.VISIBLE), 1000);
         new Handler().postDelayed(() -> bees3.setVisibility(View.VISIBLE), 2000);
 
-        // Listeners de botons principals
         findViewById(R.id.btnPlay).setOnClickListener(v ->
                 startActivity(new Intent(this, PlayActivity.class)));
 
@@ -68,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnExit).setOnClickListener(v ->
                 startActivity(new Intent(this, CerrarSesionActivity.class)));
 
-        // Configurar menú lateral
         sideMenuCard = findViewById(R.id.sideMenuCard);
         menuContent = findViewById(R.id.menuContent);
         ivArrow = findViewById(R.id.ivArrow);

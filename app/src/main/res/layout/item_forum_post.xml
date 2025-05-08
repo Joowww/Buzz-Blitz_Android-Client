@@ -14,7 +14,6 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Autor y fecha -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,7 +37,6 @@
                 android:textColor="@color/gray"/>
         </LinearLayout>
 
-        <!-- Contenido -->
         <TextView
             android:id="@+id/tvContent"
             android:layout_width="match_parent"
@@ -46,7 +44,6 @@
             android:layout_marginTop="8dp"
             android:textSize="16sp"/>
 
-        <!-- Botones interacción -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

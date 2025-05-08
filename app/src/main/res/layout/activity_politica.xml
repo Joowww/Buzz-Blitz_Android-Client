@@ -56,18 +56,4 @@
         app:layout_constraintVertical_bias="0.315"
         app:srcCompat="@drawable/img_15" />
 
-    <!--    <androidx.appcompat.widget.AppCompatButton-->
-<!--        android:id="@+id/btnBack"-->
-<!--        android:layout_width="90dp"-->
-<!--        android:layout_height="40dp"-->
-<!--        android:layout_marginStart="144dp"-->
-<!--        android:layout_marginBottom="-100dp"-->
-<!--        android:background="@drawable/btn_selector"-->
-<!--        android:text="BACK"-->
-<!--        android:textColor="#000000"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.616" />-->
-
 </androidx.constraintlayout.widget.ConstraintLayout>

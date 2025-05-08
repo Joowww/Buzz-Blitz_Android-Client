@@ -3,15 +3,15 @@
     <item
         android:id="@+id/nav_logout"
         android:title="Logout"
-        android:icon="@drawable/user"/> <!-- Crea este drawable -->
+        android:icon="@drawable/user"/>
 
     <item
         android:id="@+id/nav_back"
         android:title="Back"
-        android:icon="@drawable/btn_selector"/> <!-- Crea este drawable -->
+        android:icon="@drawable/btn_selector"/>
 
     <item
         android:id="@+id/nav_home"
         android:title="Home"
-        android:icon="@drawable/puestomiel"/> <!-- Crea este drawable -->
+        android:icon="@drawable/puestomiel"/>
 </menu>

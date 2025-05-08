@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:background="@color/fondo_amarillo_claro">
 
-    <!-- Header con usuario -->
     <TextView
         android:id="@+id/tvUserIdCorner"
         android:layout_width="wrap_content"
@@ -18,7 +17,6 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"/>
 
-    <!-- Lista de mensajes -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvChatMessages"
         android:layout_width="match_parent"
@@ -27,7 +25,6 @@
         app:layout_constraintBottom_toTopOf="@id/llInputContainer"
         tools:listitem="@layout/item_message"/>
 
-    <!-- Área de entrada -->
     <LinearLayout
         android:id="@+id/llInputContainer"
         android:layout_width="match_parent"

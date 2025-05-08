@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:background="@color/fondo_amarillo_claro">
 
-    <!-- Header con usuario -->
     <TextView
         android:id="@+id/tvUserIdCorner"
         android:layout_width="wrap_content"
@@ -18,7 +17,6 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"/>
 
-    <!-- Lista de publicaciones -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvForumPosts"
         android:layout_width="match_parent"
@@ -27,7 +25,6 @@
         app:layout_constraintBottom_toTopOf="@id/fabNewPost"
         tools:listitem="@layout/item_forum_post"/>
 
-    <!-- Botón nueva publicación -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabNewPost"
         android:layout_width="wrap_content"

@@ -40,7 +40,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.buzzblitz_android_cliente.R;
 
-public class BeforeTiendaActivity extends BaseActivity { // Hereda de BaseActivity
+public class BeforeTiendaActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,9 +49,6 @@ public class BeforeTiendaActivity extends BaseActivity { // Hereda de BaseActivi
         SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
         TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
         tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
-
-        // Elimina el botón BACK
-        // findViewById(R.id.btnBack).setOnClickListener(...);
 
         findViewById(R.id.boton_imagenbuy).setOnClickListener(v ->
                 startActivity(new Intent(this, TiendaActivity.class))

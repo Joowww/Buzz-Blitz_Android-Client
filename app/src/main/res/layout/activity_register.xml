@@ -24,72 +24,73 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:gravity="center">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.445">
 
         <EditText
             android:id="@+id/FullName"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
             android:hint="Name (space) Surname"
-            android:textColor="@color/texto_negro"
             android:inputType="textPersonName"
-            android:layout_marginVertical="8dp"/>
-
+            android:textColor="@color/texto_negro" />
 
         <EditText
             android:id="@+id/IdUserRegister"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
             android:hint="ID User"
-            android:textColor="@color/texto_negro"
             android:inputType="textPersonName"
-            android:layout_marginVertical="8dp"/>
+            android:textColor="@color/texto_negro" />
 
         <EditText
             android:id="@+id/etEmailRegister"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
             android:hint="Email"
-            android:textColor="@color/texto_negro"
             android:inputType="textEmailAddress"
-            android:layout_marginVertical="8dp"/>
+            android:textColor="@color/texto_negro" />
 
         <EditText
             android:id="@+id/etPasswordRegister"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
             android:hint="Password"
-            android:textColor="@color/texto_negro"
             android:inputType="textPassword"
-            android:layout_marginVertical="8dp"/>
+            android:textColor="@color/texto_negro" />
 
         <EditText
             android:id="@+id/etRepeatPassword"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
             android:hint="Repeat Password"
-            android:textColor="@color/texto_negro"
             android:inputType="textPassword"
-            android:layout_marginVertical="8dp"/>
+            android:textColor="@color/texto_negro" />
 
         <Spinner
             android:id="@+id/spinnerPregunta1"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="8dp"/>
+            android:layout_marginVertical="8dp" />
 
         <EditText
             android:id="@+id/etRespuesta1"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
             android:hint="Answer 1"
-            android:textColor="@color/texto_negro"
-            android:layout_marginVertical="8dp"/>
+            android:textColor="@color/texto_negro" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnRegister"
@@ -109,9 +110,8 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/btn_selector"
             android:padding="12dp"
-            android:text= "I already have an account"
-            android:textColor= "@color/texto_negro" />
-
+            android:text="I already have an account"
+            android:textColor="@color/texto_negro" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
