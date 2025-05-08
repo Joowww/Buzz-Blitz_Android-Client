@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,8 +28,8 @@ public class BorrarUsuarioActivity extends BaseActivity {
         TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
         tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
 
-        Button btnSi = findViewById(R.id.btnCerrarSesion);
-        Button btnNo = findViewById(R.id.btnBack);
+        ImageButton btnSi = findViewById(R.id.boton_imagenyes);
+        ImageButton btnNo = findViewById(R.id.boton_imagenno);
         BuzzBlitzService apiService = RetrofitClient.getApiService();
 
         btnSi.setOnClickListener(v -> {

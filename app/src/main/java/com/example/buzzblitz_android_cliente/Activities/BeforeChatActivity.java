@@ -55,11 +55,11 @@ public class BeforeChatActivity extends BaseActivity { // Cambia AppCompatActivi
         // Elimina el botón BACK del layout (ya no es necesario)
         // findViewById(R.id.btnBack).setOnClickListener(...);
 
-        findViewById(R.id.btnChat).setOnClickListener(v ->
+        findViewById(R.id.boton_imagenchat).setOnClickListener(v ->
                 startActivity(new Intent(this, ChatActivity.class))
         );
 
-        findViewById(R.id.btnForum).setOnClickListener(v ->
+        findViewById(R.id.boton_imagenforum).setOnClickListener(v ->
                 startActivity(new Intent(this, ForumActivity.class))
         );
     }

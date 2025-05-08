@@ -29,11 +29,6 @@ public class Objeto {
     public String getImagenResId() {
         return imagenResId;
     }
-
-    public void setPrecio(Integer precio) {
-        this.precio = precio;
-    }
-
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }

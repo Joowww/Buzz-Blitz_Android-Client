@@ -9,11 +9,11 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="768dp"
-        android:layout_height="904dp"
+        android:layout_width="430dp"
+        android:layout_height="848dp"
         android:layout_marginStart="10dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/fondowww"
+        android:src="@drawable/img_10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.482"
@@ -31,52 +31,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"/>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="286dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="-40dp"
-        android:text="TAKE INTO ACCOUNT FOR THE \n                   EXCHANGE"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.419" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="-50dp"
-        android:layout_marginBottom="-40dp"
-        android:text="2 gardenias equal 1 honey jar."
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.736"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.44" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="-40dp"
-        android:text="3 carnations equal 1 honey jar."
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.685"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.093" />
-
-<!--    <androidx.appcompat.widget.AppCompatButton-->
+    <!--    <androidx.appcompat.widget.AppCompatButton-->
 <!--        android:id="@+id/btnBack"-->
 <!--        android:layout_width="90dp"-->
 <!--        android:layout_height="40dp"-->
@@ -90,14 +45,45 @@
 <!--        app:layout_constraintTop_toTopOf="parent"-->
 <!--        app:layout_constraintVertical_bias="0.663" />-->
 
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-50dp"
+        android:layout_marginBottom="-40dp"
+        android:text="30 normal flowers equal 1 honey jar."
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.728"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.57" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="-40dp"
+        android:text="1 golden flower equal 50 honey jar."
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.628"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.118" />
+
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="70dp"
         android:layout_height="40dp"
         android:layout_marginEnd="240dp"
-        android:layout_marginBottom="438dp"
+        android:layout_marginBottom="332dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.584"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/flower" />
 
@@ -106,9 +92,10 @@
         android:layout_width="70dp"
         android:layout_height="40dp"
         android:layout_marginEnd="240dp"
-        android:layout_marginBottom="375dp"
+        android:layout_marginBottom="264dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.584"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/goldflower" />
 
@@ -116,10 +103,10 @@
         android:id="@+id/imageView6"
         android:layout_width="70dp"
         android:layout_height="59dp"
-        android:layout_marginBottom="224dp"
+        android:layout_marginBottom="180dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/honey3diconmodel" />
 
@@ -127,14 +114,26 @@
         android:id="@+id/animationView"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_marginTop="456dp"
+        android:layout_marginTop="492dp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintHorizontal_bias="0.603"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="false"
         app:lottie_loop="false"
         app:lottie_rawRes="@raw/explosionhoney" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="285dp"
+        android:layout_height="89dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.59"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.342"
+        app:srcCompat="@drawable/img_13" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

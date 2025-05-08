@@ -19,7 +19,7 @@
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-        android:background="#FFFFFF"
+        android:background="@color/beige_warm"
         android:elevation="8dp">
 
         <!-- Botón Logout -->

@@ -9,81 +9,63 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="710dp"
-        android:layout_height="850dp"
+        android:layout_width="478dp"
+        android:layout_height="886dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/fondowww"
+        android:src="@drawable/img_10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-    android:id="@+id/tvUserIdCorner"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textSize="12sp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="8dp"/>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="258dp"
-        android:layout_height="73dp"
-        android:layout_marginTop="-50dp"
-        android:text="DO YOU WANT TO CHAT  WITH SOMEONE OR ENTER TO THE GAME FORUM?"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/tvUserIdCorner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="296dp"
+        android:layout_height="164dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.57"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.406" />
+        app:layout_constraintVertical_bias="0.318"
+        app:srcCompat="@drawable/img_8" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnForum"
-        android:layout_width="247dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginBottom="-100dp"
-        android:background="@drawable/btn_selector"
-        android:text="FORUM"
-        android:textColor="#000000"
+    <ImageButton
+        android:id="@+id/boton_imagenchat"
+        android:layout_width="141dp"
+        android:layout_height="126dp"
+        android:background="@null"
+        android:contentDescription="Botón con imagen cambiante"
+        android:src="@drawable/imagen_boton_chat"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.842"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.553" />
+        app:layout_constraintVertical_bias="0.717" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnChat"
-        android:layout_width="247dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginBottom="-100dp"
-        android:background="@drawable/btn_selector"
-        android:text="Chat"
-        android:textColor="#000000"
+    <ImageButton
+        android:id="@+id/boton_imagenforum"
+        android:layout_width="141dp"
+        android:layout_height="126dp"
+        android:background="@null"
+        android:contentDescription="Botón con imagen cambiante"
+        android:src="@drawable/imagen_boton_forum"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.248"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.447" />
-
-    <!--    <androidx.appcompat.widget.AppCompatButton-->
-<!--        android:id="@+id/btnBack"-->
-<!--        android:layout_width="90dp"-->
-<!--        android:layout_height="40dp"-->
-<!--        android:layout_marginStart="144dp"-->
-<!--        android:layout_marginBottom="-100dp"-->
-<!--        android:background="@drawable/btn_selector"-->
-<!--        android:text="BACK"-->
-<!--        android:textColor="#000000"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.621"/>-->
+        app:layout_constraintVertical_bias="0.718" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

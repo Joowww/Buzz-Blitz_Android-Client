@@ -8,10 +8,10 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="735dp"
-        android:layout_height="909dp"
+        android:layout_width="469dp"
+        android:layout_height="923dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/fondowww"
+        android:src="@drawable/img_17"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.473"
@@ -39,18 +39,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_rawRes="@raw/exchange" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnHelp"
-        android:layout_width="105dp"
-        android:layout_height="37dp"
-        android:layout_marginBottom="216dp"
-        android:background="@drawable/btn_selector"
-        android:text="HELP"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="171dp"
@@ -67,13 +55,12 @@
         android:id="@+id/textView4"
         android:layout_width="288dp"
         android:layout_height="37dp"
-        android:layout_marginBottom="192dp"
+        android:layout_marginBottom="204dp"
         android:text="Please, introduce the type and the number of flowers that you want to exchange "
         android:textAlignment="center"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/lottieExchange"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -99,5 +86,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/boton_imagenhelp"
+        android:layout_width="141dp"
+        android:layout_height="126dp"
+        android:background="@null"
+        android:contentDescription="Botón con imagen cambiante"
+        android:src="@drawable/imagen_boton_help"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.789" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

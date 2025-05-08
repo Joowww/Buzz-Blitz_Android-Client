@@ -39,7 +39,7 @@ public interface BuzzBlitzService {
     @DELETE("usuarios/{id}")
     Call<Void> deleteUsuario(@Path("id") String id);
 
-    // En BuzzBlitzService.java
+    // Sin funcionar
     @GET("forum/posts")
     Call<List<ForumPost>> getForumPosts();
 

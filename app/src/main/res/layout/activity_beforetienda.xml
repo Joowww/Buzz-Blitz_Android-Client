@@ -11,15 +11,16 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="710dp"
-        android:layout_height="850dp"
+        android:layout_width="465dp"
+        android:layout_height="883dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/fondowww"
+        android:src="@drawable/img_10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.471"
+        app:layout_constraintHorizontal_bias="0.395"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.49" />
 
     <TextView
         android:id="@+id/tvUserIdCorner"
@@ -31,61 +32,45 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"/>
 
-    <!-- Texto -->
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="287dp"
-        android:layout_height="86dp"
-        android:layout_marginTop="-50dp"
-        android:text="DO YOU WANT TO BUY SOMETHING OR WOULD YOU PREFER TO TRADE FLOWERS?"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="322dp"
+        android:layout_height="129dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.606"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.338"
+        app:srcCompat="@drawable/img_9" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnComprarTienda"
-        android:layout_width="110dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginBottom="-100dp"
-        android:background="@drawable/btn_selector"
-        android:text="BUY"
-        android:textColor="#000000"
+    <ImageButton
+        android:id="@+id/boton_imagenbuy"
+        android:layout_width="149dp"
+        android:layout_height="133dp"
+        android:layout_marginTop="20dp"
+        android:background="@null"
+        android:contentDescription="Botón con imagen cambiante"
+        android:src="@drawable/imagen_boton_buy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.832"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.53" />
+        app:layout_constraintVertical_bias="0.708" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnIntercambiarTienda"
-        android:layout_width="110dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="244dp"
-        android:layout_marginBottom="-100dp"
-        android:background="@drawable/btn_selector"
-        android:text="EXCHANGE"
-        android:textColor="#000000"
+    <ImageButton
+        android:id="@+id/boton_imagenexchange"
+        android:layout_width="141dp"
+        android:layout_height="126dp"
+        android:background="@null"
+        android:contentDescription="Botón con imagen cambiante"
+        android:src="@drawable/imagen_boton_exchange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.248"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.53" />
-
-    <!--    <androidx.appcompat.widget.AppCompatButton-->
-<!--        android:id="@+id/btnBack"-->
-<!--        android:layout_width="90dp"-->
-<!--        android:layout_height="40dp"-->
-<!--        android:layout_marginStart="144dp"-->
-<!--        android:layout_marginBottom="-100dp"-->
-<!--        android:background="@drawable/btn_selector"-->
-<!--        android:text="BACK"-->
-<!--        android:textColor="#000000"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.621"/>-->
+        app:layout_constraintVertical_bias="0.718" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

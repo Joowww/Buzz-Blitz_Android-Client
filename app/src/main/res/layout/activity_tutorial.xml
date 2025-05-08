@@ -9,17 +9,16 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="721dp"
-        android:layout_height="849dp"
+        android:layout_width="463dp"
+        android:layout_height="878dp"
         android:layout_marginStart="10dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/fondowww"
+        android:src="@drawable/img_17"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.435"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.504" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvUserIdCorner"
@@ -32,24 +31,8 @@
         android:layout_marginEnd="8dp"/>
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="234dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="-80dp"
-        android:text="TUTORIAL BUZZBLITZ"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.433" />
-
-    <TextView
-        android:layout_width="300dp"
-        android:layout_height="185dp"
+        android:layout_width="183dp"
+        android:layout_height="459dp"
         android:layout_marginBottom="-80dp"
         android:text="You have to keep tapping the screen to make \n the bee move forward. But be careful, you must \n dodge obstacles by moving around them,\n trying to get as far as possible while collecting\n flowers. You can trade these flowers in the shop to buy new weapons and skins using jars of honey, so you can fight the final enemy and reach the hive."
         android:textAlignment="center"
@@ -57,9 +40,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.815" />
 
-<!--    <androidx.appcompat.widget.AppCompatButton-->
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="272dp"
+        android:layout_height="101dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.359"
+        app:srcCompat="@drawable/img_20" />
+
+    <!--    <androidx.appcompat.widget.AppCompatButton-->
 <!--        android:id="@+id/btnBack"-->
 <!--        android:layout_width="90dp"-->
 <!--        android:layout_height="40dp"-->

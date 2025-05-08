@@ -28,7 +28,7 @@ public class IntercambioActivity extends BaseActivity {
         exchangeAnim.setRepeatCount(0);
         exchangeAnim.setOnClickListener(v -> iniciarIntercambio());
 
-        findViewById(R.id.btnHelp).setOnClickListener(v -> {
+        findViewById(R.id.boton_imagenhelp).setOnClickListener(v -> {
             startActivity(new Intent(this, HelpActivity.class));
         });
     }

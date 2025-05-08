@@ -53,11 +53,11 @@ public class BeforeTiendaActivity extends BaseActivity { // Hereda de BaseActivi
         // Elimina el botón BACK
         // findViewById(R.id.btnBack).setOnClickListener(...);
 
-        findViewById(R.id.btnComprarTienda).setOnClickListener(v ->
+        findViewById(R.id.boton_imagenbuy).setOnClickListener(v ->
                 startActivity(new Intent(this, TiendaActivity.class))
         );
 
-        findViewById(R.id.btnIntercambiarTienda).setOnClickListener(v ->
+        findViewById(R.id.boton_imagenexchange).setOnClickListener(v ->
                 startActivity(new Intent(this, IntercambioActivity.class))
         );
     }

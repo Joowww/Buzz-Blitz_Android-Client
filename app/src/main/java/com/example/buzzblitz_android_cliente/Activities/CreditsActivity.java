@@ -38,7 +38,7 @@ public class CreditsActivity extends BaseActivity {
             spaceAnimation.setVisibility(View.INVISIBLE);
         });
 
-        findViewById(R.id.btnShare).setOnClickListener(v -> shareGame());
+        findViewById(R.id.boton_imagenshare).setOnClickListener(v -> shareGame());
     }
 
     private void handleLogoClick(LottieAnimationView animation) {

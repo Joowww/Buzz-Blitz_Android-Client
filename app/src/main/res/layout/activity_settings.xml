@@ -9,17 +9,17 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="766dp"
-        android:layout_height="924dp"
+        android:layout_width="486dp"
+        android:layout_height="877dp"
         android:layout_marginStart="10dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/fondowww"
+        android:src="@drawable/img_17"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.504" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/tvUserIdCorner"
@@ -31,59 +31,62 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"/>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="312dp"
-        android:text="SETTINGS"
-        android:textColor="@color/black"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnCredits"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:background="@drawable/btn_selector"
+        android:padding="12dp"
+        android:text="CREDITS"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.416"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.482" />
 
-    <LinearLayout
-        android:layout_width="232dp"
-        android:layout_height="241dp"
-        android:layout_marginTop="44dp"
-        android:gravity="center"
-        android:orientation="vertical"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnPoliticaPriv"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:layout_margin="8dp"
+        android:background="@drawable/btn_selector"
+        android:text="PRIVACY POLICY"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.595" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnCredits"
-            android:layout_width="195dp"
-            android:layout_height="60dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/btn_selector"
-            android:padding="12dp"
-            android:text="CREDITS"
-            android:textColor="#000000" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnTerminosCondiciones"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:layout_margin="8dp"
+        android:background="@drawable/btn_selector"
+        android:text="TERMS AND CONDITIONS"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.413"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.708" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnPoliticaPriv"
-            android:layout_width="195dp"
-            android:layout_height="60dp"
-            android:layout_margin="8dp"
-            android:background="@drawable/btn_selector"
-            android:text="PRIVACY POLICY"
-            android:textColor="#000000" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnTerminosCondiciones"
-            android:layout_width="195dp"
-            android:layout_height="60dp"
-            android:layout_margin="8dp"
-            android:background="@drawable/btn_selector"
-            android:text="TERMS AND CONDITIONS"
-            android:textColor="#000000" />
-
-
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="202dp"
+        android:layout_height="84dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.335"
+        app:srcCompat="@drawable/img_18" />
 
     <!--    <androidx.appcompat.widget.AppCompatButton-->
 <!--        android:id="@+id/btnBack"-->
