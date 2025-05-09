@@ -9,32 +9,32 @@ public class Objeto {
     private Integer precio;
     private int tipo;
     private String descripcion;
-    private String imagenResId;
+    private String imagen;
 
     public Objeto() {}
 
-    public Objeto(String id, String nombre, int precio , int tipo, String descripcion ,String imagenResId) {
+    public Objeto(String id, String nombre, int precio , int tipo, String descripcion ,String imagen) {
         this.id = id;
         this.nombre = nombre;
         this.tipo = tipo;
         this.precio = precio;
         this.descripcion = descripcion;
-        this.imagenResId = imagenResId;
+        this.imagen = imagen;
     }
 
     public String getDescripcion() {
         return descripcion;
     }
 
-    public String getImagenResId() {
-        return imagenResId;
+    public String getImagen() {
+        return imagen;
     }
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
-    public void setImagenResId(String imagenResId) {
-        this.imagenResId = imagenResId;
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     public int getPrecio() {
@@ -71,11 +71,11 @@ public class Objeto {
 
         this.tipo = tipo;
     }
-    public void setNombreImagen(String nombreImagen) { this.imagenResId = nombreImagen; }
+    public void setNombreImagen(String nombreImagen) { this.imagen = nombreImagen; }
 
     public int getImagenResId(Context context) {
         int resId = context.getResources()
-                .getIdentifier(imagenResId, "drawable", context.getPackageName());
+                .getIdentifier(imagen, "drawable", context.getPackageName());
         return resId != 0 ? resId : R.drawable.bee;
     }
 }

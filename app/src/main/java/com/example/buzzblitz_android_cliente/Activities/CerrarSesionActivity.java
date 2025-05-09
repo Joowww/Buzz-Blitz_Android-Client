@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.buzzblitz_android_cliente.R;
 import com.example.buzzblitz_android_cliente.Models.AuthUtil;
 
-public class CerrarSesionActivity extends AppCompatActivity {
+public class CerrarSesionActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
