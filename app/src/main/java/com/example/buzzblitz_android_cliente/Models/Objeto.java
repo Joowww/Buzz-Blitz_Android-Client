@@ -73,9 +73,9 @@ public class Objeto {
     }
     public void setNombreImagen(String nombreImagen) { this.imagen = nombreImagen; }
 
-    public int getImagenResId(Context context) {
-        int resId = context.getResources()
-                .getIdentifier(imagen, "drawable", context.getPackageName());
-        return resId != 0 ? resId : R.drawable.bee;
-    }
+//    public int getImagenResId(Context context) {
+//        int resId = context.getResources()
+//                .getIdentifier(imagen, "drawable", context.getPackageName());
+//        return resId != 0 ? resId : R.drawable.bee;
+//    }
 }

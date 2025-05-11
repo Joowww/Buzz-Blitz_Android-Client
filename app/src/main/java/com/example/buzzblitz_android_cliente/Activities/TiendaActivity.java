@@ -58,7 +58,7 @@ public class TiendaActivity extends BaseActivity {
             }
         });
 
-        apiService.getSkin().enqueue(new Callback<ConsultaTienda>() {
+        apiService.getSkins().enqueue(new Callback<ConsultaTienda>() {
             @Override
             public void onResponse(Call<ConsultaTienda> call, Response<ConsultaTienda> response) {
                 if (response.isSuccessful() && response.body() != null) {
