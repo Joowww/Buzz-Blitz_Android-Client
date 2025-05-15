@@ -66,8 +66,8 @@ public class MyShopAdapter extends RecyclerView.Adapter<MyShopAdapter.ViewHolder
         String imageUrl = "http://10.0.2.2:8080/img/" + objeto.getImagen();
         Glide.with(context)
                 .load(imageUrl)
-                .placeholder(R.drawable.bee)
-                .error(R.drawable.bee)
+                .placeholder(R.drawable.img_25)
+                .error(R.drawable.img_25)
                 .into(holder.imgObjeto);
 
         holder.btnComprar.setOnClickListener(v -> {

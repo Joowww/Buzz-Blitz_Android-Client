@@ -55,11 +55,11 @@ public class MyWeaponsAdapter extends RecyclerView.Adapter<MyWeaponsAdapter.View
         holder.tvTipo.setText("Tipo: Arma");
         holder.tvDescripcion.setText(objeto.getDescripcion());
 
-        String imageUrl = "http://10.0.2.2:8080/dsaApp/public/img" + objeto.getImagen();
+        String imageUrl = "http://10.0.2.2:8080/img/" + objeto.getImagen();
         Glide.with(context)
                 .load(imageUrl)
-                .placeholder(R.drawable.bee)
-                .error(R.drawable.bee)
+                .placeholder(R.drawable.img_25)
+                .error(R.drawable.img_25)
                 .into(holder.imgObjeto);
     }
 

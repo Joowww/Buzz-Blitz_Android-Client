@@ -65,13 +65,13 @@ public class MySkinAdapter extends RecyclerView.Adapter<MySkinAdapter.ViewHolder
         Log.d(TAG, "Nombre imagen: " + objeto.getImagen());
 
         // Construir URL de la imagen
-        String imageUrl = "http://10.0.2.2:8080/dsaApp/public/img" + objeto.getImagen();
+        String imageUrl = "http://10.0.2.2:8080/img/" + objeto.getImagen();
         Log.d(TAG, "URL completa: " + imageUrl);
 
         Glide.with(context)
                 .load(imageUrl)
-                .placeholder(R.drawable.bee)
-                .error(R.drawable.bee) // Imagen de error
+                .placeholder(R.drawable.img_25)
+                .error(R.drawable.img_25)
                 .into(holder.imgObjeto);
     }
 

@@ -35,6 +35,11 @@ public class TiendaActivity extends BaseActivity {
     private final List<Objeto> objetosTienda = new ArrayList<>();
     private SharedPreferences sharedPreferences;
 
+    // Variables para sincronización de compras
+    private final Set<String> purchasedItemsSync = new HashSet<>();
+    private boolean armasLoaded = false;
+    private boolean skinsLoaded = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,17 +69,12 @@ public class TiendaActivity extends BaseActivity {
                         int nuevosTarros = response.body().getTarrosMiel();
                         adapter.actualizarTarrosMiel(nuevosTarros);
 
-                        // Actualiza el set de objetos comprados
                         Set<String> purchasedItems = new HashSet<>(sharedPreferences.getStringSet("purchasedItems", new HashSet<>()));
                         purchasedItems.add(objeto.getId());
                         sharedPreferences.edit().putStringSet("purchasedItems", purchasedItems).apply();
 
-                        // Notifica solo el ítem comprado
                         adapter.notifyItemChanged(position);
-
-                        // Actualiza los tarros de miel en SharedPreferences
                         sharedPreferences.edit().putInt("currentTarrosMiel", nuevosTarros).apply();
-
                         Toast.makeText(TiendaActivity.this, "Honey jars left: " + nuevosTarros, Toast.LENGTH_SHORT).show();
                     } else {
                         String errorMessage = "Error: ";
@@ -94,10 +94,7 @@ public class TiendaActivity extends BaseActivity {
             });
         });
 
-        // Sincroniza compras del usuario antes de cargar la tienda
         sincronizarComprasUsuario();
-
-        // Luego carga los objetos de la tienda
         cargarArmasYSkins();
     }
 
@@ -145,44 +142,51 @@ public class TiendaActivity extends BaseActivity {
         String usuarioId = AuthUtil.getCurrentUserId(this);
         BuzzBlitzService api = RetrofitClient.getApiService();
 
-        // Obtener armas compradas
         api.getArmasUsuario(usuarioId).enqueue(new Callback<ConsultaTienda>() {
             @Override
             public void onResponse(Call<ConsultaTienda> call, Response<ConsultaTienda> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    Set<String> purchased = new HashSet<>();
                     for (Objeto obj : response.body().getConsulta()) {
-                        purchased.add(obj.getId());
+                        purchasedItemsSync.add(obj.getId());
                     }
-                    sharedPreferences.edit().putStringSet("purchasedItems", purchased).apply();
-                    adapter.notifyDataSetChanged();
                 }
+                armasLoaded = true;
+                verificarYGuardarCompras();
             }
 
             @Override
             public void onFailure(Call<ConsultaTienda> call, Throwable t) {
                 Log.e("API_FAILURE", "Fallo al sincronizar armas compradas: " + t.getMessage());
+                armasLoaded = true;
+                verificarYGuardarCompras();
             }
         });
 
-        // Obtener skins compradas
         api.getSkinsUsuario(usuarioId).enqueue(new Callback<ConsultaTienda>() {
             @Override
             public void onResponse(Call<ConsultaTienda> call, Response<ConsultaTienda> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    Set<String> purchased = new HashSet<>(sharedPreferences.getStringSet("purchasedItems", new HashSet<>()));
                     for (Objeto obj : response.body().getConsulta()) {
-                        purchased.add(obj.getId());
+                        purchasedItemsSync.add(obj.getId());
                     }
-                    sharedPreferences.edit().putStringSet("purchasedItems", purchased).apply();
-                    adapter.notifyDataSetChanged();
                 }
+                skinsLoaded = true;
+                verificarYGuardarCompras();
             }
 
             @Override
             public void onFailure(Call<ConsultaTienda> call, Throwable t) {
                 Log.e("API_FAILURE", "Fallo al sincronizar skins compradas: " + t.getMessage());
+                skinsLoaded = true;
+                verificarYGuardarCompras();
             }
         });
+    }
+
+    private void verificarYGuardarCompras() {
+        if (armasLoaded && skinsLoaded) {
+            sharedPreferences.edit().putStringSet("purchasedItems", purchasedItemsSync).apply();
+            adapter.notifyDataSetChanged();
+        }
     }
 }
