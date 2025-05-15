@@ -1,7 +1,6 @@
 // CargaIntercambio.java
 package com.example.buzzblitz_android_cliente.Activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -9,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.buzzblitz_android_cliente.R;
 
-public class CargaIntercambio extends AppCompatActivity {
+public class CargaIntercambioActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

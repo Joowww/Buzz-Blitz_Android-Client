@@ -1,8 +1,5 @@
 package com.example.buzzblitz_android_cliente.Models;
 
-import android.content.Context;
-import com.example.buzzblitz_android_cliente.R;
-
 public class Objeto {
     private String id;
     private String nombre;

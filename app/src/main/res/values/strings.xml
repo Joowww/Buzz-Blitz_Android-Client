@@ -22,4 +22,5 @@
         <item>What street did you grow up on?</item>
         <item>What was the name of your first school?</item>
     </string-array>
+    <string name="sin_items">SIN ITEMS</string>
 </resources>

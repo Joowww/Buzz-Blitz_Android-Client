@@ -1,35 +1,40 @@
 package com.example.buzzblitz_android_cliente.Adapters;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
 import com.example.buzzblitz_android_cliente.Models.Objeto;
 import com.example.buzzblitz_android_cliente.R;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class MyShopAdapter extends RecyclerView.Adapter<MyShopAdapter.ViewHolder> {
 
     private final List<Objeto> objetos;
-    private static final String TAG = "ShopAdapter"; // Etiqueta para logs
+    private static final String TAG = "ShopAdapter";
+    private OnItemClickListener itemClickListener;
+    private SharedPreferences sharedPreferences;
 
-    public MyShopAdapter(List<Objeto> objetos) {
+    public interface OnItemClickListener {
+        void onBuyClick(int position, View view);
+    }
+
+    public MyShopAdapter(List<Objeto> objetos, Context context, SharedPreferences sharedPreferences) {
         this.objetos = objetos;
+        this.sharedPreferences = sharedPreferences; // ✅ Usar directamente el que llega como argumento
     }
 
     @NonNull
@@ -45,26 +50,31 @@ public class MyShopAdapter extends RecyclerView.Adapter<MyShopAdapter.ViewHolder
         Objeto objeto = objetos.get(position);
         Context context = holder.itemView.getContext();
 
-        // Configurar textos
+        // Refresca el set de comprados desde SharedPreferences
+        Set<String> purchasedItems = sharedPreferences.getStringSet("purchasedItems", new HashSet<>());
+        boolean isPurchased = purchasedItems.contains(objeto.getId());
+
+        // Mostrar/ocultar botón y estado según compra
+        holder.btnComprar.setVisibility(isPurchased ? View.GONE : View.VISIBLE);
+        holder.tvEstadoCompra.setVisibility(isPurchased ? View.VISIBLE : View.GONE);
+
         holder.tvNombre.setText(objeto.getNombre());
         holder.tvPrecio.setText("Precio: " + objeto.getPrecio());
         holder.tvTipo.setText("Tipo: " + (objeto.getTipo() == 1 ? "Arma" : "Skin"));
         holder.tvDescripcion.setText("Descripción: " + objeto.getDescripcion());
 
-        // Logs de depuración
-        Log.d(TAG, "Posición: " + position);
-        Log.d(TAG, "Nombre objeto: " + objeto.getNombre());
-        Log.d(TAG, "Nombre imagen: " + objeto.getImagen());
-
-        // Construir URL de la imagen
-        String imageUrl = "http://10.0.2.2:8080/dsaApp/public/img" + objeto.getImagen();
-        Log.d(TAG, "URL completa: " + imageUrl);
-
+        String imageUrl = "http://10.0.2.2:8080/img/" + objeto.getImagen();
         Glide.with(context)
                 .load(imageUrl)
                 .placeholder(R.drawable.bee)
-                .error(R.drawable.bee) // Imagen de error
+                .error(R.drawable.bee)
                 .into(holder.imgObjeto);
+
+        holder.btnComprar.setOnClickListener(v -> {
+            if (itemClickListener != null) {
+                itemClickListener.onBuyClick(holder.getAdapterPosition(), holder.itemView);
+            }
+        });
     }
 
     @Override
@@ -73,8 +83,10 @@ public class MyShopAdapter extends RecyclerView.Adapter<MyShopAdapter.ViewHolder
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imgObjeto;
-        TextView tvNombre, tvPrecio, tvTipo, tvDescripcion;
+        public Button btnComprar;
+        public TextView tvEstadoCompra;
+        public ImageView imgObjeto;
+        public TextView tvNombre, tvPrecio, tvTipo, tvDescripcion;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -83,6 +95,18 @@ public class MyShopAdapter extends RecyclerView.Adapter<MyShopAdapter.ViewHolder
             tvPrecio = itemView.findViewById(R.id.tvPrecio);
             tvTipo = itemView.findViewById(R.id.tvTipo);
             tvDescripcion = itemView.findViewById(R.id.tvDescripcion);
+            btnComprar = itemView.findViewById(R.id.btnComprar);
+            tvEstadoCompra = itemView.findViewById(R.id.tvEstadoCompra);
         }
+    }
+
+    public void actualizarTarrosMiel(int nuevosTarros) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("currentTarrosMiel", nuevosTarros);
+        editor.apply();
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.itemClickListener = listener;
     }
 }

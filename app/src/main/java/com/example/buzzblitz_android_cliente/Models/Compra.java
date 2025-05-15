@@ -2,11 +2,11 @@ package com.example.buzzblitz_android_cliente.Models;
 
 public class Compra {
     private String usuarioId;
-    private Objeto objeto;
+    private String objeto;
 
     public Compra() { }
 
-    public Compra(String usuarioId, Objeto objeto) {
+    public Compra(String usuarioId, String objeto) {
         this.usuarioId = usuarioId;
         this.objeto = objeto;
     }
@@ -19,11 +19,11 @@ public class Compra {
         this.usuarioId = usuarioId;
     }
 
-    public Objeto getObjeto() {
+    public String getObjeto() {
         return objeto;
     }
 
-    public void setObjeto(Objeto objeto) {
+    public void setObjeto(String objeto) {
         this.objeto = objeto;
     }
 }

@@ -63,30 +63,4 @@
         app:layout_constraintTop_toBottomOf="@id/tvTipo"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <Button
-        android:id="@+id/btnComprar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="88dp"
-        android:backgroundTint="@color/primaryDark"
-        android:text="BUY"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginEnd="8dp"/>
-
-    <TextView
-        android:id="@+id/tvEstadoCompra"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bought"
-        android:textColor="@color/black"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@id/btnComprar"
-        app:layout_constraintEnd_toEndOf="@id/btnComprar"
-        app:layout_constraintStart_toStartOf="@id/btnComprar"
-        app:layout_constraintTop_toTopOf="@id/btnComprar"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

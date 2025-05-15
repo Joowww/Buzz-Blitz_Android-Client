@@ -10,8 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.buzzblitz_android_cliente.Models.Usulogin;
 import com.example.buzzblitz_android_cliente.Models.Usuario;
+import com.example.buzzblitz_android_cliente.Models.UsuarioEnviar;
+import com.example.buzzblitz_android_cliente.Models.Usulogin;
 import com.example.buzzblitz_android_cliente.Models.AuthUtil;
 import com.example.buzzblitz_android_cliente.R;
 import com.example.buzzblitz_android_cliente.RetrofitClient;
@@ -28,7 +29,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etUserIdentifier, etPasswordLogin;
     private Button btnLogin, btnGoToRegister;
     private SharedPreferences sharedPreferences;
-    int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,44 +63,49 @@ public class LoginActivity extends AppCompatActivity {
 
         BuzzBlitzService api = RetrofitClient.getApiService();
 
-        Call<Usuario> call = api.loginUsuario(peticion);
-        call.enqueue(new Callback<Usuario>() {
-            @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+        // Cambiamos a UsuarioEnviar para recibir todos los datos
+        Call<UsuarioEnviar> call = api.loginUsuario(peticion);
+        call.enqueue(new Callback<UsuarioEnviar>() {
+            public void onResponse(Call<UsuarioEnviar> call, Response<UsuarioEnviar> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    Usuario usuario = response.body();
+                    UsuarioEnviar usuario = response.body();
 
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("currentUser", usuario.getMail());
-                    editor.putString("currentUserId", usuario.getId());
-                    editor.putString("currentUserName", usuario.getName());
-                    editor.putBoolean("showWelcome", true);
-                    editor.apply();
-
+                    // Usamos AuthUtil para el estado de login e ID
+                    AuthUtil.setCurrentUserId(LoginActivity.this, usuario.getId());
                     AuthUtil.setUserLoggedIn(LoginActivity.this, true);
+
+                    // Guardamos el resto de datos en SharedPreferences
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("currentUserName", usuario.getName());
+                    editor.putInt("currentTarrosMiel", usuario.getTarrosMiel());
+                    editor.putInt("currentFlor", usuario.getFlor());
+                    editor.putInt("currentFloreGold", usuario.getFloreGold());
+                    editor.apply();
 
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     finish();
                 } else {
-                    i=3;
-                    if (response.errorBody() != null) {
-                        try {
-                            String errorBody = response.errorBody().string();
-                            Log.e("LOGIN_DEBUG", "Server error: " + errorBody);
-                        } catch (IOException e) {
-                            Log.e("LOGIN_DEBUG", "Error reading the body error", e);
-                        }
-                    }
-                    Toast.makeText(LoginActivity.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
+                    manejarError(response);
                 }
             }
 
-            @Override
-            public void onFailure(Call<Usuario> call, Throwable t) {
-                i=4;
+            public void onFailure(Call<UsuarioEnviar> call, Throwable t) {
                 Log.e("LOGIN_DEBUG", "Network error: ", t);
                 Toast.makeText(LoginActivity.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void manejarError(Response<UsuarioEnviar> response) {
+        try {
+            if (response.errorBody() != null) {
+                String errorBody = response.errorBody().string();
+                Log.e("LOGIN_DEBUG", "Server error: " + errorBody);
+                Toast.makeText(LoginActivity.this, errorBody, Toast.LENGTH_SHORT).show();
+            }
+        } catch (IOException e) {
+            Log.e("LOGIN_DEBUG", "Error reading error body", e);
+            Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
+        }
     }
 }

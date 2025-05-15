@@ -2,6 +2,7 @@ package com.example.buzzblitz_android_cliente.Services;
 
 import com.example.buzzblitz_android_cliente.Models.UsuReg;
 import com.example.buzzblitz_android_cliente.Models.Usuario;
+import com.example.buzzblitz_android_cliente.Models.UsuarioEnviar;
 import com.example.buzzblitz_android_cliente.Models.Usulogin;
 import com.example.buzzblitz_android_cliente.Models.Compra;
 import com.example.buzzblitz_android_cliente.Models.ConsultaTienda;
@@ -29,7 +30,7 @@ public interface BuzzBlitzService {
     Call<Void> registerUsuario(@Body UsuReg usuario);
 
     @POST("usuarios/login")
-    Call<Usuario> loginUsuario(@Body Usulogin usuario);
+    Call<UsuarioEnviar> loginUsuario(@Body Usulogin usuario);
 
     // Recuperación de contraseña
     @GET("usuarios/login/recordarContraseña")
@@ -55,6 +56,7 @@ public interface BuzzBlitzService {
     @GET("usuarios/tienda/skins")
     Call<ConsultaTienda> getSkins();
 
+    // BuzzBlitzService.java (corregir URLs)
     @GET("usuarios/tienda/{id}/armas")
     Call<ConsultaTienda> getArmasUsuario(@Path("id") String usuarioId);
 
