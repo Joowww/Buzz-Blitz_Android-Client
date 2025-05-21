@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -12,6 +13,7 @@ import com.example.buzzblitz_android_cliente.R;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends BaseActivity {
 
@@ -53,9 +55,6 @@ public class MainActivity extends BaseActivity {
 
         new Handler().postDelayed(() -> bees2.setVisibility(View.VISIBLE), 1000);
         new Handler().postDelayed(() -> bees3.setVisibility(View.VISIBLE), 2000);
-
-        findViewById(R.id.btnPlay).setOnClickListener(v ->
-                startActivity(new Intent(this, PlayActivity.class)));
 
         findViewById(R.id.btnOptions).setOnClickListener(v ->
                 startActivity(new Intent(this, OpcionesActivity.class)));
@@ -104,6 +103,22 @@ public class MainActivity extends BaseActivity {
                 animView.playAnimation();
                 startActivity(new Intent(MainActivity.this, activity));
             });
+        }
+    }
+
+    // MainActivity.java
+    public void jugarClick(View view) {
+        String packageName = "com.DefaultCompany.MYPROJFACIL";
+        try {
+            Intent intent = getPackageManager().getLaunchIntentForPackage(packageName);
+            if (intent != null) {
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "Instala la app de Unity primero", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "Instala la app de Unity primero", Toast.LENGTH_SHORT).show();
+            Log.d("Hola", e.toString());
         }
     }
 }

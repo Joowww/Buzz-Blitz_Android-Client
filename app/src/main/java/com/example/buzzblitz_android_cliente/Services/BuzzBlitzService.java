@@ -12,6 +12,7 @@ import com.example.buzzblitz_android_cliente.Models.DevolverCompra;
 import com.example.buzzblitz_android_cliente.Models.OlvContra;
 import com.example.buzzblitz_android_cliente.Models.Intercambio;
 import com.example.buzzblitz_android_cliente.Models.Info;
+import com.example.buzzblitz_android_cliente.Models.InfoList;
 
 import java.util.List;
 
@@ -31,6 +32,10 @@ public interface BuzzBlitzService {
 
     @POST("usuarios/login")
     Call<UsuarioEnviar> loginUsuario(@Body Usulogin usuario);
+
+    // Ranking
+    @GET("usuarios/informacion")
+    Call<InfoList> getInfo();
 
     // Recuperación de contraseña
     @GET("usuarios/login/recordarContraseña")
@@ -65,10 +70,6 @@ public interface BuzzBlitzService {
 
     @PUT("usuarios/tienda/{id}/intercambio")
     Call<Intercambio> intercambiarFlores(@Path("id") String usuarioId);
-
-    // Clasificación
-    @GET("usuarios/informacion")
-    Call<List<Info>> getClasificacion();
 
     // Foro y chat (sin cambios, pero marcados como pendientes)
     @GET("forum/posts")

@@ -1,40 +1,33 @@
 package com.example.buzzblitz_android_cliente.Adapters;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.buzzblitz_android_cliente.Models.Info;
-import com.example.buzzblitz_android_cliente.Models.Objeto;
 import com.example.buzzblitz_android_cliente.R;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class MyRankingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int TYPE_TOP = 0;
     private static final int TYPE_USER = 1;
 
-    private List<Info> fullRanking;
-    private String currentUserId;
+    private final List<Info> fullRanking;
+    private final String currentUserId;
     private int userGlobalPosition = -1;
 
     public MyRankingAdapter(List<Info> fullRanking, String currentUserId) {
         this.fullRanking = fullRanking;
         this.currentUserId = currentUserId;
 
-        // Buscar posición global del usuario
+        // Buscar posición del usuario en el ranking
         for (int i = 0; i < fullRanking.size(); i++) {
             if (fullRanking.get(i).getUsuario().equals(currentUserId)) {
                 userGlobalPosition = i;
@@ -45,12 +38,14 @@ public class MyRankingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public int getItemViewType(int position) {
-        return (position < 5) ? TYPE_TOP : TYPE_USER;
+        return (position < fullRanking.size()) ? TYPE_TOP : TYPE_USER;
     }
 
     @Override
     public int getItemCount() {
-        return (userGlobalPosition >= 5 || userGlobalPosition == -1) ? 6 : 5;
+        return (userGlobalPosition != -1 && userGlobalPosition >= fullRanking.size())
+                ? fullRanking.size() + 1
+                : fullRanking.size();
     }
 
     @NonNull
@@ -73,14 +68,14 @@ public class MyRankingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             Info item = fullRanking.get(position);
             TopViewHolder topHolder = (TopViewHolder) holder;
 
-            // Configurar colores
+            // Colores según posición
             int colorRes = R.color.white;
             if (position == 0) colorRes = R.color.gold;
             else if (position == 1) colorRes = R.color.silver;
             else if (position == 2) colorRes = R.color.bronze;
             topHolder.itemView.setBackgroundResource(colorRes);
 
-            // Resaltar usuario
+            // Resaltar usuario actual
             if (item.getUsuario().equals(currentUserId)) {
                 topHolder.tvNombreUsuario.setTypeface(null, Typeface.BOLD);
             }
@@ -89,7 +84,7 @@ public class MyRankingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             topHolder.tvNombreUsuario.setText(item.getUsuario());
             topHolder.tvPuntuacion.setText(String.valueOf(item.getMejorPuntuacion()));
 
-        } else if (holder instanceof UserViewHolder) {
+        } else if (holder instanceof UserViewHolder && userGlobalPosition != -1) {
             UserViewHolder userHolder = (UserViewHolder) holder;
             userHolder.tvPosicionUser.setText(String.valueOf(userGlobalPosition + 1));
             userHolder.tvNombreUsuarioUser.setText("Tú");
