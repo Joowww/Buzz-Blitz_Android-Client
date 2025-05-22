@@ -95,6 +95,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
                     guardarDatosLocales(email, question1, answer1);
+                    guardarUserIdEnSharedPreferences(userId);
                     showToast("Registration successful!");
                     finish();
                 } else {
@@ -107,6 +108,12 @@ public class RegisterActivity extends AppCompatActivity {
                 showToast("Network error: " + t.getMessage());
             }
         });
+    }
+
+    private void guardarUserIdEnSharedPreferences(String userId) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("currentUserId", userId);
+        editor.apply();
     }
 
     private void guardarDatosLocales(String email, String pregunta, String respuesta) {

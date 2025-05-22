@@ -1,5 +1,6 @@
 package com.example.buzzblitz_android_cliente.Activities;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -106,19 +107,17 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    // MainActivity.java
     public void jugarClick(View view) {
-        String packageName = "com.DefaultCompany.MYPROJFACIL";
         try {
-            Intent intent = getPackageManager().getLaunchIntentForPackage(packageName);
-            if (intent != null) {
-                startActivity(intent);
-            } else {
-                Toast.makeText(this, "Instala la app de Unity primero", Toast.LENGTH_SHORT).show();
-            }
+            Intent i = new Intent();
+            i.setComponent(new ComponentName(
+                    "com.DefaultCompany.Buzzblitz",
+                    "com.unity3d.player.UnityPlayerGameActivity"
+            ));
+            startActivityForResult(i, 0);
         } catch (Exception e) {
             Toast.makeText(this, "Instala la app de Unity primero", Toast.LENGTH_SHORT).show();
-            Log.d("Hola", e.toString());
+            Log.e("UnityLaunchError", "Error al lanzar la app Unity", e);
         }
     }
 }

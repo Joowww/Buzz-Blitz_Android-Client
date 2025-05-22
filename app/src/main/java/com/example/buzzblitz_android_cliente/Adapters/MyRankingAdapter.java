@@ -1,6 +1,5 @@
 package com.example.buzzblitz_android_cliente.Adapters;
 
-import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,33 +18,28 @@ public class MyRankingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private static final int TYPE_TOP = 0;
     private static final int TYPE_USER = 1;
 
-    private final List<Info> fullRanking;
+    private final List<Info> rankingList;
     private final String currentUserId;
-    private int userGlobalPosition = -1;
+    private final int userPosition;
 
-    public MyRankingAdapter(List<Info> fullRanking, String currentUserId) {
-        this.fullRanking = fullRanking;
+    public MyRankingAdapter(List<Info> rankingList, String currentUserId, int userPosition) {
+        this.rankingList = rankingList;
         this.currentUserId = currentUserId;
-
-        // Buscar posición del usuario en el ranking
-        for (int i = 0; i < fullRanking.size(); i++) {
-            if (fullRanking.get(i).getUsuario().equals(currentUserId)) {
-                userGlobalPosition = i;
-                break;
-            }
-        }
+        this.userPosition = userPosition;
     }
 
     @Override
     public int getItemViewType(int position) {
-        return (position < fullRanking.size()) ? TYPE_TOP : TYPE_USER;
+        // Si el usuario está fuera del top5, el último item es el usuario
+        if (userPosition > 5 && position == rankingList.size() - 1) {
+            return TYPE_USER;
+        }
+        return TYPE_TOP;
     }
 
     @Override
     public int getItemCount() {
-        return (userGlobalPosition != -1 && userGlobalPosition >= fullRanking.size())
-                ? fullRanking.size() + 1
-                : fullRanking.size();
+        return rankingList.size();
     }
 
     @NonNull
@@ -64,9 +58,18 @@ public class MyRankingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        Info item = rankingList.get(position);
+
         if (holder instanceof TopViewHolder) {
-            Info item = fullRanking.get(position);
             TopViewHolder topHolder = (TopViewHolder) holder;
+
+            if (item.getUsuario().equals(currentUserId)) {
+                topHolder.itemView.setBackgroundResource(R.drawable.bg_highlighted_user);
+                topHolder.tvNombreUsuario.setTypeface(null, Typeface.BOLD);
+            } else {
+                topHolder.itemView.setBackgroundResource(R.drawable.bg_ranking_item);
+                topHolder.tvNombreUsuario.setTypeface(null, Typeface.NORMAL);
+            }
 
             // Colores según posición
             int colorRes = R.color.white;
@@ -75,26 +78,18 @@ public class MyRankingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             else if (position == 2) colorRes = R.color.bronze;
             topHolder.itemView.setBackgroundResource(colorRes);
 
-            // Resaltar usuario actual
-            if (item.getUsuario().equals(currentUserId)) {
-                topHolder.tvNombreUsuario.setTypeface(null, Typeface.BOLD);
-            }
-
             topHolder.tvPosicion.setText(String.valueOf(position + 1));
             topHolder.tvNombreUsuario.setText(item.getUsuario());
             topHolder.tvPuntuacion.setText(String.valueOf(item.getMejorPuntuacion()));
 
-        } else if (holder instanceof UserViewHolder && userGlobalPosition != -1) {
+        } else if (holder instanceof UserViewHolder) {
             UserViewHolder userHolder = (UserViewHolder) holder;
-            userHolder.tvPosicionUser.setText(String.valueOf(userGlobalPosition + 1));
+            userHolder.tvPosicionUser.setText(String.valueOf(userPosition));
             userHolder.tvNombreUsuarioUser.setText("Tú");
-            userHolder.tvPuntuacionUser.setText(
-                    String.valueOf(fullRanking.get(userGlobalPosition).getMejorPuntuacion())
-            );
+            userHolder.tvPuntuacionUser.setText(String.valueOf(item.getMejorPuntuacion()));
         }
     }
 
-    // ViewHolders
     static class TopViewHolder extends RecyclerView.ViewHolder {
         TextView tvPosicion, tvNombreUsuario, tvPuntuacion;
 

@@ -33,9 +33,9 @@ public interface BuzzBlitzService {
     @POST("usuarios/login")
     Call<UsuarioEnviar> loginUsuario(@Body Usulogin usuario);
 
-    // Ranking
-    @GET("usuarios/informacion")
-    Call<InfoList> getInfo();
+    // Ranking con posición del usuario
+    @GET("usuarios/informacion/{userId}")
+    Call<InfoList> getInfo(@Path("userId") String userId);
 
     // Recuperación de contraseña
     @GET("usuarios/login/recordarContraseña")

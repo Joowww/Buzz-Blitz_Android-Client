@@ -81,6 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putInt("currentFlor", usuario.getFlor());
                     editor.putInt("currentFloreGold", usuario.getFloreGold());
                     editor.putInt("currentBestScore", usuario.getMejorPuntuacion());
+                    editor.putString("currentUserId", usuario.getId());
                     editor.apply();
 
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
