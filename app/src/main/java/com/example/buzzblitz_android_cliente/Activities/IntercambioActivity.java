@@ -12,7 +12,7 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.example.buzzblitz_android_cliente.R;
 import com.example.buzzblitz_android_cliente.Models.Intercambio;
 import com.example.buzzblitz_android_cliente.Models.AuthUtil;
-import com.example.buzzblitz_android_cliente.Services.BuzzBlitzService;
+import com.example.buzzblitz_android_cliente.Services.GameBuzzBlitzService;
 import com.example.buzzblitz_android_cliente.RetrofitClient;
 
 import retrofit2.Call;
@@ -58,7 +58,7 @@ public class IntercambioActivity extends BaseActivity {
     private void realizarIntercambioEnServidor() {
         String usuarioId = AuthUtil.getCurrentUserId(this);
 
-        BuzzBlitzService api = RetrofitClient.getApiService();
+        GameBuzzBlitzService api = RetrofitClient.getApiService();
         Call<Intercambio> call = api.intercambiarFlores(usuarioId);
         call.enqueue(new Callback<Intercambio>() {
             @Override

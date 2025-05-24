@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.example.buzzblitz_android_cliente.Models.UsuReg;
 import com.example.buzzblitz_android_cliente.R;
 import com.example.buzzblitz_android_cliente.RetrofitClient;
-import com.example.buzzblitz_android_cliente.Services.BuzzBlitzService;
+import com.example.buzzblitz_android_cliente.Services.GameBuzzBlitzService;
 
 import java.security.MessageDigest;
 
@@ -87,7 +87,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         UsuReg newUser = new UsuReg(userId, firstName, lastName, password, email, question1, answer1);
-        BuzzBlitzService api = RetrofitClient.getApiService();
+        GameBuzzBlitzService api = RetrofitClient.getApiService();
 
         Call<Void> call = api.registerUsuario(newUser);
         call.enqueue(new Callback<Void>() {

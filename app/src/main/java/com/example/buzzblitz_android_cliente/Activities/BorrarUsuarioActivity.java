@@ -3,15 +3,13 @@ package com.example.buzzblitz_android_cliente.Activities;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.buzzblitz_android_cliente.R;
 import com.example.buzzblitz_android_cliente.RetrofitClient;
-import com.example.buzzblitz_android_cliente.Services.BuzzBlitzService;
+import com.example.buzzblitz_android_cliente.Services.GameBuzzBlitzService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,7 +28,7 @@ public class BorrarUsuarioActivity extends BaseActivity {
 
         ImageButton btnSi = findViewById(R.id.boton_imagenyes);
         ImageButton btnNo = findViewById(R.id.boton_imagenno);
-        BuzzBlitzService apiService = RetrofitClient.getApiService();
+        GameBuzzBlitzService apiService = RetrofitClient.getApiService();
 
         btnSi.setOnClickListener(v -> {
             String currentUserEmail = sharedPreferences.getString("currentUser", "");

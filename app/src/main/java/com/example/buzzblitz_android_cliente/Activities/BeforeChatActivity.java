@@ -1,44 +1,9 @@
-//package com.example.buzzblitz_android_cliente.Activities;
-//
-//import android.content.Intent;
-//import android.content.SharedPreferences;
-//import android.os.Bundle;
-//import android.widget.TextView;
-//
-//import androidx.appcompat.app.AppCompatActivity;
-//import com.example.buzzblitz_android_cliente.R;
-//
-//public class BeforeChatActivity extends AppCompatActivity {
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_beforechat);
-//
-//        SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
-//        TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
-//        tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
-//
-//        findViewById(R.id.btnBack).setOnClickListener(v -> {
-//            startActivity(new Intent(this, MainActivity.class));
-//            finish();
-//        });
-//
-//        findViewById(R.id.btnChat).setOnClickListener(v ->
-//                startActivity(new Intent(this, ChatActivity.class))
-//        );
-//
-//        findViewById(R.id.btnForum).setOnClickListener(v ->
-//                startActivity(new Intent(this, ForumActivity.class))
-//        );
-//    }
-//}
-
 package com.example.buzzblitz_android_cliente.Activities;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.buzzblitz_android_cliente.R;
 
@@ -48,17 +13,19 @@ public class BeforeChatActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beforechat);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
-        TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
-        tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
+        ImageButton btnChat = findViewById(R.id.boton_imagenchat);
+        ImageButton btnForum = findViewById(R.id.boton_imagenforum);
 
-
-        findViewById(R.id.boton_imagenchat).setOnClickListener(v ->
-                startActivity(new Intent(this, ChatActivity.class))
+        Button btnAmigos = findViewById(R.id.btnAmigos);
+        btnAmigos.setOnClickListener(v ->
+                startActivity(new Intent(this, FriendsListActivity.class))
+        );
+        btnChat.setOnClickListener(v ->
+                startActivity(new Intent(this, ChatListActivity.class))
         );
 
-        findViewById(R.id.boton_imagenforum).setOnClickListener(v ->
-                startActivity(new Intent(this, ForumActivity.class))
+        btnForum.setOnClickListener(v ->
+                startActivity(new Intent(this, ForumTopicListActivity.class))
         );
     }
 }

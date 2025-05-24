@@ -14,7 +14,7 @@ import com.example.buzzblitz_android_cliente.Models.Info;
 import com.example.buzzblitz_android_cliente.Models.InfoList;
 import com.example.buzzblitz_android_cliente.R;
 import com.example.buzzblitz_android_cliente.RetrofitClient;
-import com.example.buzzblitz_android_cliente.Services.BuzzBlitzService;
+import com.example.buzzblitz_android_cliente.Services.GameBuzzBlitzService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +48,7 @@ public class RankingActivity extends BaseActivity {
         rvRanking = findViewById(R.id.rvRanking);
         rvRanking.setLayoutManager(new LinearLayoutManager(this));
 
-        BuzzBlitzService api = RetrofitClient.getApiService();
+        GameBuzzBlitzService api = RetrofitClient.getApiService();
         Log.d(TAG, "Llamando a getInfo con userId: " + userId);
         api.getInfo(userId).enqueue(new Callback<InfoList>() {
             @Override

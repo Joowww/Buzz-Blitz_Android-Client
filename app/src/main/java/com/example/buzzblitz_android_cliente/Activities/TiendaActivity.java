@@ -3,7 +3,6 @@ package com.example.buzzblitz_android_cliente.Activities;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,7 +15,7 @@ import com.example.buzzblitz_android_cliente.Models.DevolverCompra;
 import com.example.buzzblitz_android_cliente.Models.Objeto;
 import com.example.buzzblitz_android_cliente.Models.ConsultaTienda;
 import com.example.buzzblitz_android_cliente.R;
-import com.example.buzzblitz_android_cliente.Services.BuzzBlitzService;
+import com.example.buzzblitz_android_cliente.Services.GameBuzzBlitzService;
 import com.example.buzzblitz_android_cliente.RetrofitClient;
 
 import java.io.IOException;
@@ -60,7 +59,7 @@ public class TiendaActivity extends BaseActivity {
             compra.setUsuarioId(usuarioId);
             compra.setObjeto(objeto.getId());
 
-            BuzzBlitzService api = RetrofitClient.getApiService();
+            GameBuzzBlitzService api = RetrofitClient.getApiService();
             Call<DevolverCompra> call = api.comprarObjeto(compra);
             call.enqueue(new Callback<DevolverCompra>() {
                 @Override
@@ -99,7 +98,7 @@ public class TiendaActivity extends BaseActivity {
     }
 
     private void cargarArmasYSkins() {
-        BuzzBlitzService apiService = RetrofitClient.getApiService();
+        GameBuzzBlitzService apiService = RetrofitClient.getApiService();
 
         apiService.getArmas().enqueue(new Callback<ConsultaTienda>() {
             @Override
@@ -140,7 +139,7 @@ public class TiendaActivity extends BaseActivity {
 
     private void sincronizarComprasUsuario() {
         String usuarioId = AuthUtil.getCurrentUserId(this);
-        BuzzBlitzService api = RetrofitClient.getApiService();
+        GameBuzzBlitzService api = RetrofitClient.getApiService();
 
         api.getArmasUsuario(usuarioId).enqueue(new Callback<ConsultaTienda>() {
             @Override

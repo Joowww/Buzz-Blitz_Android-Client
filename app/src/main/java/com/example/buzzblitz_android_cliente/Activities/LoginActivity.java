@@ -10,13 +10,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.buzzblitz_android_cliente.Models.Usuario;
 import com.example.buzzblitz_android_cliente.Models.UsuarioEnviar;
 import com.example.buzzblitz_android_cliente.Models.Usulogin;
 import com.example.buzzblitz_android_cliente.Models.AuthUtil;
 import com.example.buzzblitz_android_cliente.R;
 import com.example.buzzblitz_android_cliente.RetrofitClient;
-import com.example.buzzblitz_android_cliente.Services.BuzzBlitzService;
+import com.example.buzzblitz_android_cliente.Services.GameBuzzBlitzService;
 
 import java.io.IOException;
 
@@ -61,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         peticion.setIdoname(userInput);
         peticion.setPswd(password);
 
-        BuzzBlitzService api = RetrofitClient.getApiService();
+        GameBuzzBlitzService api = RetrofitClient.getApiService();
 
         // Cambiamos a UsuarioEnviar para recibir todos los datos
         Call<UsuarioEnviar> call = api.loginUsuario(peticion);
