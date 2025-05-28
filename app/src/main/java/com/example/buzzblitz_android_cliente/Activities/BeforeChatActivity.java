@@ -27,5 +27,6 @@ public class BeforeChatActivity extends BaseActivity {
         btnForum.setOnClickListener(v ->
                 startActivity(new Intent(this, ForumTopicListActivity.class))
         );
+        // PRUEBA PUSH NUEVA RAMA
     }
 }
