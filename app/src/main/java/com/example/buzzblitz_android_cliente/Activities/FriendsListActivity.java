@@ -64,7 +64,6 @@ public class FriendsListActivity extends BaseActivity {
     private void eliminarAmigo(int position) {
         String amigoId = amigos.get(position);
         FriendBuzzBlitzService friendService = RetrofitClient.getFriendService();
-        // Usamos el mismo endpoint de rechazar para eliminar amistad
         friendService.rechazarSolicitud(currentUserId, amigoId).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

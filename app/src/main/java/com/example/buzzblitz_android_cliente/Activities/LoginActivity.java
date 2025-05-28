@@ -62,18 +62,15 @@ public class LoginActivity extends AppCompatActivity {
 
         GameBuzzBlitzService api = RetrofitClient.getApiService();
 
-        // Cambiamos a UsuarioEnviar para recibir todos los datos
         Call<UsuarioEnviar> call = api.loginUsuario(peticion);
         call.enqueue(new Callback<UsuarioEnviar>() {
             public void onResponse(Call<UsuarioEnviar> call, Response<UsuarioEnviar> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     UsuarioEnviar usuario = response.body();
 
-                    // Usamos AuthUtil para el estado de login e ID
                     AuthUtil.setCurrentUserId(LoginActivity.this, usuario.getId());
                     AuthUtil.setUserLoggedIn(LoginActivity.this, true);
 
-                    // Guardamos el resto de datos en SharedPreferences
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("currentUserName", usuario.getName());
                     editor.putInt("currentTarrosMiel", usuario.getTarrosMiel());

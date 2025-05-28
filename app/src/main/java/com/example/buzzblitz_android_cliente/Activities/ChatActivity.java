@@ -119,8 +119,6 @@ public class ChatActivity extends BaseActivity {
             public void onResponse(Call<List<Mensaje>> call, Response<List<Mensaje>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     List<Mensaje> nuevosMensajes = response.body();
-
-                    // Notificación solo si hay mensajes nuevos, la actividad está en segundo plano y el último mensaje es de otro usuario
                     if (!isInForeground && nuevosMensajes.size() > lastMensajesCount && nuevosMensajes.size() > 0) {
                         Mensaje ultimo = nuevosMensajes.get(nuevosMensajes.size() - 1);
                         if (!ultimo.getAutor().equals(currentUserId)) {
@@ -208,13 +206,12 @@ public class ChatActivity extends BaseActivity {
             @Override
             public void run() {
                 cargarMensajes();
-                handler.postDelayed(this, 5000); // Actualiza cada 5 segundos
+                handler.postDelayed(this, 5000);
             }
         };
         handler.post(mensajeUpdater);
     }
 
-    // --- Notificaciones ---
     private void crearCanalDeNotificaciones() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             String channelId = "chat_channel";
@@ -233,7 +230,7 @@ public class ChatActivity extends BaseActivity {
     }
 
     private void mostrarNotificacionNuevoMensaje(String autor, String contenido) {
-        if (isInForeground) return; // Solo notificar si está en segundo plano
+        if (isInForeground) return;
 
         String channelId = "chat_channel";
         int notificationId = (int) System.currentTimeMillis();

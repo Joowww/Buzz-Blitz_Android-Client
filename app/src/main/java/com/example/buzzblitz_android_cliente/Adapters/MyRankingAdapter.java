@@ -30,7 +30,6 @@ public class MyRankingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public int getItemViewType(int position) {
-        // Si el usuario está fuera del top5, el último item es el usuario
         if (userPosition > 5 && position == rankingList.size() - 1) {
             return TYPE_USER;
         }

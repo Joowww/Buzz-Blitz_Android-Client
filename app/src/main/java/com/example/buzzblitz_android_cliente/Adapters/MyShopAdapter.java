@@ -34,7 +34,7 @@ public class MyShopAdapter extends RecyclerView.Adapter<MyShopAdapter.ViewHolder
 
     public MyShopAdapter(List<Objeto> objetos, Context context, SharedPreferences sharedPreferences) {
         this.objetos = objetos;
-        this.sharedPreferences = sharedPreferences; // ✅ Usar directamente el que llega como argumento
+        this.sharedPreferences = sharedPreferences;
     }
 
     @NonNull
@@ -50,11 +50,9 @@ public class MyShopAdapter extends RecyclerView.Adapter<MyShopAdapter.ViewHolder
         Objeto objeto = objetos.get(position);
         Context context = holder.itemView.getContext();
 
-        // Refresca el set de comprados desde SharedPreferences
         Set<String> purchasedItems = sharedPreferences.getStringSet("purchasedItems", new HashSet<>());
         boolean isPurchased = purchasedItems.contains(objeto.getId());
 
-        // Mostrar/ocultar botón y estado según compra
         holder.btnComprar.setVisibility(isPurchased ? View.GONE : View.VISIBLE);
         holder.tvEstadoCompra.setVisibility(isPurchased ? View.VISIBLE : View.GONE);
 

@@ -46,7 +46,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
 
-        // Configura el Spinner de preguntes de seguretat
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.security_questions,
@@ -68,7 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
         String question1 = spinnerPregunta1.getSelectedItem().toString();
         String answer1 = etRespuesta1.getText().toString().trim();
 
-        String[] nameParts = fullName.split("\\s+", 2); // Divide en 2 partes máximo
+        String[] nameParts = fullName.split("\\s+", 2);
         if (nameParts.length != 2) {
             showToast("Enter name and surname separated by a space");
             return;

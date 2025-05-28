@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 public class AuthUtil {
     private static final String PREFS_NAME = "MyAppPrefs";
     private static final String KEY_IS_LOGGED_IN = "isLoggedIn";
-    private static final String KEY_USER_ID = "currentUserId"; // Corregido para coincidir con LoginActivity
+    private static final String KEY_USER_ID = "currentUserId";
 
     public static boolean isUserLoggedIn(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
@@ -21,7 +21,7 @@ public class AuthUtil {
 
     public static String getCurrentUserId(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        return prefs.getString(KEY_USER_ID, ""); // Usar misma clave que LoginActivity
+        return prefs.getString(KEY_USER_ID, "");
     }
 
     public static void setCurrentUserId(Context context, String userId) {

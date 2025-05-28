@@ -205,13 +205,12 @@ public class ForumActivity extends BaseActivity {
             @Override
             public void run() {
                 cargarComentarios();
-                handler.postDelayed(this, 5000); // Actualiza cada 5 segundos
+                handler.postDelayed(this, 5000);
             }
         };
         handler.post(comentariosUpdater);
     }
 
-    // --- Notificaciones ---
     private void crearCanalDeNotificaciones() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             String channelId = "forum_channel";
@@ -230,7 +229,7 @@ public class ForumActivity extends BaseActivity {
     }
 
     private void mostrarNotificacionNuevoComentario(String autor, String contenido) {
-        if (isInForeground) return; // Solo notificar si está en segundo plano
+        if (isInForeground) return;
 
         String channelId = "forum_channel";
         int notificationId = (int) System.currentTimeMillis();
@@ -240,7 +239,6 @@ public class ForumActivity extends BaseActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
-        // Notificación personalizada
         RemoteViews customLayout = new RemoteViews(getPackageName(), R.layout.custom_notification);
         customLayout.setTextViewText(R.id.tvTitle, "Nuevo comentario en el foro");
         customLayout.setTextViewText(R.id.tvMessage, autor + ": " + contenido);

@@ -35,7 +35,6 @@ public class SkinsActivity extends BaseActivity {
         rvObjetos = findViewById(R.id.rvObjetos);
         tvEmpty = findViewById(R.id.tvEmpty);
 
-        // Configurar LayoutManager
         rvObjetos.setLayoutManager(new LinearLayoutManager(this));
 
         cargarSkinsUsuario();

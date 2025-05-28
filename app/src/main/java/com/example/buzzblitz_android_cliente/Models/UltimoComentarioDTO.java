@@ -3,8 +3,8 @@ package com.example.buzzblitz_android_cliente.Models;
 public class UltimoComentarioDTO {
     private String tema;
     private String ultimoComentario;
-    private String descripcion; // Opcional, si tu backend lo devuelve
-    private int numComentarios; // Opcional, si tu backend lo devuelve
+    private String descripcion;
+    private int numComentarios;
 
     public String getTema() { return tema; }
     public void setTema(String tema) { this.tema = tema; }

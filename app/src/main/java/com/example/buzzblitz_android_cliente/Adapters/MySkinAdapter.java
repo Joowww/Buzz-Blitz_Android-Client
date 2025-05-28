@@ -53,18 +53,15 @@ public class MySkinAdapter extends RecyclerView.Adapter<MySkinAdapter.ViewHolder
         Objeto objeto = skins.get(position);
         Context context = holder.itemView.getContext();
 
-        // Configurar textos
         holder.tvNombre.setText(objeto.getNombre());
         holder.tvPrecio.setText("Precio: " + objeto.getPrecio());
         holder.tvTipo.setText("Tipo: " + (objeto.getTipo() == 1 ? "Arma" : "Skin"));
         holder.tvDescripcion.setText("Descripción: " + objeto.getDescripcion());
 
-        // Logs de depuración
         Log.d(TAG, "Posición: " + position);
         Log.d(TAG, "Nombre objeto: " + objeto.getNombre());
         Log.d(TAG, "Nombre imagen: " + objeto.getImagen());
 
-        // Construir URL de la imagen
         String imageUrl = "http://10.0.2.2:8080/img/" + objeto.getImagen();
         Log.d(TAG, "URL completa: " + imageUrl);
 

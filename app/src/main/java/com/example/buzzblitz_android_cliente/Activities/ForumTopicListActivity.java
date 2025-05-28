@@ -23,9 +23,9 @@ public class ForumTopicListActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_friends_list); // Puedes crear un layout específico si lo prefieres
+        setContentView(R.layout.activity_friends_list);
 
-        RecyclerView rvTopics = findViewById(R.id.rvFriendsList); // Reutiliza el id o crea uno nuevo
+        RecyclerView rvTopics = findViewById(R.id.rvFriendsList);
         rvTopics.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ForumTopicAdapter(temas, this::abrirTema);
         rvTopics.setAdapter(adapter);

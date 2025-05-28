@@ -69,7 +69,6 @@ public class RankingActivity extends BaseActivity {
                         top5.add(rankingCompleto.get(i));
                     }
 
-                    // Si el usuario está fuera del top5, reemplaza el último por su info real
                     if (userPosition > 5 && top5.size() == 5) {
                         Info userInfo = null;
                         for (Info info : rankingCompleto) {

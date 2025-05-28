@@ -30,7 +30,6 @@ public interface ForumBuzzBlitzService {
     @PUT("foro/votarComentario")
     Call<Void> votarComentario(@Query("tema") String tema, @Query("index") int index, @Query("positivo") boolean positivo);
 
-    // --- NUEVO ENDPOINT ---
     @GET("foro/ultimosComentarios")
     Call<List<UltimoComentarioDTO>> getUltimosComentarios();
 }

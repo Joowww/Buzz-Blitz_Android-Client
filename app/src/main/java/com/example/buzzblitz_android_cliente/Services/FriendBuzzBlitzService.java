@@ -28,7 +28,6 @@ public interface FriendBuzzBlitzService {
     @GET("amistades/pendientes/enviadas")
     Call<List<SolicitudAmistad>> getSolicitudesEnviadas(@Query("usuario") String usuario);
 
-    // --- NUEVOS ENDPOINTS ---
     @GET("amistades/usuarios")
     Call<List<String>> getTodosLosUsuarios();
 
