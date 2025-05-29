@@ -63,6 +63,10 @@ public class MainActivity extends BaseActivity {
         findViewById(R.id.btnExit).setOnClickListener(v ->
                 startActivity(new Intent(this, CerrarSesionActivity.class)));
 
+        findViewById(R.id.btnSupportVideos).setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, VideosActivity.class));
+        });
+
         sideMenuCard = findViewById(R.id.sideMenuCard);
         menuContent = findViewById(R.id.menuContent);
         ivArrow = findViewById(R.id.ivArrow);

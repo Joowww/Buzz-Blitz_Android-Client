@@ -10,6 +10,8 @@ import com.example.buzzblitz_android_cliente.Models.DevolverCompra;
 import com.example.buzzblitz_android_cliente.Models.OlvContra;
 import com.example.buzzblitz_android_cliente.Models.Intercambio;
 import com.example.buzzblitz_android_cliente.Models.InfoList;
+import com.example.buzzblitz_android_cliente.Models.Video;
+import com.example.buzzblitz_android_cliente.Models.VideoListDTO;
 
 import java.util.List;
 
@@ -62,4 +64,6 @@ public interface GameBuzzBlitzService {
     @PUT("usuarios/tienda/{id}/intercambio")
     Call<Intercambio> intercambiarFlores(@Path("id") String usuarioId);
 
+    @GET("usuarios/media")
+    Call<VideoListDTO> getVideos();
 }
