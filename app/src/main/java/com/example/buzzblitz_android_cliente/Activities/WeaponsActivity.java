@@ -49,12 +49,12 @@ public class WeaponsActivity extends BaseActivity {
             rvObjetos.setVisibility(View.GONE);
             return;
         }
-        Call<ConsultaTienda> call = RetrofitClient.getApiService().getArmasUsuario(userId);
-        call.enqueue(new Callback<ConsultaTienda>() {
+        Call<List<Objeto>> call = RetrofitClient.getApiService().getArmasUsuario(userId);
+        call.enqueue(new Callback<List<Objeto>>() {
             @Override
-            public void onResponse(Call<ConsultaTienda> call, Response<ConsultaTienda> response) {
+            public void onResponse(Call<List<Objeto>> call, Response<List<Objeto>> response) {
                 if(response.isSuccessful() && response.body() != null) {
-                    List<Objeto> armas = response.body().getConsulta();
+                    List<Objeto> armas = response.body();
                     if(armas.isEmpty()) {
                         tvEmpty.setVisibility(View.VISIBLE);
                         rvObjetos.setVisibility(View.GONE);
@@ -71,7 +71,7 @@ public class WeaponsActivity extends BaseActivity {
             }
 
             @Override
-            public void onFailure(Call<ConsultaTienda> call, Throwable t) {
+            public void onFailure(Call<List<Objeto>> call, Throwable t) {
                 tvEmpty.setVisibility(View.VISIBLE);
                 rvObjetos.setVisibility(View.GONE);
                 Toast.makeText(WeaponsActivity.this, "Error al cargar armas", Toast.LENGTH_SHORT).show();

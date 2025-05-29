@@ -55,7 +55,11 @@ public class MySkinAdapter extends RecyclerView.Adapter<MySkinAdapter.ViewHolder
 
         holder.tvNombre.setText(objeto.getNombre());
         holder.tvPrecio.setText("Precio: " + objeto.getPrecio());
-        holder.tvTipo.setText("Tipo: " + (objeto.getTipo() == 1 ? "Arma" : "Skin"));
+        if ("arma".equals(objeto.getTipo())) {
+            holder.tvTipo.setText("Tipo: Arma");
+        } else if ("skin".equals(objeto.getTipo())) {
+            holder.tvTipo.setText("Tipo: Skin");
+        }
         holder.tvDescripcion.setText("Descripción: " + objeto.getDescripcion());
 
         Log.d(TAG, "Posición: " + position);

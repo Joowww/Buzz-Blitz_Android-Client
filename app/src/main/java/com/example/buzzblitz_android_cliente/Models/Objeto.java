@@ -4,13 +4,12 @@ public class Objeto {
     private String id;
     private String nombre;
     private Integer precio;
-    private int tipo;
+    private String tipo;// "arma" o "skin"
     private String descripcion;
     private String imagen;
 
     public Objeto() {}
-
-    public Objeto(String id, String nombre, int precio , int tipo, String descripcion ,String imagen) {
+    public Objeto(String id, String nombre, int precio , String tipo, String descripcion ,String imagen) {
         this.id = id;
         this.nombre = nombre;
         this.tipo = tipo;
@@ -26,6 +25,7 @@ public class Objeto {
     public String getImagen() {
         return imagen;
     }
+
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
@@ -60,19 +60,12 @@ public class Objeto {
         this.nombre = nombre;
     }
 
-    public int getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(int tipo) {
+    public void setTipo(String tipo) {
 
         this.tipo = tipo;
     }
-    public void setNombreImagen(String nombreImagen) { this.imagen = nombreImagen; }
-
-//    public int getImagenResId(Context context) {
-//        int resId = context.getResources()
-//                .getIdentifier(imagen, "drawable", context.getPackageName());
-//        return resId != 0 ? resId : R.drawable.bee;
-//    }
 }

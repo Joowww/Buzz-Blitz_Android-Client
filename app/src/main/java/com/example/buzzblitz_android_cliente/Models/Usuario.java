@@ -10,54 +10,28 @@ public class Usuario {
     private String mail;
     private String apellidos;
 
-    private int tarrosMiel;
-    private int flor;
-    private int mejorPuntuacion;
-    private int numPartidas;
-    private int floreGold;
-
-    private String pregunta;
-    private String respuesta;
+    private Integer tarrosMiel;
+    private Integer flor;
+    private Integer mejorPuntuacion;
+    private Integer numPartidas;
+    private Integer floreGold;
 
     private Map<String, Objeto> armas;
     private Map<String, Objeto> skins;
 
-    public Usuario() {}
+    private String pregunta;
+    private String respuesta;
 
-    public Usuario(String id, String name, String apellidos,String pswd, String mail, String q, String a, int Tarros, int Flores, int mejorPuntuacion) { // Primera vez que entras
-        this.id = id;
-        this.name = name;
-        this.pswd = pswd;
-        this.mail = mail;
-        this.tarrosMiel = 0;
-        this.flor = 0;
-        this.mejorPuntuacion = mejorPuntuacion;
-        this.numPartidas = 0;
-        this.floreGold = 0;
-        this.apellidos = apellidos;
-        this.pregunta = q;
-        this.respuesta = a;
-        this.armas = new HashMap<>();
-        this.skins = new HashMap<>();
-        this.tarrosMiel = Tarros;
-        this.flor = Flores;
-    }
+    public Usuario() {}
 
     public Usuario(String id, String name, String apellidos,String pswd, String mail, String q, String a) { // Primera vez que entras
         this.id = id;
         this.name = name;
         this.pswd = pswd;
         this.mail = mail;
-        this.tarrosMiel = 0;
-        this.flor = 0;
-        this.mejorPuntuacion = 0;
-        this.numPartidas = 0;
-        this.floreGold = 0;
         this.apellidos = apellidos;
         this.pregunta = q;
         this.respuesta = a;
-        this.armas = new HashMap<>();
-        this.skins = new HashMap<>();
     }
     public void UpdateArmas(Objeto objeto){
         armas.put(objeto.getId(), objeto);
@@ -65,7 +39,7 @@ public class Usuario {
     public void UpdateSkin(Objeto objeto){
         skins.put(objeto.getId(), objeto);
     }
-
+    // --- Getters y Setters básicos ---
     public String getId() {
         return id;
     }
@@ -119,7 +93,6 @@ public class Usuario {
     public void setFlor(int flor) {
         this.flor = flor;
     }
-
 
     public int getMejorPuntuacion() {
         return mejorPuntuacion;
@@ -176,6 +149,6 @@ public class Usuario {
     public void setRespuesta(String respuesta) {
         this.respuesta = respuesta;
     }
-
 }
+
 

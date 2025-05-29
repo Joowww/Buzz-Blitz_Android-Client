@@ -48,12 +48,12 @@ public class SkinsActivity extends BaseActivity {
             rvObjetos.setVisibility(View.GONE);
             return;
         }
-        Call<ConsultaTienda> call = RetrofitClient.getApiService().getSkinsUsuario(userId);
-        call.enqueue(new Callback<ConsultaTienda>() {
+        Call<List<Objeto>> call = RetrofitClient.getApiService().getSkinsUsuario(userId);
+        call.enqueue(new Callback<List<Objeto>>() {
             @Override
-            public void onResponse(Call<ConsultaTienda> call, Response<ConsultaTienda> response) {
+            public void onResponse(Call<List<Objeto>> call, Response<List<Objeto>> response) {
                 if(response.isSuccessful() && response.body() != null) {
-                    List<Objeto> skins = response.body().getConsulta();
+                    List<Objeto> skins = response.body();
                     if(skins.isEmpty()) {
                         tvEmpty.setVisibility(View.VISIBLE);
                         rvObjetos.setVisibility(View.GONE);
@@ -70,7 +70,7 @@ public class SkinsActivity extends BaseActivity {
             }
 
             @Override
-            public void onFailure(Call<ConsultaTienda> call, Throwable t) {
+            public void onFailure(Call<List<Objeto>> call, Throwable t) {
                 tvEmpty.setVisibility(View.VISIBLE);
                 rvObjetos.setVisibility(View.GONE);
                 Toast.makeText(SkinsActivity.this, "Error al cargar skins", Toast.LENGTH_SHORT).show();

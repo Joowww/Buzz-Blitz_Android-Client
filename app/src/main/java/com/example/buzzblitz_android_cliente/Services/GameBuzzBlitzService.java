@@ -1,16 +1,16 @@
 package com.example.buzzblitz_android_cliente.Services;
 
+import com.example.buzzblitz_android_cliente.Models.BadgesResponse;
+import com.example.buzzblitz_android_cliente.Models.Objeto;
 import com.example.buzzblitz_android_cliente.Models.UsuReg;
 import com.example.buzzblitz_android_cliente.Models.Usuario;
 import com.example.buzzblitz_android_cliente.Models.UsuarioEnviar;
 import com.example.buzzblitz_android_cliente.Models.Usulogin;
-import com.example.buzzblitz_android_cliente.Models.Compra;
-import com.example.buzzblitz_android_cliente.Models.ConsultaTienda;
+import com.example.buzzblitz_android_cliente.Models.Usuario_objeto;
 import com.example.buzzblitz_android_cliente.Models.DevolverCompra;
 import com.example.buzzblitz_android_cliente.Models.OlvContra;
 import com.example.buzzblitz_android_cliente.Models.Intercambio;
 import com.example.buzzblitz_android_cliente.Models.InfoList;
-import com.example.buzzblitz_android_cliente.Models.Video;
 import com.example.buzzblitz_android_cliente.Models.VideoListDTO;
 
 import java.util.List;
@@ -22,7 +22,6 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.DELETE;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 public interface GameBuzzBlitzService {
     @POST("usuarios/register")
@@ -31,11 +30,11 @@ public interface GameBuzzBlitzService {
     @POST("usuarios/login")
     Call<UsuarioEnviar> loginUsuario(@Body Usulogin usuario);
 
+    @DELETE("usuarios/{id}")
+    Call<Void> deleteUsuario(@Path("id") String id);
+
     @GET("usuarios/informacion/{userId}")
     Call<InfoList> getInfo(@Path("userId") String userId);
-
-    @GET("usuarios/login/recordarContraseña")
-    Call<String> obtenerPreguntaSeguridad(@Query("id") String id);
 
     @POST("usuarios/login/recuperarCuenta")
     Call<Usuario> recuperarCuenta(@Body OlvContra datos);
@@ -43,27 +42,29 @@ public interface GameBuzzBlitzService {
     @POST("usuarios/login/cambiarContraseña")
     Call<Void> cambiarContraseña(@Body Usulogin datos);
 
-    @DELETE("usuarios/{id}")
-    Call<Void> deleteUsuario(@Path("id") String id);
-
     @PUT("usuarios/comprar")
-    Call<DevolverCompra> comprarObjeto(@Body Compra compra);
+    Call<DevolverCompra> comprarObjeto(@Body Usuario_objeto usuarioobjeto);
 
     @GET("usuarios/tienda/armas")
-    Call<ConsultaTienda> getArmas();
+    //Call<ConsultaTienda> getArmas();
+    Call<List<Objeto>> getArmas();
 
     @GET("usuarios/tienda/skins")
-    Call<ConsultaTienda> getSkins();
+    //Call<ConsultaTienda> getSkins();
+    Call<List<Objeto>> getSkins();
 
     @GET("usuarios/tienda/{id}/armas")
-    Call<ConsultaTienda> getArmasUsuario(@Path("id") String usuarioId);
+    Call<List<Objeto>> getArmasUsuario(@Path("id") String usuarioId);
 
     @GET("usuarios/tienda/{id}/skins")
-    Call<ConsultaTienda> getSkinsUsuario(@Path("id") String usuarioId);
+    Call<List<Objeto>> getSkinsUsuario(@Path("id") String usuarioId);
 
     @PUT("usuarios/tienda/{id}/intercambio")
     Call<Intercambio> intercambiarFlores(@Path("id") String usuarioId);
 
     @GET("usuarios/media")
     Call<VideoListDTO> getVideos();
+
+    @GET("usuarios/badges/{userId}/badges")
+    Call<BadgesResponse> getUserBadges(@Path("userId") String userId);
 }

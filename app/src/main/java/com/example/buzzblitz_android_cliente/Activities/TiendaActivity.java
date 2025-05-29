@@ -10,10 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.buzzblitz_android_cliente.Adapters.MyShopAdapter;
 import com.example.buzzblitz_android_cliente.Models.AuthUtil;
-import com.example.buzzblitz_android_cliente.Models.Compra;
+import com.example.buzzblitz_android_cliente.Models.Usuario_objeto;
 import com.example.buzzblitz_android_cliente.Models.DevolverCompra;
 import com.example.buzzblitz_android_cliente.Models.Objeto;
-import com.example.buzzblitz_android_cliente.Models.ConsultaTienda;
 import com.example.buzzblitz_android_cliente.R;
 import com.example.buzzblitz_android_cliente.Services.GameBuzzBlitzService;
 import com.example.buzzblitz_android_cliente.RetrofitClient;
@@ -55,12 +54,12 @@ public class TiendaActivity extends BaseActivity {
             Objeto objeto = objetosTienda.get(position);
             String usuarioId = AuthUtil.getCurrentUserId(this);
 
-            Compra compra = new Compra();
-            compra.setUsuarioId(usuarioId);
-            compra.setObjeto(objeto.getId());
+            Usuario_objeto usuarioobjeto = new Usuario_objeto();
+            usuarioobjeto.setUsuario_id(usuarioId);
+            usuarioobjeto.setObjeto(objeto.getNombre());
 
             GameBuzzBlitzService api = RetrofitClient.getApiService();
-            Call<DevolverCompra> call = api.comprarObjeto(compra);
+            Call<DevolverCompra> call = api.comprarObjeto(usuarioobjeto);
             call.enqueue(new Callback<DevolverCompra>() {
                 @Override
                 public void onResponse(Call<DevolverCompra> call, Response<DevolverCompra> response) {
@@ -100,38 +99,38 @@ public class TiendaActivity extends BaseActivity {
     private void cargarArmasYSkins() {
         GameBuzzBlitzService apiService = RetrofitClient.getApiService();
 
-        apiService.getArmas().enqueue(new Callback<ConsultaTienda>() {
+        apiService.getArmas().enqueue(new Callback<List<Objeto>>() {
             @Override
-            public void onResponse(Call<ConsultaTienda> call, Response<ConsultaTienda> response) {
+            public void onResponse(Call<List<Objeto>> call, Response<List<Objeto>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    objetosTienda.addAll(response.body().getConsulta());
+                    objetosTienda.addAll(response.body());
                     adapter.notifyDataSetChanged();
-                    Log.d("API_TIENDA", "Armas loaded: " + response.body().getConsulta().size());
+                    Log.d("API_TIENDA", "Armas loaded: " + response.body().size());
                 } else {
                     Log.e("API_ERROR", "Error weapons: " + response.code());
                 }
             }
 
             @Override
-            public void onFailure(Call<ConsultaTienda> call, Throwable t) {
+            public void onFailure(Call<List<Objeto>> call, Throwable t) {
                 Log.e("API_FAILURE", "Error weapons: " + t.getMessage());
             }
         });
 
-        apiService.getSkins().enqueue(new Callback<ConsultaTienda>() {
+        apiService.getSkins().enqueue(new Callback<List<Objeto>>() {
             @Override
-            public void onResponse(Call<ConsultaTienda> call, Response<ConsultaTienda> response) {
+            public void onResponse(Call<List<Objeto>> call, Response<List<Objeto>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    objetosTienda.addAll(response.body().getConsulta());
+                    objetosTienda.addAll(response.body());
                     adapter.notifyDataSetChanged();
-                    Log.d("API_TIENDA", "Skins loaded: " + response.body().getConsulta().size());
+                    Log.d("API_TIENDA", "Skins loaded: " + response.body().size());
                 } else {
                     Log.e("API_ERROR", "Error skins: " + response.code());
                 }
             }
 
             @Override
-            public void onFailure(Call<ConsultaTienda> call, Throwable t) {
+            public void onFailure(Call<List<Objeto>>call, Throwable t) {
                 Log.e("API_FAILURE", "Error skins: " + t.getMessage());
             }
         });
@@ -141,11 +140,11 @@ public class TiendaActivity extends BaseActivity {
         String usuarioId = AuthUtil.getCurrentUserId(this);
         GameBuzzBlitzService api = RetrofitClient.getApiService();
 
-        api.getArmasUsuario(usuarioId).enqueue(new Callback<ConsultaTienda>() {
+        api.getArmasUsuario(usuarioId).enqueue(new Callback<List<Objeto>>() {
             @Override
-            public void onResponse(Call<ConsultaTienda> call, Response<ConsultaTienda> response) {
+            public void onResponse(Call<List<Objeto>> call, Response<List<Objeto>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    for (Objeto obj : response.body().getConsulta()) {
+                    for (Objeto obj : response.body()) {
                         purchasedItemsSync.add(obj.getId());
                     }
                 }
@@ -154,18 +153,18 @@ public class TiendaActivity extends BaseActivity {
             }
 
             @Override
-            public void onFailure(Call<ConsultaTienda> call, Throwable t) {
+            public void onFailure(Call<List<Objeto>> call, Throwable t) {
                 Log.e("API_FAILURE", "Fallo al sincronizar armas compradas: " + t.getMessage());
                 armasLoaded = true;
                 verificarYGuardarCompras();
             }
         });
 
-        api.getSkinsUsuario(usuarioId).enqueue(new Callback<ConsultaTienda>() {
+        api.getSkinsUsuario(usuarioId).enqueue(new Callback<List<Objeto>>() {
             @Override
-            public void onResponse(Call<ConsultaTienda> call, Response<ConsultaTienda> response) {
+            public void onResponse(Call<List<Objeto>> call, Response<List<Objeto>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    for (Objeto obj : response.body().getConsulta()) {
+                    for (Objeto obj : response.body()) {
                         purchasedItemsSync.add(obj.getId());
                     }
                 }
@@ -174,7 +173,7 @@ public class TiendaActivity extends BaseActivity {
             }
 
             @Override
-            public void onFailure(Call<ConsultaTienda> call, Throwable t) {
+            public void onFailure(Call<List<Objeto>> call, Throwable t) {
                 Log.e("API_FAILURE", "Fallo al sincronizar skins compradas: " + t.getMessage());
                 skinsLoaded = true;
                 verificarYGuardarCompras();

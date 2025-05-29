@@ -37,6 +37,11 @@ public class UserProfileActivity extends BaseActivity {
             Intent intent = new Intent(UserProfileActivity.this, InventoryActivity.class);
             startActivity(intent);
         });
+
+        Button btnBadges = findViewById(R.id.btnBadges);
+        btnBadges.setOnClickListener(v -> {
+            startActivity(new Intent(UserProfileActivity.this, BadgesActivity.class));
+        });
     }
 
     @Override

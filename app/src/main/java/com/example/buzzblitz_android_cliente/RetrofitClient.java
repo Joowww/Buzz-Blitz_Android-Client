@@ -14,7 +14,8 @@ import com.google.gson.GsonBuilder;
 
 public class RetrofitClient {
     private static Retrofit retrofit = null;
-    private static final String BASE_URL = "http://10.0.2.2:8080/dsaApp/";
+//    private static final String BASE_URL = "http://10.0.2.2:8080/dsaApp/";
+    private static final String BASE_URL = "https://dsa3.upc.edu/dsaApp/";
 
     private static Retrofit getRetrofitInstance() {
         if (retrofit == null) {
