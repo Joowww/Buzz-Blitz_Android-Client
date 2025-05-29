@@ -1,5 +1,7 @@
 package com.example.buzzblitz_android_cliente.Services;
 
+import com.example.buzzblitz_android_cliente.Models.Badge;
+import com.example.buzzblitz_android_cliente.Models.BadgesResponse;
 import com.example.buzzblitz_android_cliente.Models.UsuReg;
 import com.example.buzzblitz_android_cliente.Models.Usuario;
 import com.example.buzzblitz_android_cliente.Models.UsuarioEnviar;
@@ -66,4 +68,7 @@ public interface GameBuzzBlitzService {
 
     @GET("usuarios/media")
     Call<VideoListDTO> getVideos();
+
+    @GET("usuarios/badges/{userId}/badges")
+    Call<BadgesResponse> getUserBadges(@Path("userId") String userId);
 }

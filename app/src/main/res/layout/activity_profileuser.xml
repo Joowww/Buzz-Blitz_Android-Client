@@ -103,28 +103,28 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnCambiarPswd"
-        android:layout_width="180dp"
+        android:layout_width="115dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="184dp"
+        android:layout_marginBottom="192dp"
         android:background="@drawable/btn_selector"
         android:text="Change password"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="0.705"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnRecuperarPswd"
-        android:layout_width="180dp"
+        android:layout_width="115dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="124dp"
+        android:layout_marginBottom="192dp"
         android:background="@drawable/btn_selector"
         android:text="Password recovery"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="0.187"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -141,16 +141,29 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnGoToInventory"
-        android:layout_width="180dp"
+        android:layout_width="130dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="244dp"
+        android:layout_marginBottom="248dp"
         android:background="@drawable/btn_selector"
         android:text="User INVENTORY"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="0.463"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnBadges"
+        android:layout_width="130dp"
+        android:layout_height="45dp"
+        android:background="@drawable/btn_selector"
+        android:text="Badges"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.474"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.817" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
