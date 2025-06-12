@@ -136,9 +136,11 @@ public class MainActivity extends BaseActivity {
                     "com.DefaultCompany.Buzzblitz",
                     "com.unity3d.player.UnityPlayerActivity"
             ));
-            /*i.putExtra("user", this.user);
-            i.putExtra("money", this.money);
-            i.putExtra("record", this.record);*/
+            i.putExtra("UserID", sharedPreferences.getString("currentUserId", ""));
+            i.putExtra("TarrosDeMiel", sharedPreferences.getString("currentTarrosMiel", "0"));
+            i.putExtra("Flor", sharedPreferences.getString("currentFlower", "0"));
+            i.putExtra("GoldenFlor", sharedPreferences.getString("currentFloreGold", "0"));
+            i.putExtra("record", sharedPreferences.getString("currentRecord", "0"));
             startActivityForResult(i, 0);
         } catch (Exception e) {
             Toast.makeText(this, "Instala la app de Unity primero", Toast.LENGTH_SHORT).show();
