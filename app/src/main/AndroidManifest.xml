@@ -149,6 +149,10 @@
 
         <activity android:name=".Activities.QuestionActivity" />
 
+        <activity android:name=".Activities.ReportIssueActivity"/>
+
+        <activity android:name=".Activities.IssueListActivity"/>
+
         <meta-data
             android:name="android.security.net.config"
             android:resource="@xml/network_security_config" />

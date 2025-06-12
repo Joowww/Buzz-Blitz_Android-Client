@@ -3,6 +3,7 @@ package com.example.buzzblitz_android_cliente.Services;
 import com.example.buzzblitz_android_cliente.Models.BadgesResponse;
 import com.example.buzzblitz_android_cliente.Models.ChatIndividual;
 import com.example.buzzblitz_android_cliente.Models.Forum;
+import com.example.buzzblitz_android_cliente.Models.Issue;
 import com.example.buzzblitz_android_cliente.Models.ListFreqQuest;
 import com.example.buzzblitz_android_cliente.Models.Objeto;
 import com.example.buzzblitz_android_cliente.Models.Question;
@@ -19,6 +20,7 @@ import com.example.buzzblitz_android_cliente.Models.VideoListDTO;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -78,6 +80,15 @@ public interface GameBuzzBlitzService {
 
     @POST("usuarios/question")
     Call<Void> submitQuestion(@Body Question question);
+
+    @POST("usuarios/issue")
+    Call<Void> reportIssue(@Body Issue issue);
+
+//    @GET("usuarios/issue")
+//    Call<List<Issue>> getIssues();
+
+    @GET("usuarios/issue")
+    Call<ResponseBody> getIssues();
 
     @POST("users/GetForum") //OK
     Call<List<Forum>> getForum();

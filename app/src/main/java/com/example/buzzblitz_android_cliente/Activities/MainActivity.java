@@ -115,17 +115,55 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+//    public void jugarClick(View view) {
+//        try {
+//            Intent i = new Intent();
+//            i.setComponent(new ComponentName(
+//                    "com.DefaultCompany.Buzzblitz",
+//                    "com.unity3d.player.UnityPlayerGameActivity"
+//            ));
+//            startActivityForResult(i, 0);
+//        } catch (Exception e) {
+//            Toast.makeText(this, "Instala la app de Unity primero", Toast.LENGTH_SHORT).show();
+//            Log.e("UnityLaunchError", "Error al lanzar la app Unity", e);
+//        }
+//    }
+
     public void jugarClick(View view) {
         try {
             Intent i = new Intent();
             i.setComponent(new ComponentName(
                     "com.DefaultCompany.Buzzblitz",
-                    "com.unity3d.player.UnityPlayerGameActivity"
+                    "com.unity3d.player.UnityPlayerActivity"
             ));
+            /*i.putExtra("user", this.user);
+            i.putExtra("money", this.money);
+            i.putExtra("record", this.record);*/
             startActivityForResult(i, 0);
         } catch (Exception e) {
             Toast.makeText(this, "Instala la app de Unity primero", Toast.LENGTH_SHORT).show();
             Log.e("UnityLaunchError", "Error al lanzar la app Unity", e);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 0 && resultCode == RESULT_OK && data != null) {
+            if (data.hasExtra("honey_data")) {
+                String honey = data.getStringExtra("honey_data");
+                Log.d("MainActivity", "Recibido desde Unity: " + honey);
+                Toast.makeText(this, "Honey recibido: " + honey, Toast.LENGTH_LONG).show();
+
+                // Aquí puedes usar 'honey' como necesites
+                // Por ejemplo, guardar en SharedPreferences:
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("lastHoney", honey);
+                editor.apply();
+            } else {
+                Log.d("MainActivity", "Unity terminó sin datos.");
+            }
         }
     }
 }

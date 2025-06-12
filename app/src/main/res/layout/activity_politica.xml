@@ -43,7 +43,37 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.642" />
+        app:layout_constraintVertical_bias="0.588" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnListIssues"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:layout_margin="8dp"
+        android:background="@drawable/btn_selector"
+        android:text="Issues List"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.742" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnReportIssue"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:layout_margin="8dp"
+        android:background="@drawable/btn_selector"
+        android:text="Report an Issue"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.853" />
 
     <ImageView
         android:id="@+id/imageView13"
