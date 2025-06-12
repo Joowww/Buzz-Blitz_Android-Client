@@ -6,11 +6,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-import com.example.buzzblitz_android_cliente.Services.FriendBuzzBlitzService;
 import com.example.buzzblitz_android_cliente.Services.GameBuzzBlitzService;
-import com.example.buzzblitz_android_cliente.Services.ChatBuzzBlitzService;
-import com.example.buzzblitz_android_cliente.Services.ForumBuzzBlitzService;
-import com.google.gson.GsonBuilder;
 
 public class RetrofitClient {
     private static Retrofit retrofit = null;
@@ -38,17 +34,5 @@ public class RetrofitClient {
 
     public static GameBuzzBlitzService getApiService() {
         return getRetrofitInstance().create(GameBuzzBlitzService.class);
-    }
-
-    public static ChatBuzzBlitzService getChatService() {
-        return getRetrofitInstance().create(ChatBuzzBlitzService.class);
-    }
-
-    public static ForumBuzzBlitzService getForumService() {
-        return getRetrofitInstance().create(ForumBuzzBlitzService.class);
-    }
-
-    public static FriendBuzzBlitzService getFriendService() {
-        return getRetrofitInstance().create(FriendBuzzBlitzService.class);
     }
 }

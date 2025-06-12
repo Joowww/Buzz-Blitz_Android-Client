@@ -57,6 +57,9 @@ public class MainActivity extends BaseActivity {
         new Handler().postDelayed(() -> bees2.setVisibility(View.VISIBLE), 1000);
         new Handler().postDelayed(() -> bees3.setVisibility(View.VISIBLE), 2000);
 
+        findViewById(R.id.btnChatBuzz).setOnClickListener(v ->
+                startActivity(new Intent(MainActivity.this, ChatBotActivity.class)));
+
         findViewById(R.id.btnOptions).setOnClickListener(v ->
                 startActivity(new Intent(this, OpcionesActivity.class)));
 
@@ -65,6 +68,7 @@ public class MainActivity extends BaseActivity {
 
         findViewById(R.id.btnSupportVideos).setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, VideosActivity.class));
+
         });
 
         sideMenuCard = findViewById(R.id.sideMenuCard);

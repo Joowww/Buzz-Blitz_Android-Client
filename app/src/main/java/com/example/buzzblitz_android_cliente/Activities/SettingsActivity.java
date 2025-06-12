@@ -21,6 +21,11 @@ public class SettingsActivity extends BaseActivity {
         TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
         tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
 
+        AppCompatButton btnFAQs = findViewById(R.id.btnFAQs);
+        btnFAQs.setOnClickListener(v -> {
+            startActivity(new Intent(SettingsActivity.this, FreqQuestActivity.class));
+        });
+
         AppCompatButton btnCredits = findViewById(R.id.btnCredits);
         btnCredits.setOnClickListener(v -> {
             startActivity(new Intent(SettingsActivity.this, CreditsActivity.class));

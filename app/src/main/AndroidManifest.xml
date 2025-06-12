@@ -107,16 +107,6 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
         <activity
-            android:name=".Activities.ChatActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-
-        <activity
-            android:name=".Activities.ForumActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-
-        <activity
             android:name=".Activities.HelpActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
@@ -142,24 +132,15 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
         <activity
-            android:name=".Activities.ChatListActivity"
+            android:name=".Activities.ChatBotActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
         <activity
-            android:name=".Activities.FriendsListActivity"
+            android:name=".Activities.FreqQuestActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
-        <activity
-            android:name=".Activities.FriendRequestActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-
-        <activity
-            android:name=".Activities.ForumTopicListActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
         <activity android:name=".Activities.VideosActivity"
             android:label="Support Videos"/>

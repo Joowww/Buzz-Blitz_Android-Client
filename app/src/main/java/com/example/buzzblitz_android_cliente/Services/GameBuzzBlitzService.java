@@ -1,6 +1,9 @@
 package com.example.buzzblitz_android_cliente.Services;
 
 import com.example.buzzblitz_android_cliente.Models.BadgesResponse;
+import com.example.buzzblitz_android_cliente.Models.ChatIndividual;
+import com.example.buzzblitz_android_cliente.Models.Forum;
+import com.example.buzzblitz_android_cliente.Models.ListFreqQuest;
 import com.example.buzzblitz_android_cliente.Models.Objeto;
 import com.example.buzzblitz_android_cliente.Models.UsuReg;
 import com.example.buzzblitz_android_cliente.Models.Usuario;
@@ -24,6 +27,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.Path;
 
 public interface GameBuzzBlitzService {
+
     @POST("usuarios/register")
     Call<Void> registerUsuario(@Body UsuReg usuario);
 
@@ -67,4 +71,22 @@ public interface GameBuzzBlitzService {
 
     @GET("usuarios/badges/{userId}/badges")
     Call<BadgesResponse> getUserBadges(@Path("userId") String userId);
+
+    @GET("usuarios/faqs")
+    Call<ListFreqQuest> getFaqs ();
+
+    @POST("users/GetForum") //OK
+    Call<List<Forum>> getForum();
+
+    //@POST("users/PostInForum") //OK
+    //Call<List<Forum>> PostInForum(@Body Forum forum, ForumActivity forumActivity);
+
+    @POST("users/PrivateNames") //OK
+    Call<List<Usuario>> getPrivateNames();
+
+    @POST("users/PrivateMessagesWith/{name}") //OK
+    Call<List<ChatIndividual>> getPrivateMessagesWith(@Path("name") String name);
+
+    @POST("users/PrivateChat/Post") //OK
+    Call<List<ChatIndividual>> postPrivateMessage(@Body ChatIndividual chatIndividual);
 }

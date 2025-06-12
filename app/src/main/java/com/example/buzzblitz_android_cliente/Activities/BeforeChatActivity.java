@@ -17,16 +17,5 @@ public class BeforeChatActivity extends BaseActivity {
         ImageButton btnForum = findViewById(R.id.boton_imagenforum);
 
         Button btnAmigos = findViewById(R.id.btnAmigos);
-        btnAmigos.setOnClickListener(v ->
-                startActivity(new Intent(this, FriendsListActivity.class))
-        );
-        btnChat.setOnClickListener(v ->
-                startActivity(new Intent(this, ChatListActivity.class))
-        );
-
-        btnForum.setOnClickListener(v ->
-                startActivity(new Intent(this, ForumTopicListActivity.class))
-        );
-        // PRUEBA PUSH NUEVA RAMA
     }
 }
