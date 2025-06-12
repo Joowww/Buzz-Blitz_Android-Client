@@ -147,6 +147,8 @@
 
         <activity android:name=".Activities.BadgesActivity" />
 
+        <activity android:name=".Activities.QuestionActivity" />
+
         <meta-data
             android:name="android.security.net.config"
             android:resource="@xml/network_security_config" />

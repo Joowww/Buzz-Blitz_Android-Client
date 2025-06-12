@@ -15,7 +15,10 @@ public class BeforeChatActivity extends BaseActivity {
 
         ImageButton btnChat = findViewById(R.id.boton_imagenchat);
         ImageButton btnForum = findViewById(R.id.boton_imagenforum);
-
         Button btnAmigos = findViewById(R.id.btnAmigos);
+
+        findViewById(R.id.boton_imagenforum).setOnClickListener(v ->
+                startActivity(new Intent(this, QuestionActivity.class))
+        );
     }
 }

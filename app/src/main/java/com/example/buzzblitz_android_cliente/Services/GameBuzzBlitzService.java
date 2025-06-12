@@ -5,6 +5,7 @@ import com.example.buzzblitz_android_cliente.Models.ChatIndividual;
 import com.example.buzzblitz_android_cliente.Models.Forum;
 import com.example.buzzblitz_android_cliente.Models.ListFreqQuest;
 import com.example.buzzblitz_android_cliente.Models.Objeto;
+import com.example.buzzblitz_android_cliente.Models.Question;
 import com.example.buzzblitz_android_cliente.Models.UsuReg;
 import com.example.buzzblitz_android_cliente.Models.Usuario;
 import com.example.buzzblitz_android_cliente.Models.UsuarioEnviar;
@@ -74,6 +75,9 @@ public interface GameBuzzBlitzService {
 
     @GET("usuarios/faqs")
     Call<ListFreqQuest> getFaqs ();
+
+    @POST("usuarios/question")
+    Call<Void> submitQuestion(@Body Question question);
 
     @POST("users/GetForum") //OK
     Call<List<Forum>> getForum();
