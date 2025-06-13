@@ -1,5 +1,6 @@
 package com.example.buzzblitz_android_cliente.Models;
 import java.util.List;
+
 public class InfoList {
     private List<Info> ranking;
     private int posicionUsuario;

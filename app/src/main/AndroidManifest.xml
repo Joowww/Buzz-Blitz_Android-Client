@@ -153,6 +153,10 @@
 
         <activity android:name=".Activities.IssueListActivity"/>
 
+        <activity android:name=".Activities.PasswordRecoveryActivity"/>
+
+        <activity android:name=".Activities.ChangePasswordActivity"/>
+
         <meta-data
             android:name="android.security.net.config"
             android:resource="@xml/network_security_config" />

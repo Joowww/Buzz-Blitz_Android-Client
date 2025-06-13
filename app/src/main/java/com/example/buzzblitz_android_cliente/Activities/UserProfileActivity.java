@@ -42,6 +42,16 @@ public class UserProfileActivity extends BaseActivity {
         btnBadges.setOnClickListener(v -> {
             startActivity(new Intent(UserProfileActivity.this, BadgesActivity.class));
         });
+
+        Button btnRecuperarPswd = findViewById(R.id.btnRecuperarPswd);
+        btnRecuperarPswd.setOnClickListener(v -> {
+            startActivity(new Intent(this, PasswordRecoveryActivity.class));
+        });
+
+        Button btnCambiarPswd = findViewById(R.id.btnCambiarPswd);
+        btnCambiarPswd.setOnClickListener(v -> {
+            startActivity(new Intent(this, ChangePasswordActivity.class));
+        });
     }
 
     @Override
