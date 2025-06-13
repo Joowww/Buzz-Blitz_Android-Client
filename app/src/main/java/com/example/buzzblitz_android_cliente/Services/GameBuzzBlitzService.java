@@ -84,11 +84,9 @@ public interface GameBuzzBlitzService {
     @POST("usuarios/issue")
     Call<Void> reportIssue(@Body Issue issue);
 
-//    @GET("usuarios/issue")
-//    Call<List<Issue>> getIssues();
-
     @GET("usuarios/issue")
-    Call<ResponseBody> getIssues();
+    Call<List<Issue>> getIssues();
+
 
     @POST("users/GetForum") //OK
     Call<List<Forum>> getForum();
