@@ -1,36 +1,39 @@
 package com.example.buzzblitz_android_cliente.Activities;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.buzzblitz_android_cliente.Models.AuthUtil;
 import com.example.buzzblitz_android_cliente.R;
 
 public class UserProfileActivity extends BaseActivity {
 
-    private TextView tvName, tvTotalHoney, tvGoldenFlowers, tvNormalFlowers;
+    private TextView tvName, tvEmail, tvTotalHoney, tvGoldenFlowers, tvNormalFlowers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profileuser);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
-        String userName = sharedPreferences.getString("currentUserName", "");
-
         tvName = findViewById(R.id.textView5);
+        tvEmail = findViewById(R.id.textView7);
         tvTotalHoney = findViewById(R.id.tvTotalHoney);
         tvGoldenFlowers = findViewById(R.id.tvGoldenFlowers);
         tvNormalFlowers = findViewById(R.id.tvNormalFlowers);
 
+        cargarDatosUsuario();
+
+        // Obtener datos usando AuthUtil
+        String userName = AuthUtil.getCurrentUserName(this);
+        String userEmail = AuthUtil.getCurrentUserEmail(this);
+
         tvName.setText("Name: " + userName);
+        tvEmail.setText("Email: " + userEmail);
 
         TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
-        tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
+        tvUserIdCorner.setText(AuthUtil.getCurrentUserId(this));
 
         Button btnInventory = findViewById(R.id.btnGoToInventory);
         btnInventory.setOnClickListener(v -> {
@@ -43,11 +46,6 @@ public class UserProfileActivity extends BaseActivity {
             startActivity(new Intent(UserProfileActivity.this, BadgesActivity.class));
         });
 
-        Button btnRecuperarPswd = findViewById(R.id.btnRecuperarPswd);
-        btnRecuperarPswd.setOnClickListener(v -> {
-            startActivity(new Intent(this, PasswordRecoveryActivity.class));
-        });
-
         Button btnCambiarPswd = findViewById(R.id.btnCambiarPswd);
         btnCambiarPswd.setOnClickListener(v -> {
             startActivity(new Intent(this, ChangePasswordActivity.class));
@@ -57,9 +55,19 @@ public class UserProfileActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        SharedPreferences prefs = getSharedPreferences("MyPreferences", MODE_PRIVATE);
-        tvTotalHoney.setText("Total honey jars: " + prefs.getInt("currentTarrosMiel", 0));
-        tvNormalFlowers.setText("Normal flowers: " + prefs.getInt("currentFlor", 0));
-        tvGoldenFlowers.setText("Golden flowers: " + prefs.getInt("currentFloreGold", 0));
+        cargarDatosUsuario();
+    }
+    private void cargarDatosUsuario() {
+        String userName = AuthUtil.getCurrentUserName(this);
+        String userEmail = AuthUtil.getCurrentUserEmail(this);
+        int tarrosMiel = AuthUtil.getCurrentTarrosMiel(this);
+        int flor = AuthUtil.getCurrentFlor(this);
+        int floreGold = AuthUtil.getCurrentFloreGold(this);
+
+        tvName.setText("Name: " + (userName != null ? userName : ""));
+        tvEmail.setText("Email: " + (userEmail != null ? userEmail : ""));
+        tvTotalHoney.setText("Total honey jars: " + tarrosMiel);
+        tvNormalFlowers.setText("Normal flowers: " + flor);
+        tvGoldenFlowers.setText("Golden flowers: " + floreGold);
     }
 }

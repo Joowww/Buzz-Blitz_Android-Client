@@ -45,6 +45,11 @@ public class LoginActivity extends AppCompatActivity {
         btnGoToRegister.setOnClickListener(v ->
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class))
         );
+
+        Button btnRecuperarPswd = findViewById(R.id.btnRecuperarPswd);
+        btnRecuperarPswd.setOnClickListener(v -> {
+            startActivity(new Intent(this, PasswordRecoveryActivity.class));
+        });
     }
 
     public void enviarLogin(View view) {
@@ -68,18 +73,11 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     UsuarioEnviar usuario = response.body();
 
-                    AuthUtil.setCurrentUserId(LoginActivity.this, usuario.getId());
+                    // Guardar todos los datos del usuario usando AuthUtil
+                    AuthUtil.saveUserData(LoginActivity.this, usuario);
                     AuthUtil.setUserLoggedIn(LoginActivity.this, true);
 
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("currentUserName", usuario.getName());
-                    editor.putInt("currentTarrosMiel", usuario.getTarrosMiel());
-                    editor.putInt("currentFlor", usuario.getFlor());
-                    editor.putInt("currentFloreGold", usuario.getFloreGold());
-                    editor.putInt("currentBestScore", usuario.getMejorPuntuacion());
-                    editor.putString("currentUserId", usuario.getId());
-                    editor.apply();
-
+                    // Iniciar MainActivity
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     finish();
                 } else {

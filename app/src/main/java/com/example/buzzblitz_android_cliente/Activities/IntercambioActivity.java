@@ -28,9 +28,10 @@ public class IntercambioActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intercambio);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+        // Usar AuthUtil para obtener preferencias
+        SharedPreferences sharedPreferences = getSharedPreferences(AuthUtil.PREFS_NAME, MODE_PRIVATE);
         TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
-        tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
+        tvUserIdCorner.setText(AuthUtil.getCurrentUserId(this));
 
         exchangeAnim = findViewById(R.id.lottieExchange);
         exchangeAnim.setAnimation(R.raw.exchange);
@@ -64,14 +65,15 @@ public class IntercambioActivity extends BaseActivity {
             @Override
             public void onResponse(Call<Intercambio> call, Response<Intercambio> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    SharedPreferences.Editor editor = getSharedPreferences("MyPreferences", MODE_PRIVATE).edit();
-                    editor.putInt("currentTarrosMiel", response.body().getTarrosMiel());
-                    editor.putInt("currentFlor", 0);
-                    editor.putInt("currentFloreGold", 0);
-                    editor.apply();
+                    int nuevosTarros = response.body().getTarrosMiel();
+
+                    // Actualizar recursos con AuthUtil
+                    AuthUtil.setCurrentTarrosMiel(IntercambioActivity.this, nuevosTarros);
+                    AuthUtil.setCurrentFlor(IntercambioActivity.this, 0);
+                    AuthUtil.setCurrentFloreGold(IntercambioActivity.this, 0);
 
                     Toast.makeText(IntercambioActivity.this,
-                            "¡Intercambio realizado! Tarros de miel: " + response.body().getTarrosMiel(),
+                            "¡Intercambio realizado! Tarros de miel: " + nuevosTarros,
                             Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(IntercambioActivity.this, "Intercambio fallido", Toast.LENGTH_SHORT).show();

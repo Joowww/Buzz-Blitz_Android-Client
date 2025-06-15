@@ -28,6 +28,7 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.DELETE;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface GameBuzzBlitzService {
 
@@ -40,11 +41,14 @@ public interface GameBuzzBlitzService {
     @DELETE("usuarios/{id}")
     Call<Void> deleteUsuario(@Path("id") String id);
 
-    @GET("usuarios/informacion/{userId}")
-    Call<InfoList> getInfo(@Path("userId") String userId);
+    @GET("usuarios/informacion/{id}")
+    Call<InfoList> getInfo(@Path("id") String id);
+
+    @GET("usuarios/login/obtenerPregunta")
+    Call<String> obtenerPreguntaSeguridad(@Query("id") String userId);
 
     @POST("usuarios/login/recuperarCuenta")
-    Call<Usuario> recuperarCuenta(@Body OlvContra datos);
+    Call<String> recuperarCuenta(@Body OlvContra datos);
 
     @POST("usuarios/login/cambiarContraseña")
     Call<Void> cambiarContraseña(@Body Usulogin datos);
@@ -84,7 +88,7 @@ public interface GameBuzzBlitzService {
     @POST("usuarios/issue")
     Call<Void> reportIssue(@Body Issue issue);
 
-    @GET("usuarios/issue")
+    @GET("usuarios/issue/all")
     Call<List<Issue>> getIssues();
 
 

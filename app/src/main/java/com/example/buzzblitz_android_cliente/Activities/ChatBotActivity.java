@@ -33,7 +33,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
-public class ChatBotActivity extends AppCompatActivity {
+public class ChatBotActivity extends BaseActivity {
     private RecyclerView recyclerView;
     private TextView welcomeTextView;
     private EditText messageEditText;
@@ -58,7 +58,6 @@ public class ChatBotActivity extends AppCompatActivity {
         messageEditText   = findViewById(R.id.message_edit_text);
         sendButton        = findViewById(R.id.send_btn);
 
-        // Lista y adapter
         messageList = new ArrayList<>();
         messageAdapter = new MessageAdapter(messageList);
         recyclerView.setAdapter(messageAdapter);
@@ -66,7 +65,6 @@ public class ChatBotActivity extends AppCompatActivity {
         llm.setStackFromEnd(true);
         recyclerView.setLayoutManager(llm);
 
-        // Botón enviar
         sendButton.setOnClickListener(v -> {
             String question = messageEditText.getText().toString().trim();
             if (!question.isEmpty()) {

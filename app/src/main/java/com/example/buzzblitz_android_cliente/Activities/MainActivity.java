@@ -10,6 +10,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import com.airbnb.lottie.LottieAnimationView;
+import com.example.buzzblitz_android_cliente.Models.AuthUtil;
 import com.example.buzzblitz_android_cliente.R;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -48,7 +49,7 @@ public class MainActivity extends BaseActivity {
         }
 
         TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
-        tvUserIdCorner.setText(sharedPreferences.getString("currentUserId", ""));
+        tvUserIdCorner.setText(AuthUtil.getCurrentUserId(this));
 
         bees1 = findViewById(R.id.lottieBees1);
         bees2 = findViewById(R.id.lottieBees2);
@@ -134,14 +135,15 @@ public class MainActivity extends BaseActivity {
             Intent i = new Intent();
             i.setComponent(new ComponentName(
                     "com.DefaultCompany.Buzzblitz",
-                    "com.unity3d.player.UnityPlayerActivity"
+                    "com.unity3d.player.UnityPlayerGameActivity"
             ));
 
-            i.putExtra("UserID", sharedPreferences.getString("currentUserId", ""));
-            i.putExtra("TarrosDeMiel", String.valueOf(sharedPreferences.getInt("currentTarrosMiel", 0)));
-            i.putExtra("Flor", String.valueOf(sharedPreferences.getInt("currentFlower", 0)));
-            i.putExtra("GoldenFlor", String.valueOf(sharedPreferences.getInt("currentFloreGold", 0)));
-            i.putExtra("record", String.valueOf(sharedPreferences.getInt("currentRecord", 0)));
+            // Obtener datos con AuthUtil
+            i.putExtra("UserID", AuthUtil.getCurrentUserId(this));
+            i.putExtra("TarrosDeMiel", String.valueOf(AuthUtil.getCurrentTarrosMiel(this)));
+            i.putExtra("Flor", String.valueOf(AuthUtil.getCurrentFlor(this)));
+            i.putExtra("GoldenFlor", String.valueOf(AuthUtil.getCurrentFloreGold(this)));
+            i.putExtra("record", String.valueOf(AuthUtil.getCurrentBestScore(this)));
 
             startActivityForResult(i, 0);
         } catch (Exception e) {
@@ -150,24 +152,24 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 0 && resultCode == RESULT_OK && data != null) {
-            if (data.hasExtra("honey_data")) {
-                String honey = data.getStringExtra("honey_data");
-                Log.d("MainActivity", "Recibido desde Unity: " + honey);
-                Toast.makeText(this, "Honey recibido: " + honey, Toast.LENGTH_LONG).show();
-
-                // Aquí puedes usar 'honey' como necesites
-                // Por ejemplo, guardar en SharedPreferences:
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("lastHoney", honey);
-                editor.apply();
-            } else {
-                Log.d("MainActivity", "Unity terminó sin datos.");
-            }
-        }
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if (requestCode == 0 && resultCode == RESULT_OK && data != null) {
+//            // Actualizar recursos desde Unity
+//            int newHoney = data.getIntExtra("updatedHoney", 0);
+//            int newFlowers = data.getIntExtra("updatedFlowers", 0);
+//            int newGoldenFlowers = data.getIntExtra("updatedGoldenFlowers", 0);
+//            int newBestScore = data.getIntExtra("updatedBestScore", 0);
+//
+//            // Actualizar SharedPreferences usando AuthUtil
+//            AuthUtil.setCurrentTarrosMiel(this, newHoney);
+//            AuthUtil.setCurrentFlor(this, newFlowers);
+//            AuthUtil.setCurrentFloreGold(this, newGoldenFlowers);
+//            AuthUtil.setCurrentBestScore(this, newBestScore);
+//
+//            Toast.makeText(this, "¡Datos del juego actualizados!", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 }

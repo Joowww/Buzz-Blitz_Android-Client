@@ -1,6 +1,5 @@
 package com.example.buzzblitz_android_cliente.Activities;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -10,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.buzzblitz_android_cliente.Adapters.MyRankingAdapter;
+import com.example.buzzblitz_android_cliente.Models.AuthUtil;
 import com.example.buzzblitz_android_cliente.Models.Info;
 import com.example.buzzblitz_android_cliente.Models.InfoList;
 import com.example.buzzblitz_android_cliente.R;
@@ -33,14 +33,15 @@ public class RankingActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ranking);
 
-        SharedPreferences prefs = getSharedPreferences("MyPreferences", MODE_PRIVATE);
-        String userId = prefs.getString("currentUserId", "");
+        // Obtener userId y bestScore usando AuthUtil
+        String userId = AuthUtil.getCurrentUserId(this);
+        int bestScore = AuthUtil.getCurrentBestScore(this);
+
         if (userId.isEmpty()) {
             Toast.makeText(this, "Error: usuario no logueado", Toast.LENGTH_SHORT).show();
             Log.e(TAG, "No hay userId en SharedPreferences");
             return;
         }
-        int bestScore = prefs.getInt("currentBestScore", 0);
 
         tvBestScore = findViewById(R.id.textView6);
         tvBestScore.setText("Tu mejor puntuación: " + bestScore);
@@ -56,6 +57,13 @@ public class RankingActivity extends BaseActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     List<Info> rankingCompleto = response.body().getRanking();
                     int userPosition = response.body().getPosicionUsuario();
+
+                    // Actualizar el mejor puntaje si es necesario
+                    int nuevoBestScore = obtenerMejorPuntuacionUsuario(rankingCompleto, userId);
+                    if (nuevoBestScore > bestScore) {
+                        AuthUtil.setCurrentBestScore(RankingActivity.this, nuevoBestScore);
+                        tvBestScore.setText("Tu mejor puntuación: " + nuevoBestScore);
+                    }
 
                     Log.d(TAG, "Ranking recibido de la API (size=" + rankingCompleto.size() + "):");
                     for (int i = 0; i < rankingCompleto.size(); i++) {
@@ -105,5 +113,14 @@ public class RankingActivity extends BaseActivity {
                 Toast.makeText(RankingActivity.this, "Error de conexión", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private int obtenerMejorPuntuacionUsuario(List<Info> ranking, String userId) {
+        for (Info info : ranking) {
+            if (info.getUsuario().equals(userId)) {
+                return info.getMejorPuntuacion();
+            }
+        }
+        return AuthUtil.getCurrentBestScore(this);
     }
 }

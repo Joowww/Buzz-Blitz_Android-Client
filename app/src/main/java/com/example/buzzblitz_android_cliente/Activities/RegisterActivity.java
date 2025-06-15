@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.buzzblitz_android_cliente.Models.AuthUtil;
 import com.example.buzzblitz_android_cliente.Models.UsuReg;
 import com.example.buzzblitz_android_cliente.R;
 import com.example.buzzblitz_android_cliente.RetrofitClient;
@@ -110,9 +111,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void guardarUserIdEnSharedPreferences(String userId) {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("currentUserId", userId);
-        editor.apply();
+        AuthUtil.setCurrentUserId(this, userId);
     }
 
     private void guardarDatosLocales(String email, String pregunta, String respuesta) {

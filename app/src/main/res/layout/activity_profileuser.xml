@@ -103,28 +103,15 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnCambiarPswd"
-        android:layout_width="115dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="192dp"
+        android:layout_width="131dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="188dp"
         android:background="@drawable/btn_selector"
         android:text="Change password"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.705"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnRecuperarPswd"
-        android:layout_width="115dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="192dp"
-        android:background="@drawable/btn_selector"
-        android:text="Password recovery"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.187"
+        app:layout_constraintHorizontal_bias="0.464"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView

@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -63,8 +64,21 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/btn_selector"
             android:padding="12dp"
-            android:text= "Create an account"
-            android:textColor= "@color/texto_negro" />
+            android:text="Create an account"
+            android:textColor="@color/texto_negro" />
 
     </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRecuperarPswd"
+        android:layout_width="115dp"
+        android:layout_height="45dp"
+        android:background="@drawable/btn_selector"
+        android:text="Password recovery"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.724" />
 </androidx.constraintlayout.widget.ConstraintLayout>

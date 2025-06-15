@@ -21,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class IssueListActivity extends AppCompatActivity {
+public class IssueListActivity extends BaseActivity {
     private static final String TAG = "IssueListActivity";
     private RecyclerView recyclerView;
     private IssueAdapter adapter;
@@ -46,7 +46,8 @@ public class IssueListActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     adapter.setIssues(response.body());
                 } else {
-                    Toast.makeText(IssueListActivity.this, "Failed to get issues", Toast.LENGTH_SHORT).show();
+                    String errorMsg = "Error: " + response.code() + " - " + response.message();
+                    Toast.makeText(IssueListActivity.this, errorMsg, Toast.LENGTH_SHORT).show();
                 }
             }
 

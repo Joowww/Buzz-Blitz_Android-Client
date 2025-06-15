@@ -42,7 +42,9 @@ public class TiendaActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tienda);
-        sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+
+        // Usar AuthUtil para obtener preferencias
+        sharedPreferences = getSharedPreferences(AuthUtil.PREFS_NAME, MODE_PRIVATE);
 
         rv = findViewById(R.id.rvObjetos);
         rv.setLayoutManager(new LinearLayoutManager(this));
@@ -65,6 +67,9 @@ public class TiendaActivity extends BaseActivity {
                 public void onResponse(Call<DevolverCompra> call, Response<DevolverCompra> response) {
                     if (response.isSuccessful() && response.body() != null) {
                         int nuevosTarros = response.body().getTarrosMiel();
+
+                        // Actualizar usando AuthUtil
+                        AuthUtil.setCurrentTarrosMiel(TiendaActivity.this, nuevosTarros);
                         adapter.actualizarTarrosMiel(nuevosTarros);
 
                         Set<String> purchasedItems = new HashSet<>(sharedPreferences.getStringSet("purchasedItems", new HashSet<>()));
@@ -72,7 +77,6 @@ public class TiendaActivity extends BaseActivity {
                         sharedPreferences.edit().putStringSet("purchasedItems", purchasedItems).apply();
 
                         adapter.notifyItemChanged(position);
-                        sharedPreferences.edit().putInt("currentTarrosMiel", nuevosTarros).apply();
                         Toast.makeText(TiendaActivity.this, "Honey jars left: " + nuevosTarros, Toast.LENGTH_SHORT).show();
                     } else {
                         String errorMessage = "Error: ";
