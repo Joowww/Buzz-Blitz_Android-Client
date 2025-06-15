@@ -91,6 +91,9 @@ public interface GameBuzzBlitzService {
     @GET("usuarios/issue/all")
     Call<List<Issue>> getIssues();
 
+    @PUT("usuarios/resetData/{id}")
+    Call<Void> resetUserData(@Path("id") String userId);
+
 
     @POST("users/GetForum") //OK
     Call<List<Forum>> getForum();
