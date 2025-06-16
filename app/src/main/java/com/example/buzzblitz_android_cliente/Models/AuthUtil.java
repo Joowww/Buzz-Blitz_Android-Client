@@ -143,6 +143,8 @@ public class AuthUtil {
         return prefs.getString(KEY_USER_PSWD, "");
     }
 
+
+
     public static void saveUserData(Context context, UsuarioEnviar usuario) {
         SharedPreferences.Editor editor = context.getSharedPreferences(
                 PREFS_NAME, Context.MODE_PRIVATE).edit();

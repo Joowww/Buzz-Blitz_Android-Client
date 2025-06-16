@@ -11,11 +11,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.buzzblitz_android_cliente.Models.AuthUtil;
+import com.example.buzzblitz_android_cliente.Models.DevolverCompra;
+import com.example.buzzblitz_android_cliente.Models.PartidaGuardada;
 import com.example.buzzblitz_android_cliente.R;
+import com.example.buzzblitz_android_cliente.RetrofitClient;
+import com.example.buzzblitz_android_cliente.Services.GameBuzzBlitzService;
+
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends BaseActivity {
 
@@ -116,20 +125,6 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-//    public void jugarClick(View view) {
-//        try {
-//            Intent i = new Intent();
-//            i.setComponent(new ComponentName(
-//                    "com.DefaultCompany.Buzzblitz",
-//                    "com.unity3d.player.UnityPlayerGameActivity"
-//            ));
-//            startActivityForResult(i, 0);
-//        } catch (Exception e) {
-//            Toast.makeText(this, "Instala la app de Unity primero", Toast.LENGTH_SHORT).show();
-//            Log.e("UnityLaunchError", "Error al lanzar la app Unity", e);
-//        }
-//    }
-
     public void jugarClick(View view) {
         try {
             Intent i = new Intent();
@@ -172,4 +167,59 @@ public class MainActivity extends BaseActivity {
 //            Toast.makeText(this, "¡Datos del juego actualizados!", Toast.LENGTH_SHORT).show();
 //        }
 //    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 0 && resultCode == RESULT_OK && data != null) {
+            // Actualizar recursos desde Unity
+            int newHoney = data.getIntExtra("updatedHoney", 0);
+            int newFlowers = data.getIntExtra("updatedFlowers", 0);
+            int newGoldenFlowers = data.getIntExtra("updatedGoldenFlowers", 0);
+            int newBestScore = data.getIntExtra("updatedBestScore", 0);
+            int newPartidas = AuthUtil.getCurrentNumPartidas(this) + 1; // Incrementar partidas jugadas
+
+            // Actualizar SharedPreferences usando AuthUtil
+            AuthUtil.setCurrentTarrosMiel(this, newHoney);
+            AuthUtil.setCurrentFlor(this, newFlowers);
+            AuthUtil.setCurrentFloreGold(this, newGoldenFlowers);
+            AuthUtil.setCurrentBestScore(this, newBestScore);
+            AuthUtil.setCurrentNumPartidas(this, newPartidas);
+
+            // Crear objeto PartidaGuardada
+            PartidaGuardada partida = new PartidaGuardada(
+                    AuthUtil.getCurrentUserId(this),
+                    newFlowers,
+                    newBestScore,
+                    newPartidas,
+                    newGoldenFlowers
+            );
+
+            // Guardar partida en el backend
+            guardarPartidaEnBackend(partida);
+
+            Toast.makeText(this, "¡Datos del juego actualizados!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void guardarPartidaEnBackend(PartidaGuardada partida) {
+        GameBuzzBlitzService api = RetrofitClient.getApiService();
+        Call<Void> call = api.guardarPartida(partida);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Log.d("GuardarPartida", "Partida guardada exitosamente");
+                } else {
+                    Log.e("GuardarPartida", "Error al guardar partida: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e("GuardarPartida", "Error de conexión: " + t.getMessage());
+            }
+        });
+    }
 }

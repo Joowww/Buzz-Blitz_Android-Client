@@ -6,6 +6,7 @@ import com.example.buzzblitz_android_cliente.Models.Forum;
 import com.example.buzzblitz_android_cliente.Models.Issue;
 import com.example.buzzblitz_android_cliente.Models.ListFreqQuest;
 import com.example.buzzblitz_android_cliente.Models.Objeto;
+import com.example.buzzblitz_android_cliente.Models.PartidaGuardada;
 import com.example.buzzblitz_android_cliente.Models.Question;
 import com.example.buzzblitz_android_cliente.Models.UsuReg;
 import com.example.buzzblitz_android_cliente.Models.Usuario;
@@ -112,4 +113,7 @@ public interface GameBuzzBlitzService {
 
     @POST("usuarios/chat/send")
     Call<Void> sendPrivateMessage(@Body ChatIndividual chat);
+
+    @POST("usuarios/partida/guardar")
+    Call<Void> guardarPartida(@Body PartidaGuardada partida);
 }
