@@ -48,7 +48,6 @@ public class ChangePasswordActivity extends BaseActivity {
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         isProcessing = false;
                         if (response.isSuccessful()) {
-                            // Forzar re-login
                             AuthUtil.setUserLoggedIn(ChangePasswordActivity.this, false);
 
                             Toast.makeText(ChangePasswordActivity.this,

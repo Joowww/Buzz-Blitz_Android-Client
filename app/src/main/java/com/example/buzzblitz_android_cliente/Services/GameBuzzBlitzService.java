@@ -101,7 +101,6 @@ public interface GameBuzzBlitzService {
     @POST("usuarios/forum/post")
     Call<Void> postForumMessage(@Body Forum forum);
 
-    // CHAT PRIVADO
     @GET("usuarios/chat/users")
     Call<List<Usuario>> getAllUsers();
 

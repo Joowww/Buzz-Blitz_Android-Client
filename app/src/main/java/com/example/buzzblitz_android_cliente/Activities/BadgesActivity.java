@@ -30,7 +30,7 @@ public class BadgesActivity extends BaseActivity {
         setContentView(R.layout.activity_badges);
 
         recyclerView = findViewById(R.id.rvBadges);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2)); // 2 columnas
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         String userId = AuthUtil.getCurrentUserId(this);
         fetchBadges(userId);
