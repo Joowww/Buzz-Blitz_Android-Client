@@ -94,19 +94,22 @@ public interface GameBuzzBlitzService {
     @PUT("usuarios/resetData/{id}")
     Call<Void> resetUserData(@Path("id") String userId);
 
+    @GET("usuarios/forum/messages")
+    Call<List<Forum>> getForumMessages();
 
-    @POST("users/GetForum") //OK
-    Call<List<Forum>> getForum();
+    @POST("usuarios/forum/post")
+    Call<Void> postForumMessage(@Body Forum forum);
 
-    //@POST("users/PostInForum") //OK
-    //Call<List<Forum>> PostInForum(@Body Forum forum, ForumActivity forumActivity);
+    // CHAT PRIVADO
+    @GET("usuarios/chat/users")
+    Call<List<Usuario>> getAllUsers();
 
-    @POST("users/PrivateNames") //OK
-    Call<List<Usuario>> getPrivateNames();
+    @GET("usuarios/chat/{user1}/{user2}")
+    Call<List<ChatIndividual>> getPrivateMessages(
+            @Path("user1") String user1,
+            @Path("user2") String user2
+    );
 
-    @POST("users/PrivateMessagesWith/{name}") //OK
-    Call<List<ChatIndividual>> getPrivateMessagesWith(@Path("name") String name);
-
-    @POST("users/PrivateChat/Post") //OK
-    Call<List<ChatIndividual>> postPrivateMessage(@Body ChatIndividual chatIndividual);
+    @POST("usuarios/chat/send")
+    Call<Void> sendPrivateMessage(@Body ChatIndividual chat);
 }

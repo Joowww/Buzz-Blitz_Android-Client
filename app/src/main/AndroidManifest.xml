@@ -157,6 +157,12 @@
 
         <activity android:name=".Activities.ChangePasswordActivity"/>
 
+        <activity android:name=".Activities.ForumActivity" />
+
+        <activity android:name=".Activities.ChatActivity" />
+
+        <activity android:name=".Activities.UserListActivity" />
+
         <meta-data
             android:name="android.security.net.config"
             android:resource="@xml/network_security_config" />
