@@ -51,8 +51,8 @@ public class MyWeaponsAdapter extends RecyclerView.Adapter<MyWeaponsAdapter.View
 
         Objeto objeto = weapons.get(position);
         holder.tvNombre.setText(objeto.getNombre());
-        holder.tvPrecio.setText("Precio: " + objeto.getPrecio());
-        holder.tvTipo.setText("Tipo: Arma");
+        holder.tvPrecio.setText("Price: " + objeto.getPrecio());
+        holder.tvTipo.setText("Type: Weapon");
         holder.tvDescripcion.setText(objeto.getDescripcion());
 
         String imageUrl = "http://10.0.2.2:8080/img/" + objeto.getImagen();

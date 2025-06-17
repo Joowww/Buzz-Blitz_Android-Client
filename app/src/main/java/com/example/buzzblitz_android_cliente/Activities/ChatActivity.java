@@ -29,28 +29,24 @@ public class ChatActivity extends BaseActivity {
     private RecyclerView rvChatMessages;
     private ChatAdapter adapter;
     private List<ChatIndividual> chatMessages = new ArrayList<>();
-    private String currentUserName; // Cambiado de ID a nombre
-    private String otherUserName;  // Cambiado de ID a nombre
+    private String currentUserName;
+    private String otherUserName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        // Obtener nombres en lugar de IDs
         currentUserName = getIntent().getStringExtra("CURRENT_USER_NAME");
         otherUserName = getIntent().getStringExtra("OTHER_USER_NAME");
 
-        // Configurar RecyclerView
         rvChatMessages = findViewById(R.id.rvChatMessages);
         rvChatMessages.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ChatAdapter(chatMessages, currentUserName);
         rvChatMessages.setAdapter(adapter);
 
-        // Cargar mensajes
         loadMessages();
 
-        // Configurar botón enviar
         EditText etMessageInput = findViewById(R.id.etMessageInput);
         LottieAnimationView btnSend = findViewById(R.id.btnSend);
         btnSend.setOnClickListener(v -> {
@@ -64,7 +60,6 @@ public class ChatActivity extends BaseActivity {
 
     private void loadMessages() {
         GameBuzzBlitzService service = RetrofitClient.getApiService();
-        // Usar nombres en la consulta
         service.getPrivateMessages(currentUserName, otherUserName).enqueue(new Callback<List<ChatIndividual>>() {
             @Override
             public void onResponse(Call<List<ChatIndividual>> call, Response<List<ChatIndividual>> response) {
@@ -78,15 +73,15 @@ public class ChatActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<List<ChatIndividual>> call, Throwable t) {
-                Toast.makeText(ChatActivity.this, "Error al cargar mensajes", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ChatActivity.this, "Error loading messages", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void sendMessage(String message) {
         ChatIndividual newMessage = new ChatIndividual();
-        newMessage.setNameFrom(currentUserName); // Usar nombre
-        newMessage.setNameTo(otherUserName);     // Usar nombre
+        newMessage.setNameFrom(currentUserName);
+        newMessage.setNameTo(otherUserName);
         newMessage.setComentario(message);
         newMessage.setDate(new SimpleDateFormat("dd/MM/yyyy HH:mm").format(new Date()));
 
@@ -103,7 +98,7 @@ public class ChatActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(ChatActivity.this, "Error al enviar mensaje", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ChatActivity.this, "Error sending message", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -14,9 +14,9 @@ public class Issue {
         this.title = title;
         this.message = message;
         this.sender = sender;
-        this.date = new Date().toString(); // Fecha actual
+        this.date = new Date().toString();
     }
-    // Getters y Setters (igual que en FreqQuest)
+
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
     public String getDate() { return date; }

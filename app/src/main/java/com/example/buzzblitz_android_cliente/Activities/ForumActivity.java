@@ -30,27 +30,23 @@ public class ForumActivity extends BaseActivity {
     private ForumAdapter adapter;
     private List<Forum> forumMessages = new ArrayList<>();
     private EditText textAEnviar;
-    private String currentUserName; // Cambiado de ID a nombre
+    private String currentUserName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forum);
 
-        // Obtener el nombre del usuario en lugar del ID
         currentUserName = getIntent().getStringExtra("USER_NAME");
         recyclerView = findViewById(R.id.recyclerView);
         textAEnviar = findViewById(R.id.textAEnviar);
 
-        // Configurar RecyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ForumAdapter(forumMessages);
         recyclerView.setAdapter(adapter);
 
-        // Cargar mensajes
         loadForumMessages();
 
-        // Botón enviar
         Button btnSend = findViewById(R.id.btnSend);
         btnSend.setOnClickListener(v -> postMessage());
     }
@@ -70,7 +66,7 @@ public class ForumActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<List<Forum>> call, Throwable t) {
-                Toast.makeText(ForumActivity.this, "Error al cargar mensajes", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ForumActivity.this, "Error loading messages", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -80,7 +76,7 @@ public class ForumActivity extends BaseActivity {
         if (message.isEmpty()) return;
 
         Forum newMessage = new Forum();
-        newMessage.setName(currentUserName); // Usar nombre en lugar de ID
+        newMessage.setName(currentUserName);
         newMessage.setComentario(message);
         newMessage.setDate(new SimpleDateFormat("dd/MM/yyyy HH:mm").format(new Date()));
 
@@ -96,7 +92,7 @@ public class ForumActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(ForumActivity.this, "Error al enviar mensaje", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ForumActivity.this, "Error sending messages", Toast.LENGTH_SHORT).show();
             }
         });
     }

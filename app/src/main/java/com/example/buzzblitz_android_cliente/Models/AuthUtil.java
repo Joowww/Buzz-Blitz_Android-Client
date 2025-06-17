@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 public class AuthUtil {
     public static final String PREFS_NAME = "MyAppPrefs";
 
-    // Keys para las preferencias
     private static final String KEY_IS_LOGGED_IN = "isLoggedIn";
     private static final String KEY_USER_ID = "currentUserId";
     private static final String KEY_USER_NAME = "currentUserName";
@@ -18,10 +17,8 @@ public class AuthUtil {
     private static final String KEY_BEST_SCORE = "currentBestScore";
     private static final String KEY_NUM_PARTIDAS = "currentNumPartidas";
 
-    // Nueva clave para contraseña temporal
     private static final String KEY_USER_PSWD = "currentUserPassword";
 
-    // Métodos para isLoggedIn
     public static boolean isUserLoggedIn(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         return prefs.getBoolean(KEY_IS_LOGGED_IN, false);
@@ -33,7 +30,6 @@ public class AuthUtil {
         editor.apply();
     }
 
-    // Métodos para userId
     public static String getCurrentUserId(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         return prefs.getString(KEY_USER_ID, "");
@@ -45,7 +41,6 @@ public class AuthUtil {
         editor.apply();
     }
 
-    // Métodos para userName
     public static String getCurrentUserName(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         return prefs.getString(KEY_USER_NAME, "");
@@ -57,7 +52,6 @@ public class AuthUtil {
         editor.apply();
     }
 
-    // Métodos para userEmail
     public static String getCurrentUserEmail(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         return prefs.getString(KEY_USER_EMAIL, "");
@@ -69,7 +63,6 @@ public class AuthUtil {
         editor.apply();
     }
 
-    // Métodos para tarrosMiel
     public static int getCurrentTarrosMiel(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         return prefs.getInt(KEY_TARROS_MIEL, 0);
@@ -81,7 +74,6 @@ public class AuthUtil {
         editor.apply();
     }
 
-    // Métodos para flor
     public static int getCurrentFlor(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         return prefs.getInt(KEY_FLOR, 0);
@@ -93,7 +85,6 @@ public class AuthUtil {
         editor.apply();
     }
 
-    // Métodos para floreGold
     public static int getCurrentFloreGold(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         return prefs.getInt(KEY_FLORE_GOLD, 0);
@@ -105,7 +96,6 @@ public class AuthUtil {
         editor.apply();
     }
 
-    // Métodos para bestScore
     public static int getCurrentBestScore(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         return prefs.getInt(KEY_BEST_SCORE, 0);
@@ -117,7 +107,6 @@ public class AuthUtil {
         editor.apply();
     }
 
-    // Métodos para numPartidas
     public static int getCurrentNumPartidas(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         return prefs.getInt(KEY_NUM_PARTIDAS, 0);
@@ -129,7 +118,6 @@ public class AuthUtil {
         editor.apply();
     }
 
-    // Nuevos métodos para contraseña temporal
     public static void setCurrentUserPassword(Context context, String password) {
         SharedPreferences.Editor editor = context.getSharedPreferences(
                 PREFS_NAME, Context.MODE_PRIVATE).edit();

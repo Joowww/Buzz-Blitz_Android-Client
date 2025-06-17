@@ -33,24 +33,23 @@ public class RankingActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ranking);
 
-        // Obtener userId y bestScore usando AuthUtil
         String userId = AuthUtil.getCurrentUserId(this);
         int bestScore = AuthUtil.getCurrentBestScore(this);
 
         if (userId.isEmpty()) {
-            Toast.makeText(this, "Error: usuario no logueado", Toast.LENGTH_SHORT).show();
-            Log.e(TAG, "No hay userId en SharedPreferences");
+            Toast.makeText(this, "Error: user not logged in", Toast.LENGTH_SHORT).show();
+            Log.e(TAG, "No userId in SharedPreferences");
             return;
         }
 
         tvBestScore = findViewById(R.id.textView6);
-        tvBestScore.setText("Tu mejor puntuación: " + bestScore);
+        tvBestScore.setText("Your best score: " + bestScore);
 
         rvRanking = findViewById(R.id.rvRanking);
         rvRanking.setLayoutManager(new LinearLayoutManager(this));
 
         GameBuzzBlitzService api = RetrofitClient.getApiService();
-        Log.d(TAG, "Llamando a getInfo con userId: " + userId);
+        Log.d(TAG, "Calling getInfo with userId:: " + userId);
         api.getInfo(userId).enqueue(new Callback<InfoList>() {
             @Override
             public void onResponse(Call<InfoList> call, Response<InfoList> response) {
@@ -58,19 +57,19 @@ public class RankingActivity extends BaseActivity {
                     List<Info> rankingCompleto = response.body().getRanking();
                     int userPosition = response.body().getPosicionUsuario();
 
-                    // Actualizar el mejor puntaje si es necesario
+
                     int nuevoBestScore = obtenerMejorPuntuacionUsuario(rankingCompleto, userId);
                     if (nuevoBestScore > bestScore) {
                         AuthUtil.setCurrentBestScore(RankingActivity.this, nuevoBestScore);
-                        tvBestScore.setText("Tu mejor puntuación: " + nuevoBestScore);
+                        tvBestScore.setText("Your best score: " + nuevoBestScore);
                     }
 
-                    Log.d(TAG, "Ranking recibido de la API (size=" + rankingCompleto.size() + "):");
+                    Log.d(TAG, "Ranking received (size=" + rankingCompleto.size() + "):");
                     for (int i = 0; i < rankingCompleto.size(); i++) {
                         Info info = rankingCompleto.get(i);
-                        Log.d(TAG, "Pos " + (i+1) + ": " + info.getUsuario() + " - Puntos: " + info.getMejorPuntuacion());
+                        Log.d(TAG, "Pos " + (i+1) + ": " + info.getUsuario() + " - Points: " + info.getMejorPuntuacion());
                     }
-                    Log.d(TAG, "Posición del usuario logueado: " + userPosition);
+                    Log.d(TAG, "User position: " + userPosition);
 
                     List<Info> top5 = new ArrayList<>();
                     for (int i = 0; i < Math.min(5, rankingCompleto.size()); i++) {
@@ -86,31 +85,30 @@ public class RankingActivity extends BaseActivity {
                             }
                         }
                         if (userInfo != null) {
-                            Log.d(TAG, "Reemplazando el último del top5 por el usuario logueado: " + userInfo.getUsuario() + " - Puntos: " + userInfo.getMejorPuntuacion());
+                            Log.d(TAG, "Replacing the last in top5 with the logged-in user: " + userInfo.getUsuario() + " - Puntos: " + userInfo.getMejorPuntuacion());
                             top5.set(4, userInfo);
                         } else {
-                            Log.e(TAG, "No se encontró el usuario logueado en el rankingCompleto");
+                            Log.e(TAG, "Logged-in user not found in full ranking");
                         }
                     }
 
-                    Log.d(TAG, "Lista final que se pasa al adaptador:");
                     for (int i = 0; i < top5.size(); i++) {
                         Info info = top5.get(i);
-                        Log.d(TAG, "Item " + i + ": " + info.getUsuario() + " - Puntos: " + info.getMejorPuntuacion());
+                        Log.d(TAG, "Item " + i + ": " + info.getUsuario() + " - Points: " + info.getMejorPuntuacion());
                     }
 
                     MyRankingAdapter adapter = new MyRankingAdapter(top5, userId, userPosition);
                     rvRanking.setAdapter(adapter);
                 } else {
-                    Log.e(TAG, "Error al obtener datos del ranking. Código: " + response.code());
-                    Toast.makeText(RankingActivity.this, "Error al obtener datos", Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, "Error fetching ranking data. Code: " + response.code());
+                    Toast.makeText(RankingActivity.this, "Error obtaining data", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<InfoList> call, Throwable t) {
-                Log.e(TAG, "Error de conexión al obtener ranking", t);
-                Toast.makeText(RankingActivity.this, "Error de conexión", Toast.LENGTH_SHORT).show();
+                Log.e(TAG, "Connexion error obtaining ranking", t);
+                Toast.makeText(RankingActivity.this, "Conexion error", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -37,7 +37,7 @@ public class ChangePasswordActivity extends BaseActivity {
             String userId = etUserId.getText().toString();
             String nuevaContra = etNuevaContra.getText().toString();
 
-            Log.d(TAG, "Intentando cambiar contraseña para userId: " + userId);
+            Log.d(TAG, "Trying to change the password for userId: " + userId);
 
             if (validarDatos(userId, nuevaContra)) {
                 Usulogin datos = new Usulogin(userId, nuevaContra);
@@ -51,10 +51,9 @@ public class ChangePasswordActivity extends BaseActivity {
                             AuthUtil.setUserLoggedIn(ChangePasswordActivity.this, false);
 
                             Toast.makeText(ChangePasswordActivity.this,
-                                    "Contraseña cambiada. Por favor inicie sesión nuevamente",
+                                    "Password changed. Please Log in again",
                                     Toast.LENGTH_SHORT).show();
 
-                            // Redirigir a login
                             Intent intent = new Intent(ChangePasswordActivity.this, LoginActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
@@ -67,9 +66,9 @@ public class ChangePasswordActivity extends BaseActivity {
                     @Override
                     public void onFailure(Call<Void> call, Throwable t) {
                         isProcessing = false;
-                        Log.e(TAG, "Error de red cambiarContraseña: " + t.getMessage());
+                        Log.e(TAG, "Network error change password: " + t.getMessage());
                         Toast.makeText(ChangePasswordActivity.this,
-                                "Error de red: " + t.getMessage(),
+                                "Network error: " + t.getMessage(),
                                 Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -81,15 +80,15 @@ public class ChangePasswordActivity extends BaseActivity {
 
     private boolean validarDatos(String userId, String nuevaContra) {
         if (userId.isEmpty()) {
-            Toast.makeText(this, "El ID de usuario no puede estar vacío", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "User ID cannot be empty", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (nuevaContra.isEmpty()) {
-            Toast.makeText(this, "La nueva contraseña no puede estar vacía", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "New password cannot be empty", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (nuevaContra.length() < 6) {
-            Toast.makeText(this, "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Password must be at least 6 characters long", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -97,11 +96,11 @@ public class ChangePasswordActivity extends BaseActivity {
 
     private void manejarErrores(Response<?> response) {
         if (response.code() == 401) {
-            Toast.makeText(this, "Credenciales incorrectas. Verifica tu ID de usuario.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Incorrect credentials. Please check your user ID.", Toast.LENGTH_SHORT).show();
         } else if (response.code() == 500) {
-            Toast.makeText(this, "Error interno del servidor. Intenta más tarde.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Internal server error. Please try again later.", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Error desconocido: " + response.code(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Unknown error: " + response.code(), Toast.LENGTH_SHORT).show();
         }
     }
 }

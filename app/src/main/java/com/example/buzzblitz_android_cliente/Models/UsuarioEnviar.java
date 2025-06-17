@@ -18,7 +18,7 @@ public class UsuarioEnviar {
     private String respuesta;
 
     public UsuarioEnviar() {}
-    //BORRAR CUANDO ESTE LA SQL
+
     public UsuarioEnviar(String id, String name, String pswd, String mail, String q, String a) { // Primera vez que entras
         this.id = id;
         this.name = name;
@@ -43,7 +43,7 @@ public class UsuarioEnviar {
 
     }
 
-    // --- Getters y Setters básicos ---
+
     public String getId() {
         return id;
     }

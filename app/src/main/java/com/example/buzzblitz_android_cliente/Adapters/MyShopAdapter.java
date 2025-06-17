@@ -57,13 +57,13 @@ public class MyShopAdapter extends RecyclerView.Adapter<MyShopAdapter.ViewHolder
         holder.tvEstadoCompra.setVisibility(isPurchased ? View.VISIBLE : View.GONE);
 
         holder.tvNombre.setText(objeto.getNombre());
-        holder.tvPrecio.setText("Precio: " + objeto.getPrecio());
+        holder.tvPrecio.setText("Price: " + objeto.getPrecio());
         if ("arma".equals(objeto.getTipo())) {
-            holder.tvTipo.setText("Tipo: Arma");
+            holder.tvTipo.setText("Type: Weapons");
         } else if ("skin".equals(objeto.getTipo())) {
-            holder.tvTipo.setText("Tipo: Skin");
+            holder.tvTipo.setText("Type: Skin");
         }
-        holder.tvDescripcion.setText("Descripción: " + objeto.getDescripcion());
+        holder.tvDescripcion.setText("Description: " + objeto.getDescripcion());
 
         String imageUrl = "http://10.0.2.2:8080/img/" + objeto.getImagen();
         Glide.with(context)

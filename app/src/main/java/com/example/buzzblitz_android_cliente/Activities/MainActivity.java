@@ -133,7 +133,6 @@ public class MainActivity extends BaseActivity {
                     "com.unity3d.player.UnityPlayerGameActivity"
             ));
 
-            // Obtener datos con AuthUtil
             i.putExtra("UserID", AuthUtil.getCurrentUserId(this));
             i.putExtra("TarrosDeMiel", String.valueOf(AuthUtil.getCurrentTarrosMiel(this)));
             i.putExtra("Flor", String.valueOf(AuthUtil.getCurrentFlor(this)));
@@ -142,31 +141,10 @@ public class MainActivity extends BaseActivity {
 
             startActivityForResult(i, 0);
         } catch (Exception e) {
-            Toast.makeText(this, "Instala la app de Unity primero", Toast.LENGTH_SHORT).show();
-            Log.e("UnityLaunchError", "Error al lanzar la app Unity", e);
+            Toast.makeText(this, "You need to install the unity app", Toast.LENGTH_SHORT).show();
+            Log.e("UnityLaunchError", "Error launching the Unity app", e);
         }
     }
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        if (requestCode == 0 && resultCode == RESULT_OK && data != null) {
-//            // Actualizar recursos desde Unity
-//            int newHoney = data.getIntExtra("updatedHoney", 0);
-//            int newFlowers = data.getIntExtra("updatedFlowers", 0);
-//            int newGoldenFlowers = data.getIntExtra("updatedGoldenFlowers", 0);
-//            int newBestScore = data.getIntExtra("updatedBestScore", 0);
-//
-//            // Actualizar SharedPreferences usando AuthUtil
-//            AuthUtil.setCurrentTarrosMiel(this, newHoney);
-//            AuthUtil.setCurrentFlor(this, newFlowers);
-//            AuthUtil.setCurrentFloreGold(this, newGoldenFlowers);
-//            AuthUtil.setCurrentBestScore(this, newBestScore);
-//
-//            Toast.makeText(this, "¡Datos del juego actualizados!", Toast.LENGTH_SHORT).show();
-//        }
-//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -178,7 +156,7 @@ public class MainActivity extends BaseActivity {
             int newFlowers = data.getIntExtra("updatedFlowers", 0);
             int newGoldenFlowers = data.getIntExtra("updatedGoldenFlowers", 0);
             int newBestScore = data.getIntExtra("updatedBestScore", 0);
-            int newPartidas = AuthUtil.getCurrentNumPartidas(this) + 1; // Incrementar partidas jugadas
+            int newPartidas = AuthUtil.getCurrentNumPartidas(this) + 1;
 
             // Actualizar SharedPreferences usando AuthUtil
             AuthUtil.setCurrentTarrosMiel(this, newHoney);
@@ -196,10 +174,9 @@ public class MainActivity extends BaseActivity {
                     newGoldenFlowers
             );
 
-            // Guardar partida en el backend
             guardarPartidaEnBackend(partida);
 
-            Toast.makeText(this, "¡Datos del juego actualizados!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "¡Game data updated!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -210,15 +187,15 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    Log.d("GuardarPartida", "Partida guardada exitosamente");
+                    Log.d("GuardarPartida", "Game saved successfully");
                 } else {
-                    Log.e("GuardarPartida", "Error al guardar partida: " + response.code());
+                    Log.e("GuardarPartida", "Error saving the game: " + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Log.e("GuardarPartida", "Error de conexión: " + t.getMessage());
+                Log.e("GuardarPartida", "Network error: " + t.getMessage());
             }
         });
     }

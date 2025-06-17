@@ -33,7 +33,6 @@ public class TiendaActivity extends BaseActivity {
     private final List<Objeto> objetosTienda = new ArrayList<>();
     private SharedPreferences sharedPreferences;
 
-    // Variables para sincronización de compras
     private final Set<String> purchasedItemsSync = new HashSet<>();
     private boolean armasLoaded = false;
     private boolean skinsLoaded = false;
@@ -43,7 +42,6 @@ public class TiendaActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tienda);
 
-        // Usar AuthUtil para obtener preferencias
         sharedPreferences = getSharedPreferences(AuthUtil.PREFS_NAME, MODE_PRIVATE);
 
         rv = findViewById(R.id.rvObjetos);
@@ -51,7 +49,6 @@ public class TiendaActivity extends BaseActivity {
         adapter = new MyShopAdapter(objetosTienda, this, sharedPreferences);
         rv.setAdapter(adapter);
 
-        // Listener de compra
         adapter.setOnItemClickListener((position, view) -> {
             Objeto objeto = objetosTienda.get(position);
             String usuarioId = AuthUtil.getCurrentUserId(this);
@@ -68,7 +65,6 @@ public class TiendaActivity extends BaseActivity {
                     if (response.isSuccessful() && response.body() != null) {
                         int nuevosTarros = response.body().getTarrosMiel();
 
-                        // Actualizar usando AuthUtil
                         AuthUtil.setCurrentTarrosMiel(TiendaActivity.this, nuevosTarros);
                         adapter.actualizarTarrosMiel(nuevosTarros);
 
@@ -158,7 +154,7 @@ public class TiendaActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<List<Objeto>> call, Throwable t) {
-                Log.e("API_FAILURE", "Fallo al sincronizar armas compradas: " + t.getMessage());
+                Log.e("API_FAILURE", "Failed to sync purchased weapons: " + t.getMessage());
                 armasLoaded = true;
                 verificarYGuardarCompras();
             }
@@ -178,7 +174,7 @@ public class TiendaActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<List<Objeto>> call, Throwable t) {
-                Log.e("API_FAILURE", "Fallo al sincronizar skins compradas: " + t.getMessage());
+                Log.e("API_FAILURE", "Failed to sync purchased skins: " + t.getMessage());
                 skinsLoaded = true;
                 verificarYGuardarCompras();
             }

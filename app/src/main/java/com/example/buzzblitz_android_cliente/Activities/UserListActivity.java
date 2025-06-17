@@ -27,23 +27,20 @@ public class UserListActivity extends BaseActivity {
     private RecyclerView rvUsers;
     private UserAdapter adapter;
     private List<Usuario> users = new ArrayList<>();
-    private String currentUserName; // Cambiado de ID a nombre
+    private String currentUserName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_list);
 
-        // Obtener el NOMBRE del usuario actual desde AuthUtil
         currentUserName = AuthUtil.getCurrentUserName(this);
 
-        // Configurar RecyclerView
         rvUsers = findViewById(R.id.rvAllUsers);
         rvUsers.setLayoutManager(new LinearLayoutManager(this));
         adapter = new UserAdapter(users, user -> startChat(user));
         rvUsers.setAdapter(adapter);
 
-        // Cargar usuarios
         loadUsers();
     }
 
@@ -54,7 +51,6 @@ public class UserListActivity extends BaseActivity {
             public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     users.clear();
-                    // Filtrar usuario actual usando el ID (no el nombre)
                     String currentUserId = AuthUtil.getCurrentUserId(UserListActivity.this);
                     for (Usuario user : response.body()) {
                         if (!user.getId().equals(currentUserId)) {
@@ -67,14 +63,13 @@ public class UserListActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<List<Usuario>> call, Throwable t) {
-                Toast.makeText(UserListActivity.this, "Error al cargar usuarios", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UserListActivity.this, "Error loading users", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void startChat(Usuario user) {
         Intent intent = new Intent(this, ChatActivity.class);
-        // Pasar NOMBRES en lugar de IDs
         intent.putExtra("CURRENT_USER_NAME", currentUserName);
         intent.putExtra("OTHER_USER_NAME", user.getName());
         startActivity(intent);

@@ -70,7 +70,6 @@ public class MyRankingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 topHolder.tvNombreUsuario.setTypeface(null, Typeface.NORMAL);
             }
 
-            // Colores según posición
             int colorRes = R.color.white;
             if (position == 0) colorRes = R.color.gold;
             else if (position == 1) colorRes = R.color.silver;
@@ -84,7 +83,7 @@ public class MyRankingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         } else if (holder instanceof UserViewHolder) {
             UserViewHolder userHolder = (UserViewHolder) holder;
             userHolder.tvPosicionUser.setText(String.valueOf(userPosition));
-            userHolder.tvNombreUsuarioUser.setText("Tú");
+            userHolder.tvNombreUsuarioUser.setText("You");
             userHolder.tvPuntuacionUser.setText(String.valueOf(item.getMejorPuntuacion()));
         }
     }

@@ -4,7 +4,7 @@ public class Objeto {
     private String id;
     private String nombre;
     private Integer precio;
-    private String tipo;// "arma" o "skin"
+    private String tipo;
     private String descripcion;
     private String imagen;
 

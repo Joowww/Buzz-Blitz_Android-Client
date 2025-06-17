@@ -33,7 +33,7 @@ public class ReportIssueActivity extends BaseActivity {
         btnSubmit.setOnClickListener(v -> {
             String title = etTitle.getText().toString();
             String message = etMessage.getText().toString();
-            String sender = AuthUtil.getCurrentUserId(this); // Usuario actual
+            String sender = AuthUtil.getCurrentUserId(this);
 
             Issue issue = new Issue(title, message, sender);
             reportIssue(issue);

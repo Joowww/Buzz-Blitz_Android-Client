@@ -43,7 +43,7 @@ public class WeaponsActivity extends BaseActivity {
 
     private void loadUserWeapons() {
         String userId = AuthUtil.getCurrentUserId(this);
-        Log.d("SkinsActivity", "User ID obtenido: " + userId);
+        Log.d("SkinsActivity", "User ID obtained: " + userId);
         if (userId == null || userId.isEmpty()) {
             tvEmpty.setVisibility(View.VISIBLE);
             rvObjetos.setVisibility(View.GONE);
@@ -74,7 +74,7 @@ public class WeaponsActivity extends BaseActivity {
             public void onFailure(Call<List<Objeto>> call, Throwable t) {
                 tvEmpty.setVisibility(View.VISIBLE);
                 rvObjetos.setVisibility(View.GONE);
-                Toast.makeText(WeaponsActivity.this, "Error al cargar armas", Toast.LENGTH_SHORT).show();
+                Toast.makeText(WeaponsActivity.this, "Error loading weapons", Toast.LENGTH_SHORT).show();
             }
         });
     }

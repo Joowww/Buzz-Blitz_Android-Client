@@ -38,7 +38,7 @@ public class PasswordRecoveryActivity extends BaseActivity {
 
         btnGetQuestion.setOnClickListener(v -> {
             String userId = etUserId.getText().toString().trim();
-            Log.d(TAG, "Solicitando pregunta de seguridad para userId: " + userId);
+            Log.d(TAG, "Requesting security question for userId: " + userId);
             if (userId.isEmpty()) {
                 Toast.makeText(this, "Enter your user ID", Toast.LENGTH_SHORT).show();
                 return;
@@ -48,13 +48,13 @@ public class PasswordRecoveryActivity extends BaseActivity {
             api.obtenerPreguntaSeguridad(userId).enqueue(new Callback<String>() {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
-                    Log.d(TAG, "Respuesta obtenerPreguntaSeguridad: code=" + response.code() + ", body=" + response.body());
+                    Log.d(TAG, "Response obtenerPreguntaSeguridad: code=" + response.code() + ", body=" + response.body());
                     if (response.isSuccessful() && response.body() != null) {
                         tvQuestion.setText(response.body());
                         tvQuestion.setVisibility(View.VISIBLE);
                         etRespuesta.setVisibility(View.VISIBLE);
                         btnRecuperar.setVisibility(View.VISIBLE);
-                        tvResultado.setText(""); // Limpiar resultado anterior
+                        tvResultado.setText("");
                     } else {
                         tvResultado.setText("Error: " + response.message());
                     }
@@ -62,7 +62,7 @@ public class PasswordRecoveryActivity extends BaseActivity {
 
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
-                    Log.e(TAG, "Error red obtenerPreguntaSeguridad: " + t.getMessage());
+                    Log.e(TAG, "Network error obtenerPreguntaSeguridad: " + t.getMessage());
                     tvResultado.setText("Network error: " + t.getMessage());
                 }
             });
@@ -71,7 +71,7 @@ public class PasswordRecoveryActivity extends BaseActivity {
         btnRecuperar.setOnClickListener(v -> {
             String respuesta = etRespuesta.getText().toString().trim();
             String userId = etUserId.getText().toString().trim();
-            Log.d(TAG, "Intentando recuperar cuenta para userId: " + userId + ", respuesta: " + respuesta);
+            Log.d(TAG, "Trying to recovery your accout for userId: " + userId + ", response: " + respuesta);
             if (respuesta.isEmpty()) {
                 Toast.makeText(this, "Enter security answer", Toast.LENGTH_SHORT).show();
                 return;
@@ -82,9 +82,9 @@ public class PasswordRecoveryActivity extends BaseActivity {
             api.recuperarCuenta(datos).enqueue(new Callback<String>() {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
-                    Log.d(TAG, "Respuesta recuperarCuenta: code=" + response.code() + ", body=" + response.body());
+                    Log.d(TAG, "Response recuperarCuenta: code=" + response.code() + ", body=" + response.body());
                     if (response.isSuccessful() && response.body() != null) {
-                        tvResultado.setText("Tu contraseña es: " + response.body());
+                        tvResultado.setText("Your password is: " + response.body());
                     } else {
                         tvResultado.setText("Error: " + response.message());
                     }
@@ -92,7 +92,7 @@ public class PasswordRecoveryActivity extends BaseActivity {
 
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
-                    Log.e(TAG, "Error red recuperarCuenta: " + t.getMessage());
+                    Log.e(TAG, "Network error recuperarCuenta: " + t.getMessage());
                     tvResultado.setText("Network error: " + t.getMessage());
                 }
             });

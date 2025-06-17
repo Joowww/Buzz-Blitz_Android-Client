@@ -52,7 +52,6 @@ public class ChatBotActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chatbot);
 
-        // Inicializa vistas
         recyclerView      = findViewById(R.id.recycler_view);
         welcomeTextView   = findViewById(R.id.welcome_text);
         messageEditText   = findViewById(R.id.message_edit_text);
@@ -87,11 +86,9 @@ public class ChatBotActivity extends BaseActivity {
     }
 
     private void callAPI(String question) {
-        // Indicamos al usuario que el bot está escribiendo
         addToChat("Typing...", Message.SENT_BY_BOT);
 
         try {
-            // Construcción del JSON para Chat Completions
             JSONObject userMessage = new JSONObject()
                     .put("role", "user")
                     .put("content", question);
@@ -135,28 +132,24 @@ public class ChatBotActivity extends BaseActivity {
                             addResponse("Failed to parse response: " + e.getMessage());
                         }
                     } else {
-                        // Leemos el errorBody real
                         okhttp3.ResponseBody eb = response.body();
                         String errorJson = (eb != null) ? eb.string() : "";
 
-                        // Intentamos parsear el JSON de error
                         try {
                             JSONObject errObj = new JSONObject(errorJson).getJSONObject("error");
                             String code = errObj.optString("code");
                             String msg  = errObj.optString("message");
 
                             if ("insufficient_quota".equals(code)) {
-                                // Mostramos un Toast avisando de cuota agotada
                                 runOnUiThread(() -> Toast.makeText(
                                         ChatBotActivity.this,
-                                        "Se ha agotado tu cuota. Revisa tu plan en la consola de OpenAI.",
+                                        "Your quota has been exhausted. Check your plan on the OpenAI website.",
                                         Toast.LENGTH_LONG
                                 ).show());
                             } else {
                                 addResponse("Error: " + msg);
                             }
                         } catch (JSONException je) {
-                            // Si no es un JSON típico de OpenAI
                             addResponse("Failed to load response: " + errorJson);
                         }
                     }
@@ -169,7 +162,6 @@ public class ChatBotActivity extends BaseActivity {
 
 
     private void addResponse(String response) {
-        // Quitamos el "Typing..." y añadimos la respuesta real
         runOnUiThread(() -> {
             if (!messageList.isEmpty()) {
                 messageList.remove(messageList.size() - 1);
@@ -183,7 +175,6 @@ public class ChatBotActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // Si quisieras cancelar todas las peticiones pendientes:
         client.dispatcher().cancelAll();
     }
 }

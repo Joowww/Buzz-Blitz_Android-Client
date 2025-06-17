@@ -51,7 +51,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
                     v.getContext().startActivity(webIntent);
                 }
             } else {
-                Toast.makeText(v.getContext(), "La URL del video está vacía.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), "La URL of the video is empty.", Toast.LENGTH_SHORT).show();
             }
         });
     }

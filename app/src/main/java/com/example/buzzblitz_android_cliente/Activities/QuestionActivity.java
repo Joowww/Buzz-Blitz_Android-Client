@@ -39,7 +39,7 @@ public class QuestionActivity extends BaseActivity {
             String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
 
             if(title.isEmpty() || message.isEmpty()) {
-                Toast.makeText(this, "Rellena todos los campos", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Fill in all the fields", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -61,7 +61,7 @@ public class QuestionActivity extends BaseActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if(response.isSuccessful()) {
-                    Toast.makeText(QuestionActivity.this, "Consulta enviada", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(QuestionActivity.this, "Query sent", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
                     Toast.makeText(QuestionActivity.this, "Error: " + response.code(), Toast.LENGTH_SHORT).show();
@@ -70,7 +70,7 @@ public class QuestionActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(QuestionActivity.this, "Error de red", Toast.LENGTH_SHORT).show();
+                Toast.makeText(QuestionActivity.this, "Network error", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -33,7 +33,6 @@ public class UserProfileActivity extends BaseActivity {
 
         cargarDatosUsuario();
 
-        // Obtener datos usando AuthUtil
         String userName = AuthUtil.getCurrentUserName(this);
         String userEmail = AuthUtil.getCurrentUserEmail(this);
 

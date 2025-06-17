@@ -56,9 +56,9 @@ public class FreqQuestActivity extends BaseActivity {
                     adapter.setItems(faqs);
                 } else {
                     Toast.makeText(FreqQuestActivity.this,
-                            "Error al cargar FAQs (código " + response.code() + ")",
+                            "Error loading FAQs (code " + response.code() + ")",
                             Toast.LENGTH_SHORT).show();
-                    Log.e("FreqQuestActivity", "Error código: " + response.code());
+                    Log.e("FreqQuestActivity", "Code error: " + response.code());
                 }
             }
 
@@ -66,7 +66,7 @@ public class FreqQuestActivity extends BaseActivity {
             public void onFailure(Call<ListFreqQuest> call, Throwable t) {
 
                 Toast.makeText(FreqQuestActivity.this,
-                        "Fallo de red: " + t.getMessage(),
+                        "Network error: " + t.getMessage(),
                         Toast.LENGTH_LONG).show();
                 Log.e("FreqQuestActivity", "onFailure", t);
             }

@@ -73,7 +73,7 @@ public class SkinsActivity extends BaseActivity {
             public void onFailure(Call<List<Objeto>> call, Throwable t) {
                 tvEmpty.setVisibility(View.VISIBLE);
                 rvObjetos.setVisibility(View.GONE);
-                Toast.makeText(SkinsActivity.this, "Error al cargar skins", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SkinsActivity.this, "Error loading skins", Toast.LENGTH_SHORT).show();
             }
         });
     }

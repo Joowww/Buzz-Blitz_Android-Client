@@ -28,7 +28,6 @@ public class IntercambioActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intercambio);
 
-        // Usar AuthUtil para obtener preferencias
         SharedPreferences sharedPreferences = getSharedPreferences(AuthUtil.PREFS_NAME, MODE_PRIVATE);
         TextView tvUserIdCorner = findViewById(R.id.tvUserIdCorner);
         tvUserIdCorner.setText(AuthUtil.getCurrentUserId(this));
@@ -67,22 +66,21 @@ public class IntercambioActivity extends BaseActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     int nuevosTarros = response.body().getTarrosMiel();
 
-                    // Actualizar recursos con AuthUtil
                     AuthUtil.setCurrentTarrosMiel(IntercambioActivity.this, nuevosTarros);
                     AuthUtil.setCurrentFlor(IntercambioActivity.this, 0);
                     AuthUtil.setCurrentFloreGold(IntercambioActivity.this, 0);
 
                     Toast.makeText(IntercambioActivity.this,
-                            "¡Intercambio realizado! Tarros de miel: " + nuevosTarros,
+                            "¡Exchange realized! Honey jars: " + nuevosTarros,
                             Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(IntercambioActivity.this, "Intercambio fallido", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(IntercambioActivity.this, "Exchange failed", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Intercambio> call, Throwable t) {
-                Toast.makeText(IntercambioActivity.this, "Error de red", Toast.LENGTH_SHORT).show();
+                Toast.makeText(IntercambioActivity.this, "Network error", Toast.LENGTH_SHORT).show();
             }
         });
     }

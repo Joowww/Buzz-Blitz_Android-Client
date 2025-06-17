@@ -49,17 +49,17 @@ public class BorrarUsuarioActivity extends BaseActivity {
                             startActivity(intent);
                             finishAffinity();
                         } else {
-                            Toast.makeText(BorrarUsuarioActivity.this, "Error al borrar usuario", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(BorrarUsuarioActivity.this, "Error deleting user", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<Void> call, Throwable t) {
-                        Toast.makeText(BorrarUsuarioActivity.this, "Error de red: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BorrarUsuarioActivity.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
             } else {
-                Toast.makeText(this, "Usuario no identificado", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Unidentified user", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -24,7 +24,7 @@ public class Usuario {
 
     public Usuario() {}
 
-    public Usuario(String id, String name, String apellidos,String pswd, String mail, String q, String a) { // Primera vez que entras
+    public Usuario(String id, String name, String apellidos,String pswd, String mail, String q, String a) {
         this.id = id;
         this.name = name;
         this.pswd = pswd;
@@ -39,7 +39,7 @@ public class Usuario {
     public void UpdateSkin(Objeto objeto){
         skins.put(objeto.getId(), objeto);
     }
-    // --- Getters y Setters básicos ---
+
     public String getId() {
         return id;
     }

@@ -73,11 +73,9 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     UsuarioEnviar usuario = response.body();
 
-                    // Guardar todos los datos del usuario usando AuthUtil
                     AuthUtil.saveUserData(LoginActivity.this, usuario);
                     AuthUtil.setUserLoggedIn(LoginActivity.this, true);
 
-                    // Iniciar MainActivity
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     finish();
                 } else {

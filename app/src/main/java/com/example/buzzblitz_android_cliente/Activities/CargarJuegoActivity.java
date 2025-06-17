@@ -38,7 +38,7 @@ public class CargarJuegoActivity extends AppCompatActivity {
             }, 3000);
 
         } catch (Exception e) {
-            Log.e("ErrorLoadingGame", "Error: " + e.getMessage());
+            Log.e("Error loading the game", "Error: " + e.getMessage());
             startActivity(new Intent(this, LoginActivity.class));
             finish();
         }
